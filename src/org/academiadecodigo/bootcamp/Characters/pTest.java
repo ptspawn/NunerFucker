@@ -11,6 +11,9 @@ public class pTest extends Character {
     Picture avatar;
 
     public pTest(String name, double xPos, double yPos) {
+        super(100, 1);
+
+
 
         this.name = name;
 

@@ -3,20 +3,19 @@ package org.academiadecodigo.bootcamp.Interfaces;
 /**
  * Created by codecadet on 02/06/2018.
  */
-public enum CharactersType {
-    PLAYER(100, 1),
-    ENEMY(50, 1);
+public enum ProjectileType {
+    BULLET(10, 1);
 
-    private int health;
+    private int damage;
     private int speed;
 
-    CharactersType(int health, int speed) {
-        this.health = health;
+    ProjectileType(int damage, int speed) {
+        this.damage = damage;
         this.speed = speed;
     }
 
-    public int getHealth() {
-        return health;
+    public int getDamage() {
+        return damage;
     }
 
     public int getSpeed() {
