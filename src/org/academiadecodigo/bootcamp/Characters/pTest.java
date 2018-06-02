@@ -51,7 +51,19 @@ public class pTest extends Character {
 
 
     @Override
-    public void move() {
+    public void move(boolean[] moveDirections) {
+
+        int[] vector = {0,0};
+
+        if (moveDirections[0]=true){
+
+
+
+        }
+
+        avatar.translate();
+
+
     }
 
     public void getHit(int dmg) {

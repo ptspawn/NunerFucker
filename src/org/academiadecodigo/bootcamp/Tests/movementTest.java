@@ -18,7 +18,7 @@ public class movementTest {
     private List projectiles;
     private pTest player;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
 
 
         Field field = new Field("bg.jpg");
@@ -28,6 +28,21 @@ public class movementTest {
         pTest player = new pTest("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
 
         InputManager input = new InputManager(player,hud,field);
+
+
+        boolean[] playerDirections;
+
+        while (true){
+
+            playerDirections=input.getDirections();
+
+            if (input.isFiring()){ player.shoot();}
+
+            player.move(playerDirections);
+
+            Thread.sleep(20);
+
+        }
 
     }
 }

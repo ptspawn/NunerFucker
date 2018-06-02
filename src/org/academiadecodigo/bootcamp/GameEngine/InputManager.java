@@ -1,6 +1,5 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
-import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.Characters.pTest;
 import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -24,6 +23,14 @@ public class InputManager implements KeyboardHandler,MouseHandler {
     Mouse mouse;
     Hud hud;
     Field field;
+
+    boolean goingRight;
+    boolean goingLeft;
+    boolean goingUp;
+    boolean goingDown;
+    boolean isFiring;
+
+
 
     public InputManager(pTest player, Hud hud, Field field){
 
@@ -94,13 +101,55 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
     public void keyPressed(KeyboardEvent e){
 
-        player.shoot();
+        switch (e.getKey()){
+
+            case KeyboardEvent.KEY_W:
+                goingUp=true;
+                break;
+            case KeyboardEvent.KEY_D:
+                goingRight=true;
+                break;
+            case KeyboardEvent.KEY_A:
+                goingLeft=true;
+                break;
+            case KeyboardEvent.KEY_S:
+                goingDown =true;
+                break;
+
+        }
 
     }
 
     public void keyReleased(KeyboardEvent e){
 
-        player.shoot();
+        switch (e.getKey()){
+
+            case KeyboardEvent.KEY_W:
+                goingUp=false;
+                break;
+            case KeyboardEvent.KEY_D:
+                goingRight=false;
+                break;
+            case KeyboardEvent.KEY_A:
+                goingLeft=false;
+                break;
+            case KeyboardEvent.KEY_S:
+                goingDown =false;
+                break;
+
+        }
+
+    }
+
+    public boolean isFiring(){
+        return isFiring;
+    }
+
+    public boolean[] getDirections(){
+
+        boolean input[]= {goingUp,goingRight, goingDown,goingLeft};
+
+        return input;
 
     }
 
@@ -111,16 +160,14 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
     public void mouseClicked(MouseEvent e) {
 
-        System.out.println(e);
+        isFiring=true;
 
     }
 
     public void mouseMoved(MouseEvent e){
 
-        System.out.println(e.getX() + " " + e.getY());
 
     }
-
 
 
 }
