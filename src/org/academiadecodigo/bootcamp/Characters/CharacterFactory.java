@@ -9,9 +9,9 @@ public class CharacterFactory {
 
     public static Character getNewCharacter() {
 
-        //random number for enemy creation;
         int random = (int) (Math.random() * CharactersType.values().length);
 
+        //random type of enemy;
         CharactersType charactersType = CharactersType.values()[random];
 
         Character character;
@@ -27,7 +27,6 @@ public class CharacterFactory {
                 character = new Enemy();
                 break;
         }
-        // return enemy
         return character;
     }
 }
