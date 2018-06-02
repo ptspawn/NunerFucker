@@ -21,7 +21,7 @@ public class VectorMath {
             double normalizedVector[]= {vector[0]/h,vector[1]/h};
 
             return normalizedVector;
-        }
+
 
 
     }

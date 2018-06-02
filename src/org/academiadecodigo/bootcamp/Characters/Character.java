@@ -25,7 +25,7 @@ public abstract class Character implements Movable, Shootable, Drawable{
 
     }
 
-    public void move(){
+    public void move(double[] vector){
 
     }
 

@@ -5,7 +5,9 @@ package org.academiadecodigo.bootcamp.Interfaces;
  */
 public interface Movable {
 
-    void move();
+    void move(double[] vector);
+
+    void move(boolean[] directions);
 
     void setDirection(double[] vector);
 
