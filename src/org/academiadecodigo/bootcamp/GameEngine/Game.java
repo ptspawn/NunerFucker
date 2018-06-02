@@ -20,13 +20,12 @@ public class Game {
     private pTest player;
 
 
-    public void Game(){
-
+    public  Game(){
 
 
 
         field=new Field("bg.jpg");
-        pTest player = new pTest();
+        //pTest player = new pTest();
 
 
     }

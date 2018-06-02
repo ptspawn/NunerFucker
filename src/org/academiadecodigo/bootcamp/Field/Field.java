@@ -17,10 +17,11 @@ public class Field implements Drawable{
     public Field(String imageSource){
 
 
-        //bg=new Picture(10,10,"bg.jpg");
-        base= new Rectangle(10,10,500,500);
+        bg=new Picture(10,10,"Bgs/bg.jpg");
+        base= new Rectangle(10,10,bg.getWidth(),bg.getHeight());
         base.draw();
-        preLoadGraphics();
+        bg.draw();
+        //preLoadGraphics();
 
 
     }
