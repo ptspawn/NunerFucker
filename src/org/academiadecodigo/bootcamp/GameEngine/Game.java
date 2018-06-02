@@ -25,7 +25,8 @@ public class Game {
 
 
         field=new Field("bg.jpg");
-        //pTest player = new pTest();
+        pTest player = new pTest("Sardinha",field.getWidth()/2,field.getHeight()/2);
+
 
 
     }
