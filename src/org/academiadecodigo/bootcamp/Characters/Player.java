@@ -47,7 +47,7 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     }
 
     @Override
-    public void move(){
+    public void move(boolean[] directions){
     }
 
     public void getHit(int dmg){
