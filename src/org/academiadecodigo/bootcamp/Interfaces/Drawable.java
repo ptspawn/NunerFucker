@@ -5,5 +5,7 @@ package org.academiadecodigo.bootcamp.Interfaces;
  */
 public interface Drawable {
 
-    void Draw();
+    void draw();
+
+    void preLoadGraphics();
 }
