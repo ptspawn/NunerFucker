@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.Characters;
 
-import org.academiadecodigo.bootcamp.Interfaces.Direction;
+import org.academiadecodigo.bootcamp.Interfaces.DirectionType;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.bootcamp.Interfaces.Movable;
 import org.academiadecodigo.bootcamp.Interfaces.Shootable;
@@ -10,14 +10,14 @@ import org.academiadecodigo.bootcamp.Interfaces.Shootable;
  */
 public abstract class Character implements Movable, Shootable, Drawable{
 
-    private Direction direction;
+    private DirectionType directionType;
     private int health;
     private int speed;
 
 
-    public void setDirection(Direction direction){
+    public void setDirectionType(DirectionType directionType){
 
-        this.direction=direction;
+        this.directionType = directionType;
 
     }
 
@@ -25,8 +25,8 @@ public abstract class Character implements Movable, Shootable, Drawable{
 
     }
 
-    public Direction getDirection() {
-        return direction;
+    public DirectionType getDirectionType() {
+        return directionType;
     }
 
     public int getHealth() {

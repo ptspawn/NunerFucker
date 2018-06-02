@@ -1,17 +1,24 @@
 package org.academiadecodigo.bootcamp.Characters;
 
-
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 02/06/2018.
  */
-public class Player extends Character{
+public class pTest extends Character{
 
     String name;
+    Picture avatar;
+
+    public pTest(){
 
 
-    public Player(String name){
- 
+
+        setHealth(100);
+
+        setSpeed(5);
+
+        avatar=new Picture(50,50,"player.png");
 
     }
 
@@ -26,6 +33,7 @@ public class Player extends Character{
 
     public void draw(){
 
+        avatar.draw();
 
     }
 
