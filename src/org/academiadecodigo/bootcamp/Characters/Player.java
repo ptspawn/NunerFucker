@@ -11,8 +11,8 @@ import org.academiadecodigo.bootcamp.Interfaces.Shootable;
  */
 public class Player extends Character implements Drawable, Movable, Shootable {
 
-    String name;
-
+    private String name;
+    private boolean isDead;
 
     public Player(String name){
         super(CharactersType.PLAYER.getHealth(), CharactersType.PLAYER.getSpeed());
@@ -38,9 +38,13 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     }
 
     public void shoot(){
+        System.out.println("i'm Shooting");
 
     }
 
+    public boolean isDead() {
+        return isDead;
+    }
 
     @Override
     public void move(){

@@ -3,6 +3,8 @@ package org.academiadecodigo.bootcamp.Projectiles;
 import org.academiadecodigo.bootcamp.Interfaces.ProjectileType;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.bootcamp.Interfaces.Movable;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
  * Created by codecadet on 02/06/2018.
@@ -16,11 +18,15 @@ public class Bullet extends Projectile implements Drawable, Movable {
     @Override
     public void move() {
 
+
+
     }
 
     @Override
     public void draw() {
-
+        Rectangle bullet = new Rectangle(100,50,10,5);
+            bullet.fill();
+            bullet.setColor(Color.RED);
     }
 
     @Override
