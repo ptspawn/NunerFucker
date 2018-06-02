@@ -9,9 +9,8 @@ public class Player extends Character{
 
     String name;
 
-    public Player(String name, int health, int speed){
 
-
+    public Player(String name){
  
     }
 
