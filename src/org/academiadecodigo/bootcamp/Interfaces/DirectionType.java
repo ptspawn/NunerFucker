@@ -3,7 +3,7 @@ package org.academiadecodigo.bootcamp.Interfaces;
 /**
  * Created by codecadet on 02/06/2018.
  */
-public enum Direction {
+public enum DirectionType {
     N,
     NE,
     E,
