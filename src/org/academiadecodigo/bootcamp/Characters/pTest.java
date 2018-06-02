@@ -11,6 +11,7 @@ public class pTest extends Character{
     Picture avatar;
 
     public pTest(){
+        super(100, 1);
 
 
 

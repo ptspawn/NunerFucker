@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.Characters;
 
 
+import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
 
 /**
  * Created by codecadet on 02/06/2018.
@@ -11,8 +12,8 @@ public class Player extends Character{
 
 
     public Player(String name){
- 
-
+        super(CharactersType.PLAYER.getHealth(), CharactersType.PLAYER.getSpeed());
+        this.name = name;
     }
 
 
@@ -39,7 +40,10 @@ public class Player extends Character{
     }
 
     public void getHit(int dmg){
+    }
 
-
+    @Override
+    public String toString() {
+        return "Player{ name: " + name + " health: " + getHealth() + " speed: " + getSpeed() + "}";
     }
 }

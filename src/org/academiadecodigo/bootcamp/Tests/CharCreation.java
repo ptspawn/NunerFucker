@@ -14,9 +14,9 @@ public class CharCreation {
 
         for (int i = 0; i < character.length; i++) {
             character[i] = CharacterFactory.getNewCharacter();
+            System.out.println(character[i]);
         }
 
-        System.out.println(character.toString());
 
 
 
