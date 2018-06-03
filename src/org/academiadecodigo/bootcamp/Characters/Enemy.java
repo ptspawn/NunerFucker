@@ -1,17 +1,20 @@
 package org.academiadecodigo.bootcamp.Characters;
 
-import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
-import org.academiadecodigo.bootcamp.Interfaces.Drawable;
-import org.academiadecodigo.bootcamp.Interfaces.Movable;
-import org.academiadecodigo.bootcamp.Interfaces.Shootable;
+import org.academiadecodigo.bootcamp.Interfaces.*;
 
 /**
  * Created by codecadet on 02/06/2018.
  */
-public class Enemy extends Character implements Drawable, Movable, Shootable {
+public class Enemy extends Character implements Drawable, Movable, Shootable, Rotatable {
 
     public Enemy() {
         super(CharactersType.ENEMY.getHealth(), CharactersType.ENEMY.getSpeed());
+    }
+
+
+    @Override
+    public void rotate() {
+
     }
 
     @Override

@@ -1,7 +1,5 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
-import org.academiadecodigo.bootcamp.Characters.pTest;
-import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -17,13 +15,6 @@ import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
  */
 public class InputManager implements KeyboardHandler,MouseHandler {
 
-    pTest player;
-
-    Keyboard keyboard;
-    Mouse mouse;
-    Hud hud;
-    Field field;
-
     boolean goingRight;
     boolean goingLeft;
     boolean goingUp;
@@ -32,11 +23,8 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
     double[] mousePos;
 
-    public InputManager(pTest player, Hud hud, Field field){
+    public InputManager(){
 
-        this.player=player;
-        this.hud=hud;
-        this.field=field;
 
         mousePos=new double[2];
 
@@ -46,7 +34,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
     private void initControllers(){
 
-        keyboard = new Keyboard(this);
+        Keyboard keyboard = new Keyboard(this);
 
         //Adds listeners for the pressed and released events of keys W,A,S,D
         KeyboardEvent westDown = new KeyboardEvent();
@@ -101,7 +89,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
         keyboard.addEventListener(southDown);
 
         //Same for mouse events
-        mouse = new Mouse(this);
+        Mouse mouse = new Mouse(this);
 
         mouse.addEventListener(MouseEventType.MOUSE_MOVED);
 
@@ -112,9 +100,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
     public void keyPressed(KeyboardEvent e){
 
         switch (e.getKey()){
-
             case KeyboardEvent.KEY_W:
-                System.out.println("It was W");
                 goingUp=true;
                 break;
             case KeyboardEvent.KEY_D:
@@ -126,16 +112,12 @@ public class InputManager implements KeyboardHandler,MouseHandler {
             case KeyboardEvent.KEY_S:
                 goingDown =true;
                 break;
-
         }
     }
 
     public void keyReleased(KeyboardEvent e){
 
-        System.out.println("Key released " + e.getKey());
-
         switch (e.getKey()){
-
             case KeyboardEvent.KEY_W:
                 goingUp=false;
                 break;
@@ -148,9 +130,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
             case KeyboardEvent.KEY_S:
                 goingDown =false;
                 break;
-
         }
-
     }
 
     public boolean isFiring(){

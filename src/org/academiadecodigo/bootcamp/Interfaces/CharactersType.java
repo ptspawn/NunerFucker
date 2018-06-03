@@ -4,8 +4,8 @@ package org.academiadecodigo.bootcamp.Interfaces;
  * Created by codecadet on 02/06/2018.
  */
 public enum CharactersType {
-    PLAYER(100, 1),
-    ENEMY(50, 1);
+    PLAYER(100, 10),
+    ENEMY(50, 10);
 
     private int health;
     private int speed;

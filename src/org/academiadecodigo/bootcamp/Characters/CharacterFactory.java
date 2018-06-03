@@ -18,7 +18,7 @@ public class CharacterFactory {
 
         switch (charactersType) {
             case PLAYER:
-                character = new Player("Sardinha");
+                character = new Player("Sardinha",50,50);
                 break;
             case ENEMY:
                 character = new Enemy();

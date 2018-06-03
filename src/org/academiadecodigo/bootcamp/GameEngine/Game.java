@@ -1,10 +1,7 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
 import org.academiadecodigo.bootcamp.Characters.Player;
-import org.academiadecodigo.bootcamp.Characters.pTest;
 import org.academiadecodigo.bootcamp.Field.Field;
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 import java.util.List;
 
@@ -17,7 +14,7 @@ public class Game {
     private Field field;
     private List enemies;
     private List projectiles;
-    private pTest player;
+    private Player player;
 
 
     public  Game(){
@@ -25,7 +22,7 @@ public class Game {
 
 
         field=new Field("bg.jpg");
-        pTest player = new pTest("Sardinha",field.getWidth()/2,field.getHeight()/2);
+        Player player = new Player("Sardinha",field.getWidth()/2,field.getHeight()/2);
 
 
 

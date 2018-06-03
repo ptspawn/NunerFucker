@@ -9,7 +9,7 @@ public class VectorMath {
 
         double[] vector={destination[0]-origin[0],destination[1]-origin[1]};
 
-        return normalizedVector(vector);
+        return vector;
 
 
     }

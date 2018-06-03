@@ -20,7 +20,7 @@ public class CharacterTest {
         }
 
         Character character1 = new Enemy();
-        Character character2 = new Player("Godolfo");
+        Character character2 = new Player("Godolfo", 50,50);
 
         System.out.println(character1);
         System.out.println(character2);
