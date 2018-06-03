@@ -2,13 +2,8 @@ package org.academiadecodigo.bootcamp.Field;
 
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-import java.awt.image.BufferedImage;
 
 /**
  * Created by codecadet on 02/06/2018.

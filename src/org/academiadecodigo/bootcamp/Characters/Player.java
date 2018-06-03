@@ -4,6 +4,11 @@ package org.academiadecodigo.bootcamp.Characters;
 import org.academiadecodigo.bootcamp.Interfaces.*;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
 import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVector;
 
 /**
@@ -14,12 +19,15 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
     private String name;
     private boolean isDead;
     private Picture avatar;
+    private BufferedImage playerAv;
 
     public Player(String name, double xPos, double yPos){
         super(CharactersType.PLAYER.getHealth(), CharactersType.PLAYER.getSpeed());
         this.name = name;
 
         avatar = new Picture(xPos, yPos, "Characters/player.png");
+
+        //playerAv=new BufferedImage()
 
         draw();
 
@@ -55,10 +63,25 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
 
     @Override
     public void rotate() {
+        /*
+// The required drawing location
+        int drawLocationX = 300;
+        int drawLocationY = 300;
+
+// Rotation information
+        double rotationRequired = Math.toRadians (45);
+        double locationX = avatar.getWidth() / 2;
+        double locationY = avatar.getHeight() / 2;
+        AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+
+        op.filter(avatar,null);
+
+// Drawing the rotated image at the required drawing locations
+        Graphics2D.drawImage(op.filter(avatar, null), drawLocationX, drawLocationY, null);
 
 
-
-
+*/
     }
 
     @Override

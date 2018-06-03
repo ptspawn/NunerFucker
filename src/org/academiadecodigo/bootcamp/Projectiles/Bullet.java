@@ -21,7 +21,7 @@ public class Bullet extends Projectile implements Drawable, Movable {
     }
 
     @Override
-    public void move(boolean[] directions) {
+    public void move(boolean[] directions, double[] orientation) {
 
     }
 

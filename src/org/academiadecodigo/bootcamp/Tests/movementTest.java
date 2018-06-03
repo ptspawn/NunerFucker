@@ -39,7 +39,7 @@ public class movementTest {
                 //System.out.println("Is firing");
                 player.shoot();}
 
-            player.move(playerDirections);
+            player.move(playerDirections,null);
 
             Thread.sleep(20);
 
