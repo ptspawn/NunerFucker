@@ -70,7 +70,7 @@ public class pTest extends Character {
         if (moveDirections[3]){
             vector[0]=-1;
         }
-        System.out.println("Horizontal movement: " + vector[0] + " - Vertical Movement: " + vector[1]);
+        //System.out.println("Horizontal movement: " + vector[0] + " - Vertical Movement: " + vector[1]);
 
 
         vector=normalizedVector(vector);
@@ -78,7 +78,7 @@ public class pTest extends Character {
         //System.out.println("In player.move");
         avatar.translate(getSpeed()*vector[0],getSpeed()*vector[1]);
 
-        System.out.println("Horizontal movement: " + getSpeed()*vector[0] + " - Vertical Movement: " + getSpeed()*vector[1]);
+        //System.out.println("Horizontal movement: " + getSpeed()*vector[0] + " - Vertical Movement: " + getSpeed()*vector[1]);
 
 
     }

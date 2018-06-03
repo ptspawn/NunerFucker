@@ -32,13 +32,12 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
     double[] mousePos;
 
-
-
     public InputManager(pTest player, Hud hud, Field field){
 
         this.player=player;
         this.hud=hud;
         this.field=field;
+
         mousePos=new double[2];
 
         initControllers();
@@ -49,50 +48,59 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
         keyboard = new Keyboard(this);
 
-        KeyboardEvent west = new KeyboardEvent();
+        //Adds listeners for the pressed and released events of keys W,A,S,D
+        KeyboardEvent westDown = new KeyboardEvent();
+        KeyboardEvent westUp = new KeyboardEvent();
 
-        west.setKey(KeyboardEvent.KEY_A);
+        westDown.setKey(KeyboardEvent.KEY_A);
+        westUp.setKey(KeyboardEvent.KEY_A);
 
-        west.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        westUp.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        westDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        west.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-
-        keyboard.addEventListener(west);
-
-
-        KeyboardEvent east = new KeyboardEvent();
-
-        east.setKey(KeyboardEvent.KEY_D);
-
-        east.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        east.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-
-        keyboard.addEventListener(east);
+        keyboard.addEventListener(westUp);
+        keyboard.addEventListener(westDown);
 
 
-        KeyboardEvent north = new KeyboardEvent();
+        KeyboardEvent northDown = new KeyboardEvent();
+        KeyboardEvent northUp = new KeyboardEvent();
 
-        north.setKey(KeyboardEvent.KEY_W);
+        northDown.setKey(KeyboardEvent.KEY_W);
+        northUp.setKey(KeyboardEvent.KEY_W);
 
-        north.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        northUp.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        northDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        north.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-
-        keyboard.addEventListener(north);
-
-
-        KeyboardEvent south = new KeyboardEvent();
-
-        south.setKey(KeyboardEvent.KEY_S);
-
-        south.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        south.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-
-        keyboard.addEventListener(south);
+        keyboard.addEventListener(northUp);
+        keyboard.addEventListener(northDown);
 
 
+        KeyboardEvent eastDown = new KeyboardEvent();
+        KeyboardEvent eastUp = new KeyboardEvent();
+
+        eastDown.setKey(KeyboardEvent.KEY_D);
+        eastUp.setKey(KeyboardEvent.KEY_D);
+
+        eastUp.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        eastDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        keyboard.addEventListener(eastUp);
+        keyboard.addEventListener(eastDown);
+
+
+        KeyboardEvent southDown = new KeyboardEvent();
+        KeyboardEvent southUp = new KeyboardEvent();
+
+        southDown.setKey(KeyboardEvent.KEY_S);
+        southUp.setKey(KeyboardEvent.KEY_S);
+
+        southUp.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        southDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        keyboard.addEventListener(southUp);
+        keyboard.addEventListener(southDown);
+
+        //Same for mouse events
         mouse = new Mouse(this);
 
         mouse.addEventListener(MouseEventType.MOUSE_MOVED);
@@ -103,7 +111,6 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
     public void keyPressed(KeyboardEvent e){
 
-        System.out.println("keypressed " + e.getKey());
         switch (e.getKey()){
 
             case KeyboardEvent.KEY_W:
@@ -121,10 +128,11 @@ public class InputManager implements KeyboardHandler,MouseHandler {
                 break;
 
         }
-
     }
 
     public void keyReleased(KeyboardEvent e){
+
+        System.out.println("Key released " + e.getKey());
 
         switch (e.getKey()){
 
@@ -174,7 +182,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
         mousePos[0]=e.getX();
         mousePos[1]=e.getY();
-        System.out.println(e.getX() + " " + e.getY());
+        //System.out.println(e.getX() + " " + e.getY());
     }
 
 
