@@ -28,7 +28,7 @@ public class Enemy extends Character implements Drawable, Movable, Shootable, Ro
     }
 
     @Override
-    public void move(boolean[] directions) {
+    public void move(boolean[] directions, double[] orientation) {
 
     }
 

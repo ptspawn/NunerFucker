@@ -56,10 +56,13 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
     @Override
     public void rotate() {
 
+
+
+
     }
 
     @Override
-    public void move(boolean[] moveDirections){
+    public void move(boolean[] moveDirections,double[] orientation){
         double[] vector = {0,0};   //horizontal,vertical
 
         if (moveDirections[0]){

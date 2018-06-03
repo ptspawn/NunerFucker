@@ -19,12 +19,8 @@ public class Game {
 
     public  Game(){
 
-
-
         field=new Field("bg.jpg");
         Player player = new Player("Sardinha",field.getWidth()/2,field.getHeight()/2);
-
-
 
     }
 
