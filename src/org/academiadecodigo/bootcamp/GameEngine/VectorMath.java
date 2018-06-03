@@ -18,11 +18,16 @@ public class VectorMath {
 
             double h=Math.sqrt(Math.pow(vector[0],2)+Math.pow(vector[1],2));
 
-            double normalizedVector[]= {vector[0]/h,vector[1]/h};
+            if (h!=0){
+                double[] normalizedVector= {vector[0]/h,vector[1]/h};
+                return normalizedVector;
+            }
 
-            return normalizedVector;
+            //if h is zero... then return [0,0]
 
+            double emptyVector[]={0,0};
 
+            return emptyVector;
 
     }
 

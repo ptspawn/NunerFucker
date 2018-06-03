@@ -36,7 +36,9 @@ public class movementTest {
 
             playerDirections=input.getDirections();
 
-            if (input.isFiring()){ player.shoot();}
+            if (input.isFiring()){
+                //System.out.println("Is firing");
+                player.shoot();}
 
             player.move(playerDirections);
 

@@ -30,6 +30,8 @@ public class InputManager implements KeyboardHandler,MouseHandler {
     boolean goingDown;
     boolean isFiring;
 
+    double[] mousePos;
+
 
 
     public InputManager(pTest player, Hud hud, Field field){
@@ -37,6 +39,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
         this.player=player;
         this.hud=hud;
         this.field=field;
+        mousePos=new double[2];
 
         initControllers();
 
@@ -46,10 +49,9 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
         keyboard = new Keyboard(this);
 
-
         KeyboardEvent west = new KeyboardEvent();
 
-        west.setKey(KeyboardEvent.KEY_LEFT);
+        west.setKey(KeyboardEvent.KEY_A);
 
         west.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
@@ -60,7 +62,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
         KeyboardEvent east = new KeyboardEvent();
 
-        east.setKey(KeyboardEvent.KEY_RIGHT);
+        east.setKey(KeyboardEvent.KEY_D);
 
         east.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
@@ -71,7 +73,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
         KeyboardEvent north = new KeyboardEvent();
 
-        north.setKey(KeyboardEvent.KEY_UP);
+        north.setKey(KeyboardEvent.KEY_W);
 
         north.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
@@ -82,7 +84,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
         KeyboardEvent south = new KeyboardEvent();
 
-        south.setKey(KeyboardEvent.KEY_DOWN);
+        south.setKey(KeyboardEvent.KEY_S);
 
         south.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
@@ -101,9 +103,11 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
     public void keyPressed(KeyboardEvent e){
 
+        System.out.println("keypressed " + e.getKey());
         switch (e.getKey()){
 
             case KeyboardEvent.KEY_W:
+                System.out.println("It was W");
                 goingUp=true;
                 break;
             case KeyboardEvent.KEY_D:
@@ -148,17 +152,19 @@ public class InputManager implements KeyboardHandler,MouseHandler {
     public boolean[] getDirections(){
 
         boolean input[]= {goingUp,goingRight, goingDown,goingLeft};
-
+        //System.out.println(goingDown + " " + goingUp + " " + goingLeft + " " + goingRight);
         return input;
 
     }
 
-    public void getMousePos(){
+    public double[] getMousePos(){
 
+        return mousePos;
 
     }
 
     public void mouseClicked(MouseEvent e) {
+
 
         isFiring=true;
 
@@ -166,7 +172,9 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
     public void mouseMoved(MouseEvent e){
 
-
+        mousePos[0]=e.getX();
+        mousePos[1]=e.getY();
+        System.out.println(e.getX() + " " + e.getY());
     }
 
 
