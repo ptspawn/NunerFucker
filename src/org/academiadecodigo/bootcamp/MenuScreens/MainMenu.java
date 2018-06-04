@@ -20,24 +20,25 @@ public class MainMenu {
 
         InputManager inputManager = new InputManager();
 
-        menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2.jpg");
+        menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2_1920.jpg");
         menuBackGround.draw();
 
-        startButton = new Picture(10, 40, "Bgs/video-play.png");
+        startButton = new Picture(1100, 250, "Bgs/video-play.png");
         startButton.draw();
 
-        informationButton = new Picture(200, 700, "Bgs/info.jpg");
+        informationButton = new Picture(1162, 600, "Bgs/icon-i.png");
         informationButton.draw();
 
 
 
-        /*if (inputManager.mouseClicked() == startButton.position) {
-            game.init;
+        if (inputManager.getMousePos() == startButton.getX() && startButton.getY()
+                && startButton.getHeight() && startButton.getWidth()){
+            ;
         }
 
         if(inputManager.mouseClicked() == informationButton.position) {
-            informationPicture.show();
-        }*/
+            informationButton.show();
+        }
 
 
     }
