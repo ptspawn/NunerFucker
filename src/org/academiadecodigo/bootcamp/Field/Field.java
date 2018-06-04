@@ -18,7 +18,7 @@ public class Field implements Drawable{
     public Field(String imageSource){
 
 
-        bg=new Picture(10,10,"Bgs/bg.jpg");
+        bg=new Picture(0,0,"Bgs/bg.jpg");
         bg.draw();
 
     }

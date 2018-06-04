@@ -95,6 +95,10 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
         mouse.addEventListener(MouseEventType.MOUSE_CLICKED);
 
+        mouse.addEventListener(MouseEventType.MOUSE_PRESSED);
+
+        mouse.addEventListener(MouseEventType.MOUSE_RELEASED);
+
     }
 
     public void keyPressed(KeyboardEvent e){
@@ -154,7 +158,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
     public void mouseClicked(MouseEvent e) {
 
 
-        isFiring=true;
+
 
     }
 
@@ -167,11 +171,13 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-
+        //System.out.println("mouse pressed");
+        isFiring=true;
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-
+        //System.out.println("Mouse released");
+        isFiring=false;
     }
 }
