@@ -93,9 +93,9 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
 
         double orientationVector[]={orientation[0]-position[0],orientation[1]-position[1]};
 
-        double angleToRotate=Math.toDegrees(Math.atan(orientationVector[1]/orientationVector[0]));
+        double angleToRotate=Math.atan(orientationVector[1]/orientationVector[0]);
 
-        avatar.rotate(angleToRotate-45);
+        avatar.rotate(angleToRotate-Math.PI/2);
 
         double[] vector = {0, 0};   //horizontal,vertical
 

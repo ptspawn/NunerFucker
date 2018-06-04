@@ -75,7 +75,6 @@ public class InputManager implements KeyboardHandler,MouseHandler {
         keyboard.addEventListener(eastUp);
         keyboard.addEventListener(eastDown);
 
-
         KeyboardEvent southDown = new KeyboardEvent();
         KeyboardEvent southUp = new KeyboardEvent();
 
