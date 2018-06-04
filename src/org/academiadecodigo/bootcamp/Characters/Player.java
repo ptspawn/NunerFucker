@@ -19,9 +19,15 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
     private Picture avatar;
     private BufferedImage playerAv;
 
-    public Player(String name, double xPos, double yPos){
+    private double[] position;
+
+    public Player(String name, double xPos, double yPos) {
         super(CharactersType.PLAYER.getHealth(), CharactersType.PLAYER.getSpeed());
         this.name = name;
+
+        position=new double[2];
+        position[0]=xPos;
+        position[1]=yPos;
 
         avatar = new Picture(xPos, yPos, "Characters/player.png");
 
@@ -32,25 +38,25 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
     }
 
 
-    public void die(){
+    public void die() {
 
     }
 
-    public void setDirection(double[] vector){
+    public void setDirection(double[] vector) {
 
     }
 
-    public void draw(){
+    public void draw() {
 
         avatar.draw();
 
     }
 
-    public void preLoadGraphics(){
+    public void preLoadGraphics() {
 
     }
 
-    public void shoot(double[] whereTo){
+    public void shoot(double[] whereTo) {
         System.out.println("i'm Shooting");
 
     }
@@ -83,28 +89,32 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
     }
 
     @Override
-    public void move(boolean[] moveDirections,double[] orientation){
-        double[] vector = {0,0};   //horizontal,vertical
+    public void move(boolean[] moveDirections, double[] orientation) {
+        double[] vector = {0, 0};   //horizontal,vertical
 
-        if (moveDirections[0]){
-            vector[1]=-1;
+        if (moveDirections[0]) {
+            vector[1] = -1;
         }
-        if (moveDirections[1]){
-            vector[0]=1;
+        if (moveDirections[1]) {
+            vector[0] = 1;
         }
-        if (moveDirections[2]){
-            vector[1]=1;
+        if (moveDirections[2]) {
+            vector[1] = 1;
         }
-        if (moveDirections[3]){
-            vector[0]=-1;
+        if (moveDirections[3]) {
+            vector[0] = -1;
         }
 
-        vector=normalizedVector(vector);
-        avatar.translate(getSpeed()*vector[0],getSpeed()*vector[1]);
+        vector = normalizedVector(vector);
+        avatar.translate(getSpeed() * vector[0], getSpeed() * vector[1]);
 
     }
 
-    public void getHit(int dmg){
+    public void getHit(int dmg) {
+    }
+
+    public double[] getPosition(){
+        return position;
     }
 
     @Override
