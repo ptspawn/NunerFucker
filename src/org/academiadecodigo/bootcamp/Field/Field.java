@@ -9,7 +9,7 @@ import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 /**
  * Created by codecadet on 02/06/2018.
  */
-public class Field implements Drawable{
+public class Ft ield implements Drawable{
 
     private Picture bg;
     private Rectangle base;

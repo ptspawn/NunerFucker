@@ -5,7 +5,7 @@ package org.academiadecodigo.bootcamp.Interfaces;
  */
 public interface Movable {
 
-    void move(double[] vector);
+    void move(double[] vector) throws InterruptedException;
 
     void move(boolean[] directions, double[] orientation);
 

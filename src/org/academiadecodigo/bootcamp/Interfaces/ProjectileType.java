@@ -4,7 +4,7 @@ package org.academiadecodigo.bootcamp.Interfaces;
  * Created by codecadet on 02/06/2018.
  */
 public enum ProjectileType {
-    BULLET(10, 1);
+    BULLET(10, 5);
 
     private int damage;
     private int speed;
