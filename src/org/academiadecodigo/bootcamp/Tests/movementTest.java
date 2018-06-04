@@ -17,7 +17,7 @@ public class movementTest {
     private List projectiles;
     private Player player;
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args) throws InterruptedException {
 
         InputManager input = new InputManager();
 
@@ -31,15 +31,16 @@ public class movementTest {
         boolean[] playerDirections;
 
 
-        while (true){
+        while (true) {
 
-            playerDirections=input.getDirections();
+            playerDirections = input.getDirections();
 
-            if (input.isFiring()){
+            if (input.isFiring()) {
                 //System.out.println("Is firing");
-                player.shoot();}
+                player.shoot(input.getMousePos());
+            }
 
-            player.move(playerDirections,null);
+            player.move(playerDirections, null);
 
             Thread.sleep(10);
 
