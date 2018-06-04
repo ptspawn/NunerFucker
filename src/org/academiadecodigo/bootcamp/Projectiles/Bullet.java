@@ -3,8 +3,8 @@ package org.academiadecodigo.bootcamp.Projectiles;
 import org.academiadecodigo.bootcamp.Interfaces.ProjectileType;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.bootcamp.Interfaces.Movable;
-import org.academiadecodigo.notsosimplegraphics.graphics.Color;
-import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
+import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
+import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 
 /**
@@ -12,14 +12,35 @@ import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
  */
 public class Bullet extends Projectile implements Drawable, Movable {
 
-    public Bullet() {
+    private double xPos;
+    private double yPos;
+    private Picture bullet;
+    private double[] screenDim;
+
+    public Bullet(double xPos, double yPos) {
         super(ProjectileType.BULLET.getDamage(), ProjectileType.BULLET.getSpeed());
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.screenDim = Canvas.getInstance().getScreenDimentions();
+        this.bullet = new Picture(xPos, yPos,"Bullets/Bullet.png");
+        draw();
     }
 
     @Override
-    public void move(double[] vector) {
+    public void move(double[] vector) throws InterruptedException {
 
+        while (true) {
+            if (bullet.getX() < 0 || bullet.getX() > screenDim[0] || bullet.getY() < 0 || bullet.getY() > screenDim[1]) {
+                bullet.delete();
+                System.out.println("stop at " + bullet.getX() + " " + bullet.getY());
+                return;
+            }
+            System.out.println("moving");
+            bullet.translate(vector[0] * super.getSpeed(), vector[1] * super.getSpeed());
+            Thread.sleep(20);
+        }
     }
+
 
     @Override
     public void move(boolean[] directions, double[] orientation) {
@@ -28,13 +49,12 @@ public class Bullet extends Projectile implements Drawable, Movable {
 
     @Override
     public void draw() {
-        Rectangle bullet = new Rectangle(100,50,10,5);
-            bullet.fill();
-            bullet.setColor(Color.RED);
+        bullet.draw();
     }
+
 
     @Override
     public String toString() {
-        return "Bullet{ damage: " + getDamage() + " speed: " + getSpeed() + " }" ;
+        return "Bullet{ damage: " + getDamage() + " speed: " + getSpeed() + " }";
     }
 }

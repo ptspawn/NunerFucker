@@ -18,10 +18,10 @@ public class ProjectileFactory {
 
         switch (projectileType) {
             case BULLET:
-                projectile = new Bullet();
+                projectile = new Bullet(0,0);
                 break;
             default:
-                projectile = new Bullet();
+                projectile = new Bullet(0,0);
                 break;
         }
         return projectile;
