@@ -90,6 +90,13 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
 
     @Override
     public void move(boolean[] moveDirections, double[] orientation) {
+
+        double orientationVector[]={orientation[0]-position[0],orientation[1]-position[1]};
+
+        double angleToRotate=Math.toDegrees(Math.atan(orientationVector[1]/orientationVector[0]));
+
+        avatar.rotate(angleToRotate-45);
+
         double[] vector = {0, 0};   //horizontal,vertical
 
         if (moveDirections[0]) {

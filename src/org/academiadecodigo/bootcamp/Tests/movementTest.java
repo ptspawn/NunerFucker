@@ -40,7 +40,7 @@ public class movementTest {
                 player.shoot(input.getMousePos());
             }
 
-            player.move(playerDirections, null);
+            player.move(playerDirections, input.getMousePos());
 
             Thread.sleep(10);
 
