@@ -18,6 +18,7 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
     private boolean isDead;
     private Picture avatar;
     private BufferedImage playerAv;
+    private double collisionRadius;
 
     private double[] position;
 
@@ -30,6 +31,7 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
         position[1]=yPos;
 
         avatar = new Picture(xPos, yPos, "Characters/player.png");
+        collisionRadius=(avatar.getHeight()+avatar.getWidth())/4;
 
         //playerAv=new BufferedImage()
 
@@ -50,6 +52,10 @@ public class Player extends Character implements Drawable, Movable, Shootable, R
 
         avatar.draw();
 
+    }
+
+    public double getCollisionRadius() {
+        return collisionRadius;
     }
 
     public void preLoadGraphics() {
