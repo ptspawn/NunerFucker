@@ -4,8 +4,9 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.academiadecodigo.bootcamp.Projectiles.Bullet;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.bootcamp.Projectiles.ProjectileFactory;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.notsosimplegraphics.graphics.Color;
+import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
+
 
 /**
  * Created by codecadet on 02/06/2018.

@@ -41,7 +41,7 @@ public class movementTest {
 
             player.move(playerDirections,null);
 
-            Thread.sleep(20);
+            Thread.sleep(10);
 
         }
 

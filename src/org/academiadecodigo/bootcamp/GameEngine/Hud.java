@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
-import org.academiadecodigo.simplegraphics.graphics.Text;
+
+import org.academiadecodigo.notsosimplegraphics.graphics.Text;
 
 /**
  * Created by codecadet on 02/06/2018.

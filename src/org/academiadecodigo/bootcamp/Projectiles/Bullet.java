@@ -3,8 +3,9 @@ package org.academiadecodigo.bootcamp.Projectiles;
 import org.academiadecodigo.bootcamp.Interfaces.ProjectileType;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.bootcamp.Interfaces.Movable;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.notsosimplegraphics.graphics.Color;
+import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
+
 
 /**
  * Created by codecadet on 02/06/2018.

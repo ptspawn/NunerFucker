@@ -2,11 +2,9 @@ package org.academiadecodigo.bootcamp.Characters;
 
 
 import org.academiadecodigo.bootcamp.Interfaces.*;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.Graphics2D;
+
 import java.awt.image.BufferedImage;
 
 import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVector;

@@ -1,14 +1,14 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
-import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
-import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 
+import org.academiadecodigo.notsosimplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.notsosimplegraphics.mouse.Mouse;
+import org.academiadecodigo.notsosimplegraphics.mouse.MouseEvent;
+import org.academiadecodigo.notsosimplegraphics.mouse.MouseEventType;
+import org.academiadecodigo.notsosimplegraphics.mouse.MouseHandler;
 
 /**
  * Created by codecadet on 02/06/2018.
@@ -165,5 +165,13 @@ public class InputManager implements KeyboardHandler,MouseHandler {
         //System.out.println(e.getX() + " " + e.getY());
     }
 
+    @Override
+    public void mousePressed(MouseEvent mouseEvent) {
 
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent mouseEvent) {
+
+    }
 }
