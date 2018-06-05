@@ -57,7 +57,7 @@ public class RotationTest {
             mousePosText.setText("x: " + mousePos[0] + " - y: " + mousePos[1]);
             System.out.println("Mouse: X-" + mousePos[0] + " Y-" + mousePos[1]);
 
-            angle = rotate(mousePos, arrow, 0);
+            angle = rotate(mousePos, arrow, Math.PI/2);
 
             angleText.setText(Double.toString(Math.toDegrees(angle)));
 
@@ -90,5 +90,4 @@ public class RotationTest {
 
         return angle + buffer;
     }
-
 }

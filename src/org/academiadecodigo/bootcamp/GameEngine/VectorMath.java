@@ -33,6 +33,7 @@ public class VectorMath {
 
     }
 
+
     public static double getRotationFromVector(double[] mousePos, Picture picToRotate, double buffer) {
 
         double[] picCenter = new double[2];
@@ -54,7 +55,7 @@ public class VectorMath {
             angle = angle + buffer - 2 * Math.PI;
         }
 
-        return angle;
+        return angle + buffer;
     }
 
 

@@ -29,10 +29,8 @@ public class Player extends Character implements Drawable, Movable, Shootable {
 
         position = new double[2];
 
-        avatar = new Picture(xPos, yPos, "arrowSquare.png");//"Characters/player.png");
+        avatar = new Picture(xPos, yPos, "Characters/player.png");
         collisionRadius = (avatar.getHeight() + avatar.getWidth()) / 4;
-
-        //playerAv=new BufferedImage()
 
         draw();
 
@@ -74,7 +72,7 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     @Override
     public void move(boolean[] moveDirections, double[] orientation) {
 
-        avatar.rotate(getRotationFromVector(orientation,avatar,0));
+        avatar.rotate(getRotationFromVector(orientation,avatar,Math.PI/2));
 
         double[] vector = {0, 0};   //horizontal,vertical
 

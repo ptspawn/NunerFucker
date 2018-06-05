@@ -33,7 +33,7 @@ public class EnemyTest {
         System.out.println(input.isFiring());
         if (input.isFiring()) {
 
-            bullet.move(normalizedVector(getVector(bulletOrigin, input.getMousePos())));
+            //bullet.move(normalizedVector(getVector(bulletOrigin, input.getMousePos())));
             break;
             }
 
