@@ -1,11 +1,14 @@
 package org.academiadecodigo.bootcamp.Tests;
 
+import org.academiadecodigo.bootcamp.GameEngine.InputManager;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.academiadecodigo.bootcamp.Projectiles.Bullet;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.bootcamp.Projectiles.ProjectileFactory;
-import org.academiadecodigo.notsosimplegraphics.graphics.Color;
+import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
+
+import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.*;
 
 
 /**
@@ -13,35 +16,41 @@ import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
  */
 public class ProjectileTest {
 
-    public static void main(String[] args) throws InterruptedException  {
+    public static void main(String[] args) throws InterruptedException {
 
 
+        InputManager input = new InputManager();
 
         Projectile[] projectiles = new Projectile[5];
 
         for (int i = 0; i < projectiles.length; i++) {
             projectiles[i] = ProjectileFactory.getNewProjectile();
-            System.out.println(projectiles[i]);
+          //  System.out.println(projectiles[i]);
 
         }
 
         Rectangle rectangle = new Rectangle(10, 10, 800, 600);
         rectangle.fill();
-        Rectangle bullet = new Rectangle(100, 50, 10, 5);
-        bullet.fill();
-        bullet.setColor(Color.RED);
 
-        int move = bullet.getX() + 300;
+        double[] screenDim = Canvas.getInstance().getScreenDimentions();
 
-        while (bullet.getX() < move){
-            Thread.sleep(20);
-            bullet.translate(5,5);
+        Bullet bullet = new Bullet(screenDim[0] / 2, screenDim[1] / 2);
+
+        double[] bulletOrigin = {screenDim[0] / 2, screenDim[1] / 2};
+
+
+        while (true) {
+                System.out.println(input.isFiring());
+            if (input.isFiring()) {
+
+                bullet.move(normalizedVector(getVector(bulletOrigin, input.getMousePos())));
+                break;
+            }
+
         }
 
 
-
-
     }
-
-
 }
+
+

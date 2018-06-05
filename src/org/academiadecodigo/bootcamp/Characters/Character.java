@@ -14,9 +14,11 @@ public abstract class Character implements Movable, Shootable, Drawable{
     private int health;
     private int speed;
 
+
     public Character(int health, int speed) {
         this.health = health;
         this.speed = speed;
+
     }
 
     public void setDirectionType(DirectionType directionType){
