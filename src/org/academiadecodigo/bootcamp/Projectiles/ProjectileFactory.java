@@ -7,21 +7,18 @@ import org.academiadecodigo.bootcamp.Interfaces.ProjectileType;
  */
 public class ProjectileFactory {
 
-    public static Projectile getNewProjectile() {
+    public static Projectile getNewProjectile(ProjectileType projectileType, double[] startingPosition, double[] orientation) {
 
         int random = (int) (Math.random() * ProjectileType.values().length);
-
-        //random gun
-        ProjectileType projectileType = ProjectileType.values()[random];
 
         Projectile projectile;
 
         switch (projectileType) {
             case BULLET:
-                projectile = new Bullet(0,0);
+                projectile = new Bullet(startingPosition[0], startingPosition[1], orientation);
                 break;
             default:
-                projectile = new Bullet(0,0);
+                projectile = new Bullet(startingPosition[0], startingPosition[1], orientation);
                 break;
         }
         return projectile;

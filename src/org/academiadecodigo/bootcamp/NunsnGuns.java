@@ -8,10 +8,13 @@ import org.academiadecodigo.bootcamp.GameEngine.Game;
 public class NunsnGuns {
 
     public static void main(String[] args) {
+        try {
+            Game game = new Game();
 
-        Game game= new Game();
+            game.start();
 
-        game.start();
-
+        } catch (InterruptedException e) {
+            System.out.println("fudeu tudo!");
+        }
     }
 }

@@ -14,15 +14,15 @@ public class CharacterTest {
 
          Character[] characters = new Character[5];
 
-        for (int i = 0; i < characters.length; i++) {
-            characters[i] = CharacterFactory.getNewCharacter();
-            System.out.println(characters[i]);
-        }
+        //   for (int i = 0; i < characters.length; i++) {
+        //    characters[i] = CharacterFactory.getNewCharacter();
+        //    System.out.println(characters[i]);
+        //}
 
-        Character character1 = new Enemy();
+        //Character character1 = new Enemy();
         Character character2 = new Player("Godolfo", 50,50);
 
-        System.out.println(character1);
+        //  System.out.println(character1);
         System.out.println(character2);
 
 

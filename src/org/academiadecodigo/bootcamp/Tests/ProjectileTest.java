@@ -22,18 +22,16 @@ public class ProjectileTest {
 
         Projectile[] projectiles = new Projectile[5];
 
-        for (int i = 0; i < projectiles.length; i++) {
-            projectiles[i] = ProjectileFactory.getNewProjectile();
-          //  System.out.println(projectiles[i]);
-
-        }
+      //  for (int i = 0; i < projectiles.length; i++) {
+      //      projectiles[i] = ProjectileFactory.getNewProjectile();
+      //  }
 
         Rectangle rectangle = new Rectangle(10, 10, 800, 600);
         rectangle.fill();
 
         double[] screenDim = Canvas.getInstance().getScreenDimentions();
 
-        Bullet bullet = new Bullet(screenDim[0] / 2, screenDim[1] / 2);
+//        Bullet bullet = new Bullet(screenDim[0] / 2, screenDim[1] / 2);
 
         double[] bulletOrigin = {screenDim[0] / 2, screenDim[1] / 2};
 
@@ -42,7 +40,7 @@ public class ProjectileTest {
                 System.out.println(input.isFiring());
             if (input.isFiring()) {
 
-                bullet.move(normalizedVector(getVector(bulletOrigin, input.getMousePos())));
+  //              bullet.move(normalizedVector(getVector(bulletOrigin, input.getMousePos())));
                 break;
             }
 
