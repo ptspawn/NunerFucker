@@ -1,8 +1,8 @@
 package org.academiadecodigo.bootcamp.MenuScreens;
 
-import jdk.internal.util.xml.impl.Input;
 import org.academiadecodigo.bootcamp.GameEngine.InputManager;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
+import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 
 import java.awt.*;
 
@@ -20,7 +20,12 @@ public class MainMenu {
 
         InputManager inputManager = new InputManager();
 
+        double[]screenDimentions = Canvas.getInstance().getScreenDimentions();
+        System.out.println(screenDimentions[0] + " " + screenDimentions[1]);
+
         menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2_1920.jpg");
+        //menuBackGround.scaleToFit(screenDimentions[0],screenDimentions[1]);
+
         menuBackGround.draw();
 
         startButton = new Picture(1100, 250, "Bgs/video-play.png");
@@ -30,7 +35,7 @@ public class MainMenu {
         informationButton.draw();
 
 
-
+/*
         if (inputManager.getMousePos() == startButton.getX() && startButton.getY()
                 && startButton.getHeight() && startButton.getWidth()){
             ;
@@ -39,7 +44,7 @@ public class MainMenu {
         if(inputManager.mouseClicked() == informationButton.position) {
             informationButton.show();
         }
-
+*/
 
     }
 
