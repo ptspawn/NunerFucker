@@ -50,7 +50,9 @@ public class CheckCollision {
 
                 if (getDistance(d, o) < hitDistance) {
                     System.out.println("true");
-                    return true;
+                    return truexcode-select --install
+
+                    ;
                 }
                 else {
                     System.out.println("false");

@@ -9,10 +9,12 @@ public enum CharactersType {
 
     private int health;
     private int speed;
+    private double collisionRadius;
 
     CharactersType(int health, int speed) {
         this.health = health;
         this.speed = speed;
+
     }
 
     public int getHealth() {

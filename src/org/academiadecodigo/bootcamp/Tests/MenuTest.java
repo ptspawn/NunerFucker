@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.Tests;
 
 import org.academiadecodigo.bootcamp.GameEngine.InputManager;
+import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
 
 /**
  * Created by codecadet on 04/06/2018.
@@ -11,7 +12,7 @@ public class MenuTest {
 
 
         InputManager input = new InputManager();
-
+        MainMenu mainMenu = new MainMenu();
         double[] mousePosition=input.getMousePos();
 
         while (true){
