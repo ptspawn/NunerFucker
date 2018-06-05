@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.bootcamp.GameEngine.Hud;
 import org.academiadecodigo.bootcamp.GameEngine.InputManager;
+import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 
 import java.util.List;
 
@@ -41,6 +42,8 @@ public class movementTest {
             }
 
             player.move(playerDirections, input.getMousePos());
+
+            Canvas.getInstance().repaint();
 
             Thread.sleep(10);
 

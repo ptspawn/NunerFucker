@@ -8,10 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
-=======
     <orderEntry type="library" name="notSoSimpleGraphics" level="project" />
->>>>>>> be4037c95b290dea8e77760bb3e015ec10ed80a6
     <orderEntry type="library" name="notSoSimpleGraphics" level="project" />
     <orderEntry type="library" name="lib" level="project" />
   </component>
