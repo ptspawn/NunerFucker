@@ -5,10 +5,10 @@ import  java.io.*;
 
 public class Sound {
 
-    public static void playBackground(){
+    public static void playLoop(String fileName){
 
         try {
-            InputStream in = new FileInputStream("Resources/Sounds/background.wav");
+            InputStream in = new FileInputStream(fileName);
             AudioStream as = new AudioStream(in);
 
             AudioData data = as.getData();
@@ -21,9 +21,9 @@ public class Sound {
         }
     }
 
-    public static void playGun(){
+    public static void playOnce(String fileName){
         try {
-            InputStream in = new FileInputStream("Resources/Sounds/gun.wav");
+            InputStream in = new FileInputStream(fileName);
             AudioStream as = new AudioStream(in);
 
             AudioPlayer.player.start(as);
@@ -33,15 +33,4 @@ public class Sound {
         }
     }
 
-    public static void playPunch(){
-        try {
-            InputStream in = new FileInputStream("Resources/Sounds/punch.wav");
-            AudioStream as = new AudioStream(in);
-
-            AudioPlayer.player.start(as);
-
-        } catch (Exception e){
-            System.out.println("Audio doesn't work");
-        }
-    }
 }
