@@ -7,6 +7,7 @@ import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 import java.awt.image.BufferedImage;
 
+import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getRotationFromVector;
 import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVector;
 
 /**
@@ -30,8 +31,6 @@ public class Player extends Character implements Drawable, Movable, Shootable {
 
         avatar = new Picture(xPos, yPos, "Characters/player.png");
         collisionRadius = (avatar.getHeight() + avatar.getWidth()) / 4;
-
-        //playerAv=new BufferedImage()
 
         draw();
 
@@ -73,19 +72,7 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     @Override
     public void move(boolean[] moveDirections, double[] orientation) {
 
-        double orientationVector[] = {orientation[0] - position[0], orientation[1] - position[1]};
-
-        double angleToRotate = Math.atan(orientationVector[1] / orientationVector[0]);
-
-        if (angleToRotate < 0) {
-            angleToRotate = 2 * Math.PI + angleToRotate;
-        }
-
-        System.out.println("Rato: " + orientation[0] + " " + orientation[1]);
-        System.out.println("Player: " + position[0] + " " + position[1]);
-        System.out.println("Angle: " + Math.toDegrees(angleToRotate));
-
-        avatar.rotate(angleToRotate);
+        avatar.rotate(getRotationFromVector(orientation,avatar,Math.PI/2));
 
         double[] vector = {0, 0};   //horizontal,vertical
 
