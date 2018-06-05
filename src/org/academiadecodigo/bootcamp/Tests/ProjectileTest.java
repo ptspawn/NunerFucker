@@ -1,7 +1,6 @@
 package org.academiadecodigo.bootcamp.Tests;
 
 import org.academiadecodigo.bootcamp.GameEngine.InputManager;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.academiadecodigo.bootcamp.Projectiles.Bullet;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.bootcamp.Projectiles.ProjectileFactory;
