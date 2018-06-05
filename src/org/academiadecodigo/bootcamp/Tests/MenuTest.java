@@ -8,20 +8,22 @@ import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
  */
 public class MenuTest {
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws InterruptedException {
 
         InputManager input = new InputManager();
         MainMenu mainMenu = new MainMenu();
-        double[] mousePosition=input.getMousePos();
+        double[] mousePosition;
 
-        while (true){
+        while (true) {
 
-            if (input.getDirections()[0]==true){
+            mousePosition = input.getMousePos();
+            mainMenu.checkButton(mousePosition);
+            mainMenu.instructionsSlide(mousePosition);
+            Thread.sleep(50);
 
-                //se estiver a ir para cima
-            }
 
         }
+
+
     }
 }
