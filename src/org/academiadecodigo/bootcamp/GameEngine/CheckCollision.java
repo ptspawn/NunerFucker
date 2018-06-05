@@ -1,64 +1,38 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
-
-import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
+import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 04/06/2018.
  */
 public class CheckCollision {
 
-    //private List enemies;
-    //private List projectiles;
-    //private Player player;
+    private static double[] getCenter(Picture r) {
 
-    //TEST
-    private Rectangle[] rectangles1;
-    private Rectangle[] rectangles2;
+        double[] center = {r.getX() + r.getWidth() / 2, r.getY() + r.getHeight() / 2};
 
-
-    public CheckCollision(Rectangle[] rectangles1, Rectangle[] rectangles2) {
-
-        this.rectangles1 = rectangles1;
-        this.rectangles2 = rectangles2;
-
-        // this.projectiles = projectiles;
-        //this.enemies = enemies;
-        //this.player = player;
+        return center;
     }
 
-    public double getDistance(Rectangle d, Rectangle o) {
+    private static double getDistance(Picture destination, Picture origin) {
 
-        return Math.sqrt((Math.pow(d.getCenterX() - o.getCenterX(), 2) + Math.pow(d.getCenterY() - o.getCenterY(), 2)));
+        double[] centerDestination = getCenter(destination);
+        double[] centerOrigin = getCenter(origin);
+
+        return Math.sqrt((Math.pow(centerDestination[0] - centerOrigin[0], 2) + Math.pow(centerDestination[1] - centerOrigin[1], 2)));
     }
 
     // Check projectile vs Enemy
 
-    public boolean check() {
+    public static boolean checkCollision(Picture origin, Picture destination, double hitDistance) {
 
-        double hitDistance;
+        // hitDistance = origin.getHeight() / 2 + destination.getHeight() / 2;
 
-
-        for (Rectangle d : rectangles1) {
-            for (Rectangle o : rectangles2) {
-
-                hitDistance = o.getHeight() / 2 + d.getHeight() / 2;
-
-
-                if (getDistance(d, o) < hitDistance) {
-                    System.out.println("true");
-                    return true;
-
-                }
-                else {
-                    System.out.println("false");
-                    return false;
-                }
-            }                        
-
+        if (getDistance(destination, origin) < hitDistance) {
+            return true;
         }
-        System.out.println("false");
         return false;
+
     }
 }
 

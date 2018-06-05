@@ -1,11 +1,14 @@
 package org.academiadecodigo.bootcamp.Tests;
 
 
-import com.sun.org.apache.regexp.internal.RE;
 import org.academiadecodigo.bootcamp.GameEngine.CheckCollision;
-import org.academiadecodigo.bootcamp.Interfaces.Collidable;
+import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
+import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
-import java.awt.*;
+import javax.xml.stream.events.Characters;
+
+import static org.academiadecodigo.bootcamp.GameEngine.CheckCollision.checkCollision;
+
 
 /**
  * Created by codecadet on 05/06/2018.
@@ -15,25 +18,24 @@ public class CollisionTest {
     public static void main(String[] args) {
 
 
+        Picture picture = new Picture(10, 10, "Characters/player.png");
+        Picture picture1 = new Picture(10, 10, "Characters/player.png");
+        Picture picture2= new Picture(50, 50, "Characters/player.png");
+        Picture picture3 = new Picture(100, 100, "Characters/player.png");
+        Picture picture4 = new Picture(10, 10, "Characters/player.png");
+        Picture picture5 = new Picture(10, 10, "Characters/player.png");
+
+        System.out.println(checkCollision(picture, picture1, 20));
+        System.out.println(checkCollision(picture, picture2, 20));
+        System.out.println(checkCollision(picture, picture3, 20));
+        System.out.println(checkCollision(picture, picture4, 20));
+        System.out.println(checkCollision(picture, picture5, 20));
+        System.out.println(checkCollision(picture2, picture1, 20));
+        System.out.println(checkCollision(picture3, picture4, 20));
+        System.out.println(checkCollision(picture3, picture5, 20));
+        System.out.println(checkCollision(picture4, picture5, 20));
 
 
-
-        Rectangle rect1 = new Rectangle(45, 45, 50, 50);
-        Rectangle rect2 = new Rectangle(100, 100, 100, 100);
-        Rectangle rect3= new Rectangle(150, 150, 50, 50);
-
-
-        Rectangle rect4 = new Rectangle(105, 105, 50, 50);
-        Rectangle rect5 = new Rectangle(120, 120, 100, 100);
-        Rectangle rect6= new Rectangle(50, 50, 50, 50);
-
-        Rectangle[] rectangles1 = {rect1, rect2, rect3};
-        Rectangle[] rectangles2 = {rect4, rect5, rect6};
-
-        CheckCollision collisionTest = new CheckCollision(rectangles1, rectangles2);
-
-
-        collisionTest.check();
 
 
 
