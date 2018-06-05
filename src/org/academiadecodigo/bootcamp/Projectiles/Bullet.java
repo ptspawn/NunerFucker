@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.Projectiles;
 import org.academiadecodigo.bootcamp.Interfaces.ProjectileType;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.bootcamp.Interfaces.Movable;
+import org.academiadecodigo.bootcamp.Sound.Sound;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
@@ -30,7 +31,7 @@ public class Bullet extends Projectile implements Drawable, Movable {
     public void move(double[] vector) throws InterruptedException {
 
         while (true) {
-            if (bullet.getX() < 0 || bullet.getX() > screenDim[0] || bullet.getY() < 0 || bullet.getY() > screenDim[1]) {
+            if (bullet.getX() < 0 - bullet.getWidth() || bullet.getX() > screenDim[0] || bullet.getY() < 0 || bullet.getY() > screenDim[1]) {
                 bullet.delete();
                 System.out.println("stop at " + bullet.getX() + " " + bullet.getY());
                 return;
