@@ -1,10 +1,7 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
-import org.academiadecodigo.bootcamp.Characters.Enemy;
-import org.academiadecodigo.bootcamp.Characters.Player;
-import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 
-import java.awt.Rectangle;
+import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
 
 /**
  * Created by codecadet on 04/06/2018.
@@ -50,9 +47,8 @@ public class CheckCollision {
 
                 if (getDistance(d, o) < hitDistance) {
                     System.out.println("true");
-                    return truexcode-select --install
+                    return true;
 
-                    ;
                 }
                 else {
                     System.out.println("false");
