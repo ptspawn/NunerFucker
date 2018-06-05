@@ -5,17 +5,14 @@ import org.academiadecodigo.bootcamp.Interfaces.*;
 /**
  * Created by codecadet on 02/06/2018.
  */
-public class Enemy extends Character implements Drawable, Movable, Shootable, Rotatable {
+public class Enemy extends Character implements Drawable, Movable, Shootable {
 
     public Enemy() {
         super(CharactersType.ENEMY.getHealth(), CharactersType.ENEMY.getSpeed());
     }
 
 
-    @Override
-    public void rotate() {
 
-    }
 
     @Override
     public void getHit(int damage) {
