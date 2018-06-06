@@ -31,18 +31,29 @@ public class ProjectileTest {
 
         double[] screenDim = Canvas.getInstance().getScreenDimentions();
 
-//        Bullet bullet = new Bullet(screenDim[0] / 2, screenDim[1] / 2);
 
         double[] bulletOrigin = {screenDim[0] / 2, screenDim[1] / 2};
 
 
+        double [] orientationVector={1,1};
+        Bullet bullet=new Bullet(screenDim[0] / 2, screenDim[1] / 2,orientationVector);//normalizedVector(getVector(bulletOrigin,input.getMousePos())));//null;
+        Canvas.getInstance().repaint();
+        //bullet.move();
+
+
         while (true) {
                 System.out.println(input.isFiring());
-            if (input.isFiring()) {
 
-  //              bullet.move(normalizedVector(getVector(bulletOrigin, input.getMousePos())));
-                break;
+            if (input.isFiring()) {
+                bullet = new Bullet(screenDim[0] / 2, screenDim[1] / 2,getVector(bulletOrigin,input.getMousePos()));
             }
+            if (bullet!=null){
+                bullet.move();
+            }
+
+            Canvas.getInstance().repaint();
+
+            Thread.sleep(20);
 
         }
 

@@ -40,7 +40,7 @@ public class RotationTest {
         Text mousePosText = new Text(0, 0, "Container for mousePos");
         mousePosText.draw();
 
-        Picture arrow = new Picture(canvasDim[0] / 2, canvasDim[1] / 2, "Characters/player.png");
+        Picture arrow = new Picture(canvasDim[0] / 2, canvasDim[1] / 2, "Bullets/Bullet.png");
         arrow.translate(-arrow.getWidth() / 2, -arrow.getHeight() / 2);
         arrow.draw();
 
