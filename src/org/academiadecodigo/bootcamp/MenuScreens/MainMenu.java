@@ -45,7 +45,9 @@ public class MainMenu {
         quitButton = new Picture(1218, 585, "Bgs/Door-Closed.png");
         quitButton.draw();
 
-        instrutionPanel = new Picture(1000, 35, "Bgd/instP.jpg");
+        instrutionPanel = new Picture(1000, 35, "Bgs/instP.jpg");
+
+        youSuck = new Picture(1218, 600, "Bgs/yousuck.jpg");
     }
 
     public void checkButton(double[] mousePos) {
@@ -57,11 +59,13 @@ public class MainMenu {
 
             startButton.load("Bgs/2c_go.png");
             startButton.draw();
+            quitButton.delete();
             Canvas.getInstance().repaint();
 
         } else {
             startButton.load("Bgs/video-play.png");
             startButton.draw();
+            quitButton.draw();
             Canvas.getInstance().repaint();
 
         }
@@ -104,7 +108,7 @@ public class MainMenu {
         } else {
 
             youSuck.delete();
-            quitButton.load("Door-Closed.png");
+            quitButton.load("Bgs/Door-Closed.png");
             quitButton.draw();
             Canvas.getInstance().repaint();
 
