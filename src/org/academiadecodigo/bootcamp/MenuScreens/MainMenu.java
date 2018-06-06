@@ -20,13 +20,14 @@ import java.awt.event.MouseListener;
  */
 public class MainMenu {
 
-
+    private Picture startPopUp;
     private Picture quitButton;
     private Picture instrutionPanel;
     private Picture informationButton;
     private Picture startButton;
     private Picture menuBackGround;
     private Picture youSuck;
+    private Picture title;
 
     public MainMenu() {
 
@@ -36,18 +37,28 @@ public class MainMenu {
         //menuBackGround.scaleToFit(screenDimentions[0],screenDimentions[1]);
         menuBackGround.draw();
 
-        startButton = new Picture(1100, 250, "Bgs/video-play.png");
-        startButton.draw();
 
-        informationButton = new Picture(1805, 800, "Bgs/question.png");
-        informationButton.draw();
+        startButton = new Picture(1100, 350, "Bgs/video-play.png");
+        startButton.load("Bgs/video-play.png");
 
-        quitButton = new Picture(1218, 585, "Bgs/Door-Closed.png");
-        quitButton.draw();
+        startPopUp = new Picture(1100, 350, "Bgs/2c_go.png");
+        startPopUp.load("Bgs/2c_go.png");
 
-        instrutionPanel = new Picture(1000, 35, "Bgs/instP.jpg");
+        informationButton = new Picture(1805, 850, "Bgs/question.png");
+        informationButton.load("Bgs/question.png");
 
-        youSuck = new Picture(1218, 600, "Bgs/yousuck.jpg");
+        quitButton = new Picture(1805, 20, "Bgs/Door-Closed.png");
+        quitButton.load("Bgs/Door-Closed.png");
+
+        //title = new Picture(1100, 100, "Bgs/rosary.jpg");
+        //title.draw();
+
+        instrutionPanel = new Picture(1000, 35, "Bgs/instructions.png");
+        instrutionPanel.load("Bgs/instructions.png");
+
+
+        youSuck = new Picture(1808, 20, "Bgs/middlefinger.png");
+        youSuck.load("Bgs/middlefinger.png");
     }
 
     public void checkButton(double[] mousePos) {
@@ -57,15 +68,11 @@ public class MainMenu {
                 && mousePos[1] > startButton.getY()
                 && mousePos[1] < startButton.getY() + startButton.getHeight()) {
 
-            startButton.load("Bgs/2c_go.png");
-            startButton.draw();
-            quitButton.delete();
+            startPopUp.draw();
             Canvas.getInstance().repaint();
 
         } else {
-            startButton.load("Bgs/video-play.png");
             startButton.draw();
-            quitButton.draw();
             Canvas.getInstance().repaint();
 
         }
@@ -78,15 +85,16 @@ public class MainMenu {
                 && mousePos[1] > informationButton.getY()
                 && mousePos[1] < informationButton.getY() + informationButton.getHeight()) {
 
+            quitButton.delete();
             startButton.delete();
             informationButton.delete();
-            instrutionPanel.load("Bgs/instP.jpg");
             instrutionPanel.draw();
             Canvas.getInstance().repaint();
 
         } else {
+            startButton.delete();
+            quitButton.draw();
             instrutionPanel.delete();
-            informationButton.load("Bgs/question.png");
             informationButton.draw();
             Canvas.getInstance().repaint();
 
@@ -101,14 +109,11 @@ public class MainMenu {
                 && mousePos[1] < quitButton.getY() + quitButton.getHeight()) {
 
             quitButton.delete();
-            youSuck.load("Bgs/yousuck.jpg");
             youSuck.draw();
             Canvas.getInstance().repaint();
 
         } else {
-
             youSuck.delete();
-            quitButton.load("Bgs/Door-Closed.png");
             quitButton.draw();
             Canvas.getInstance().repaint();
 
