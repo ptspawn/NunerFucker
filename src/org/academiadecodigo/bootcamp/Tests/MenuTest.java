@@ -17,6 +17,7 @@ public class MenuTest {
         while (true) {
 
             mousePosition = input.getMousePos();
+
             mainMenu.checkButton(mousePosition);
             mainMenu.instructionsSlide(mousePosition);
             Thread.sleep(50);

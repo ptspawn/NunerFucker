@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.MenuScreens;
 
 import javafx.scene.input.MouseDragEvent;
 import org.academiadecodigo.bootcamp.GameEngine.InputManager;
+import org.academiadecodigo.bootcamp.Sound.Sound;
 import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.notsosimplegraphics.mouse.Mouse;
@@ -12,21 +13,28 @@ import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 
 import java.awt.*;
+import java.awt.event.MouseListener;
 
 /**
  * Created by codecadet on 04/06/2018.
  */
 public class MainMenu {
 
+    private Sound mouseClick;
+    private Picture quitButton;
     private Picture instrutionPanel;
     private Picture informationButton;
     private Picture startButton;
     private Picture menuBackGround;
+    private MouseEventType[] mouseEventType;
 
 
     public MainMenu() {
 
         double[] screenDimentions = Canvas.getInstance().getScreenDimentions();
+
+        mouseClick = new Sound();
+
 
         menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2_1920.jpg");
         //menuBackGround.scaleToFit(screenDimentions[0],screenDimentions[1]);
@@ -35,10 +43,13 @@ public class MainMenu {
         startButton = new Picture(1100, 250, "Bgs/video-play.png");
         startButton.draw();
 
-        informationButton = new Picture(1805, 700, "Bgs/question.png");
+        informationButton = new Picture(1805, 800, "Bgs/question.png");
         informationButton.draw();
 
-        instrutionPanel = new Picture(1000, 100, "Bgd/panel.gif");
+        instrutionPanel = new Picture(1000, 35, "Bgd/instP.jpg");
+
+        quitButton = new Picture(1175, 555, "Bgs/door.png");
+        quitButton.draw();
 
     }
 
@@ -61,7 +72,6 @@ public class MainMenu {
         }
     }
 
-
     public void instructionsSlide(double[] mousePos) {
 
         if (mousePos[0] > informationButton.getX()
@@ -71,7 +81,7 @@ public class MainMenu {
 
             startButton.delete();
             informationButton.delete();
-            instrutionPanel.load("Bgs/panel.gif");
+            instrutionPanel.load("Bgs/instP.jpg");
             instrutionPanel.draw();
             Canvas.getInstance().repaint();
 
