@@ -53,21 +53,22 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
     public void move(double[] vector) {
         //System.out.println("Enemy: vX- " + vector[0] + " vY-"+vector[1]);
 
-        vector=normalizedVector(getVector(getPosition(),vector));
+        vector = normalizedVector(getVector(getPosition(), vector));
         //System.out.println("EnemyN: vX- " + vector[0] + " vY-"+vector[1]);
-        enemy.rotate(getRotationFromVector(vector,enemy,Math.PI/2));
+        enemy.rotate(getRotationFromVector(vector, enemy, Math.PI / 2));
         enemy.translate(vector[0] * super.getSpeed(), vector[1] * super.getSpeed());
 
         updatePosition();
     }
 
-    public double[] getPosition(){
-        double pos[] = {xPos,yPos};
+    public double[] getPosition() {
+        double pos[] = {xPos, yPos};
         return pos;
     }
-    private void updatePosition(){
-        xPos=enemy.getX()+enemy.getWidth()/2;
-        yPos=enemy.getY()+enemy.getHeight()/2;
+
+    public void updatePosition() {
+        xPos = enemy.getX() + enemy.getWidth() / 2;
+        yPos = enemy.getY() + enemy.getHeight() / 2;
     }
 
     @Override
