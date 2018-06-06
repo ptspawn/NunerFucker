@@ -60,6 +60,8 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     }
 
     public void shoot(double[] whereTo) {
+
+
         System.out.println("i'm Shooting");
 
     }
