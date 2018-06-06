@@ -20,21 +20,17 @@ import java.awt.event.MouseListener;
  */
 public class MainMenu {
 
-    private Sound mouseClick;
+
     private Picture quitButton;
     private Picture instrutionPanel;
     private Picture informationButton;
     private Picture startButton;
     private Picture menuBackGround;
-    private MouseEventType[] mouseEventType;
-
+    private Picture youSuck;
 
     public MainMenu() {
 
         double[] screenDimentions = Canvas.getInstance().getScreenDimentions();
-
-        mouseClick = new Sound();
-
 
         menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2_1920.jpg");
         //menuBackGround.scaleToFit(screenDimentions[0],screenDimentions[1]);
@@ -46,11 +42,10 @@ public class MainMenu {
         informationButton = new Picture(1805, 800, "Bgs/question.png");
         informationButton.draw();
 
-        instrutionPanel = new Picture(1000, 35, "Bgd/instP.jpg");
-
-        quitButton = new Picture(1175, 555, "Bgs/door.png");
+        quitButton = new Picture(1218, 585, "Bgs/Door-Closed.png");
         quitButton.draw();
 
+        instrutionPanel = new Picture(1000, 35, "Bgd/instP.jpg");
     }
 
     public void checkButton(double[] mousePos) {
@@ -93,7 +88,30 @@ public class MainMenu {
 
         }
     }
+
+    public void quiting(double[] mousePos) {
+
+        if (mousePos[0] > quitButton.getX()
+                && mousePos[0] < quitButton.getX() + quitButton.getWidth()
+                && mousePos[1] > quitButton.getY()
+                && mousePos[1] < quitButton.getY() + quitButton.getHeight()) {
+
+            quitButton.delete();
+            youSuck.load("Bgs/yousuck.jpg");
+            youSuck.draw();
+            Canvas.getInstance().repaint();
+
+        } else {
+
+            youSuck.delete();
+            quitButton.load("Door-Closed.png");
+            quitButton.draw();
+            Canvas.getInstance().repaint();
+
+        }
+    }
 }
+
 
 
 

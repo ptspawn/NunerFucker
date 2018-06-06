@@ -20,6 +20,8 @@ public class MenuTest {
 
             mainMenu.checkButton(mousePosition);
             mainMenu.instructionsSlide(mousePosition);
+            mainMenu.quiting(mousePosition);
+
             Thread.sleep(50);
 
 
