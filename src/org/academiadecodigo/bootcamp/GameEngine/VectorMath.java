@@ -34,7 +34,7 @@ public class VectorMath {
     }
 
 
-    public static double getRotationFromVector(double[] mousePos, Picture picToRotate, double buffer) {
+    public static double getRotationFromMousePos(double[] mousePos, Picture picToRotate, double buffer) {
 
         double[] picCenter = new double[2];
 
@@ -57,6 +57,23 @@ public class VectorMath {
 
         return angle + buffer;
     }
+    public static double getRotationFromVector(double[] vector, Picture picToRotate, double buffer) {
 
+        double[] picCenter = new double[2];
+
+        picCenter[0] = picToRotate.getX() + picToRotate.getWidth() / 2;
+        picCenter[1] = picToRotate.getY() + picToRotate.getHeight() / 2;
+
+        double angle = Math.atan(vector[1] / vector[0]);
+
+        if (vector[0] < 0) {
+            angle = angle + buffer + 2 * Math.PI;
+        }
+        if (angle + buffer > 2 * Math.PI) {
+            angle = angle + buffer - 2 * Math.PI;
+        }
+
+        return angle + buffer;
+    }
 
 }

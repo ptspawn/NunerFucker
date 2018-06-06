@@ -7,7 +7,7 @@ import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 import java.awt.image.BufferedImage;
 
-import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getRotationFromVector;
+import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getRotationFromMousePos;
 import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVector;
 
 /**
@@ -77,7 +77,7 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     @Override
     public void move(boolean[] moveDirections, double[] orientation) {
 
-        avatar.rotate(getRotationFromVector(orientation,avatar,Math.PI/2));
+        avatar.rotate(getRotationFromMousePos(orientation,avatar,Math.PI/2));
 
         double[] vector = {0, 0};   //horizontal,vertical
 
