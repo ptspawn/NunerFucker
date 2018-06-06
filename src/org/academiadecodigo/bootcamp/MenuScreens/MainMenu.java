@@ -58,7 +58,7 @@ public class MainMenu {
 
         instrutionPanel = new Picture(1000 / 1920 * screenDimentions[0], 35 / 1080 * screenDimentions[1], "Bgs/instructions.png");
 
-        youSuck = new Picture(1808/ 1920 * screenDimentions[0], 20 / 1080 * screenDimentions[1], "Bgs/middlefinger.png");
+        youSuck = new Picture(1808 / 1920 * screenDimentions[0], 20 / 1080 * screenDimentions[1], "Bgs/middlefinger.png");
     }
 
     public void checkButton(double[] mousePos) {
