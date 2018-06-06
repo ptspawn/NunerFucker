@@ -7,12 +7,9 @@ import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
  */
 public class CharacterFactory {
 
-    public static Character getNewCharacter() {
+    public static Character getNewCharacter(CharactersType charactersType, double[] startingPosition) {
 
         int random = (int) (Math.random() * CharactersType.values().length);
-
-        //random type of enemy;
-        CharactersType charactersType = CharactersType.values()[random];
 
         Character character;
 
@@ -21,10 +18,10 @@ public class CharacterFactory {
                 character = new Player("Sardinha",50,50);
                 break;
             case ENEMY:
-                character = new Enemy();
+                character = new Enemy(startingPosition, CharactersType.ENEMY);
                 break;
             default:
-                character = new Enemy();
+                character = new Enemy(startingPosition,CharactersType.ENEMY);
                 break;
         }
         return character;

@@ -12,9 +12,8 @@ public abstract class Projectile implements Movable, Drawable{
     private int speed;
     private int damage;
 
-    //todo: need to set vectorDirection
 
-    public Projectile(/*double[] vectorDirection,*/ int damage, int speed) {
+    public Projectile(double[] vectorDirection, int damage, int speed) {
         this.vectorDirection = vectorDirection;
         this.speed = speed;
         this.damage = damage;

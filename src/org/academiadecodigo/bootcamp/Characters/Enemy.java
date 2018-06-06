@@ -6,6 +6,9 @@ import org.academiadecodigo.bootcamp.Interfaces.Movable;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
+import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getVector;
+import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVector;
+
 /**
  * Created by codecadet on 02/06/2018.
  */
@@ -14,14 +17,14 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
     private double xPos;
     private double yPos;
     private Picture enemy;
-    private double[] screenDim;
+    private CharactersType type;
 
-    public Enemy() {
-        super(CharactersType.ENEMY.getHealth(), CharactersType.ENEMY.getSpeed());
-        this.xPos=xPos;
-        this.yPos=yPos;
-        this.screenDim = Canvas.getInstance().getScreenDimentions();
-        this.enemy = new Picture(xPos, yPos,"Bullets/Bullet.png");
+    public Enemy(double[] statingPosition, CharactersType type) {
+        super(type.getHealth(), type.getSpeed());
+        this.xPos = statingPosition[0];
+        this.yPos = statingPosition[1];
+        this.type = type;
+        this.enemy = new Picture(xPos, yPos, "Characters/Enemies/purpleEnemy.png");
         draw();
 
 
@@ -37,7 +40,6 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
     }
 
 
-
     @Override
     public void getHit(int damage) {
 
@@ -50,21 +52,32 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
 
     @Override
     public void move(double[] vector) {
-        while (true) {
-           /* if (enemy.getX() < 0 - enemy.getWidth() || enemy.getX() > screenDim[0] || enemy.getY() < 0 || enemy.getY() > screenDim[1]) {
-                enemy.delete();
-                System.out.println("stop at " + enemy.getX() + " " + enemy.getY());
-                return;
-            }*/
+        //System.out.println("Enemy: vX- " + vector[0] + " vY-"+vector[1]);
 
-            System.out.println("moving");
-            enemy.translate(vector[0] * super.getSpeed(), vector[1] * super.getSpeed());
-        }
+        vector=normalizedVector(getVector(getPosition(),vector));
+        //System.out.println("EnemyN: vX- " + vector[0] + " vY-"+vector[1]);
+        enemy.translate(vector[0] * super.getSpeed(), vector[1] * super.getSpeed());
+
+        updatePosition();
+    }
+
+    public double[] getPosition(){
+        double pos[] = {xPos,yPos};
+        return pos;
+    }
+    private void updatePosition(){
+        xPos=enemy.getX()+enemy.getWidth()/2;
+        yPos=enemy.getY()+enemy.getHeight()/2;
+    }
+
+    @Override
+    public void move() {
+
     }
 
     @Override
     public void draw() {
-
+        enemy.draw();
     }
 
     @Override
@@ -85,4 +98,6 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
     public String toString() {
         return "Enemy{ health: " + getHealth() + " speed: " + getSpeed() + " }";
     }
+
+
 }

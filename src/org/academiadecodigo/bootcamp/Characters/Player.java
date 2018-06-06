@@ -70,6 +70,11 @@ public class Player extends Character implements Drawable, Movable, Shootable {
 
 
     @Override
+    public void move() {
+
+    }
+
+    @Override
     public void move(boolean[] moveDirections, double[] orientation) {
 
         avatar.rotate(getRotationFromVector(orientation,avatar,Math.PI/2));
@@ -102,6 +107,7 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     private void updatePosition() {
         position[0] = avatar.getWidth() + avatar.getX();
         position[1] = avatar.getHeight() + avatar.getY();
+        System.out.println("Player: x"+ position[0]+ " y" + position[1]);
     }
 
     public double[] getPosition() {
