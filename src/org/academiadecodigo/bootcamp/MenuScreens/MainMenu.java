@@ -41,24 +41,24 @@ public class MainMenu {
         menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
         menuBackGround.draw();
 
-        startButton = new Picture(1100, 350, "Bgs/video-play.png");
+        startButton = new Picture(1100 / 1920 * screenDimentions[0], 350 / 1080 * screenDimentions[1], "Bgs/video-play.png");
         startButton.draw();
 
-        startPopUp = new Picture(1100, 350, "Bgs/2c_go.png");
+        startPopUp = new Picture(1100 / 1920 * screenDimentions[0], 350 / 1080 * screenDimentions[1], "Bgs/2c_go.png");
 
 
-        informationButton = new Picture(1805, 850, "Bgs/question.png");
+        informationButton = new Picture(1805 / 1920 * screenDimentions[0], 850 / 1080 * screenDimentions[1], "Bgs/question.png");
         informationButton.draw();
 
-        quitButton = new Picture(1805, 20, "Bgs/Door-Closed.png");
+        quitButton = new Picture(1805 / 1920 * screenDimentions[0], 20 / 1080 * screenDimentions[1], "Bgs/Door-Closed.png");
         quitButton.draw();
 
         //title = new Picture(1100, 100, "Bgs/rosary.jpg");
         //title.draw();
 
-        instrutionPanel = new Picture(1000, 35, "Bgs/instructions.png");
+        instrutionPanel = new Picture(1000 / 1920 * screenDimentions[0], 35 / 1080 * screenDimentions[1], "Bgs/instructions.png");
 
-        youSuck = new Picture(1808, 20, "Bgs/middlefinger.png");
+        youSuck = new Picture(1808/ 1920 * screenDimentions[0], 20 / 1080 * screenDimentions[1], "Bgs/middlefinger.png");
     }
 
     public void checkButton(double[] mousePos) {
