@@ -6,8 +6,7 @@ import org.academiadecodigo.bootcamp.Interfaces.Movable;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
-import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getVector;
-import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVector;
+import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.*;
 
 /**
  * Created by codecadet on 02/06/2018.
@@ -56,6 +55,7 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
 
         vector=normalizedVector(getVector(getPosition(),vector));
         //System.out.println("EnemyN: vX- " + vector[0] + " vY-"+vector[1]);
+        enemy.rotate(getRotationFromVector(vector,enemy,Math.PI/2));
         enemy.translate(vector[0] * super.getSpeed(), vector[1] * super.getSpeed());
 
         updatePosition();

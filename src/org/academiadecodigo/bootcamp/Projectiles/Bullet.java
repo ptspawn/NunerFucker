@@ -6,7 +6,9 @@ import org.academiadecodigo.bootcamp.Interfaces.Movable;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
+import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getRotationFromMousePos;
 import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getRotationFromVector;
+import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVector;
 
 
 /**
@@ -24,23 +26,29 @@ public class Bullet extends Projectile implements Drawable, Movable {
         super(orientation, ProjectileType.BULLET.getDamage(), ProjectileType.BULLET.getSpeed());
         this.xPos = xPos;
         this.yPos = yPos;
-        this.orientation = orientation;
+        this.orientation = normalizedVector(orientation);
         this.screenDim = Canvas.getInstance().getScreenDimentions();
         this.bullet = new Picture(xPos, yPos, "Bullets/Bullet.png");
-        bullet.rotate(getRotationFromVector(orientation, bullet, Math.PI / 2));
+        bullet.rotate(getRotationFromVector(orientation, bullet, Math.PI/2));
         draw();
-        //Canvas.getInstance()
     }
 
     @Override
     public void move() {
+      //  vector=normalizedVector(getVector(getPosition(),vector));
 
         if (bullet.getX() < 0 - bullet.getWidth() || bullet.getX() > screenDim[0] || bullet.getY() < 0 || bullet.getY() > screenDim[1]) {
             bullet.delete();
             System.out.println("stop at " + bullet.getX() + " " + bullet.getY());
             return;
         }
+
+        System.out.println(orientation[0] + "/" + orientation[1]);
+
         bullet.translate(orientation[0] * super.getSpeed(), orientation[1] * super.getSpeed());
+
+       // enemy.translate(vector[0] * super.getSpeed(), vector[1] * super.getSpeed());
+
     }
 
     @Override
