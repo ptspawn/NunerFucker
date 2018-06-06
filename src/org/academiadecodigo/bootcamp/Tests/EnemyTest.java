@@ -38,6 +38,7 @@ public class EnemyTest {
         enemies.add(new Enemy(temp3,CharactersType.ENEMY));
 
 
+
         Hud hud = new Hud();
 
         Player player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
