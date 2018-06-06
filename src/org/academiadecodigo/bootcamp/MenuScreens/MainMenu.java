@@ -45,7 +45,8 @@ public class MainMenu {
         quitButton = new Picture(1218, 585, "Bgs/Door-Closed.png");
         quitButton.draw();
 
-        instrutionPanel = new Picture(1000, 35, "Bgs/instP.jpg");
+        instrutionPanel = new Picture(1000, 35, "Bgs/instructions.png");
+
 
         youSuck = new Picture(1218, 600, "Bgs/yousuck.jpg");
     }
