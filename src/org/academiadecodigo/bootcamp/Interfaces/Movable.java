@@ -13,6 +13,9 @@ public interface Movable {
 
     void setDirection(double[] vector);
 
+    double[] getPosition();
+
+    void updatePosition();
 
 
 }

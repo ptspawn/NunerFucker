@@ -62,6 +62,20 @@ public class Bullet extends Projectile implements Drawable, Movable {
     }
 
     @Override
+    public double[] getPosition() {
+        double[] pos ={xPos, yPos};
+        return pos;
+    }
+
+    @Override
+    public void updatePosition() {
+        xPos= bullet.getWidth()/2 + bullet.getX();
+        yPos = bullet.getHeight()/2 + bullet.getY();
+        System.out.println("Player: x"+ xPos+ " y" + yPos);
+
+    }
+
+    @Override
     public void draw() {
         bullet.draw();
     }
