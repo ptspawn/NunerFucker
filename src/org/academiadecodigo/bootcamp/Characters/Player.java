@@ -60,8 +60,6 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     }
 
     public void shoot(double[] whereTo) {
-
-
         System.out.println("i'm Shooting");
 
     }
@@ -107,8 +105,8 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     }
 
     private void updatePosition() {
-        position[0] = avatar.getWidth() + avatar.getX();
-        position[1] = avatar.getHeight() + avatar.getY();
+        position[0] = avatar.getWidth()/2 + avatar.getX();
+        position[1] = avatar.getHeight()/2 + avatar.getY();
         System.out.println("Player: x"+ position[0]+ " y" + position[1]);
     }
 
