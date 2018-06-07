@@ -5,7 +5,15 @@ package org.academiadecodigo.bootcamp.GameEngine;
  */
 public class Loader {
 
+    public Loader(){
 
+
+    }
+
+    public void loadPictureList(){
+
+
+    }
 
 
 }
