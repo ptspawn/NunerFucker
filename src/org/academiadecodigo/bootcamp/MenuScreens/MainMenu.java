@@ -3,6 +3,9 @@ package org.academiadecodigo.bootcamp.MenuScreens;
 import javafx.scene.input.MouseDragEvent;
 import org.academiadecodigo.bootcamp.GameEngine.InputManager;
 import org.academiadecodigo.bootcamp.Sound.Sound;
+import org.academiadecodigo.notsosimplegraphics.graphics.*;
+import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
+import org.academiadecodigo.notsosimplegraphics.graphics.Color;
 import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.notsosimplegraphics.mouse.Mouse;
@@ -10,7 +13,6 @@ import org.academiadecodigo.notsosimplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.notsosimplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.notsosimplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
-import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 
 import java.awt.*;
 import java.awt.event.MouseListener;
@@ -20,6 +22,7 @@ import java.awt.event.MouseListener;
  */
 public class MainMenu {
 
+    private Picture title2;
     private Picture startPopUp;
     private Picture quitButton;
     private Picture instrutionPanel;
@@ -28,7 +31,6 @@ public class MainMenu {
     private Picture menuBackGround;
     private Picture youSuck;
     private Picture title;
-
     boolean onStartButton;
     boolean onInstructionButton;
 
@@ -38,27 +40,29 @@ public class MainMenu {
 
         menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2_1920.jpg");
 
-        menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
+        //menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
         menuBackGround.draw();
 
-        startButton = new Picture(1100 / 1920 * screenDimentions[0], 350 / 1080 * screenDimentions[1], "Bgs/video-play.png");
+        startButton = new Picture(1100, 410, "Bgs/video-play.png");
         startButton.draw();
 
-        startPopUp = new Picture(1100 / 1920 * screenDimentions[0], 350 / 1080 * screenDimentions[1], "Bgs/2c_go.png");
+        startPopUp = new Picture(1100, 410, "Bgs/2c_go.png");
 
-
-        informationButton = new Picture(1805 / 1920 * screenDimentions[0], 850 / 1080 * screenDimentions[1], "Bgs/question.png");
+        informationButton = new Picture(1805, 850, "Bgs/question.png");
         informationButton.draw();
 
-        quitButton = new Picture(1805 / 1920 * screenDimentions[0], 20 / 1080 * screenDimentions[1], "Bgs/Door-Closed.png");
+        quitButton = new Picture(1805 , 20, "Bgs/Door-Closed.png");
         quitButton.draw();
 
-        //title = new Picture(1100, 100, "Bgs/rosary.jpg");
-        //title.draw();
+        title = new Picture(800, 190, "Bgs/NUNS.png");
+        title.draw();
 
-        instrutionPanel = new Picture(1000 / 1920 * screenDimentions[0], 35 / 1080 * screenDimentions[1], "Bgs/instructions.png");
+        title2 = new Picture(1280, 210, "Bgs/ng.png");
+        title2.draw();
 
-        youSuck = new Picture(1808 / 1920 * screenDimentions[0], 20 / 1080 * screenDimentions[1], "Bgs/middlefinger.png");
+        instrutionPanel = new Picture(1000, 35, "Bgs/instructions.png");
+
+        youSuck = new Picture(1808, 20, "Bgs/middlefinger.png");
     }
 
     public void checkButton(double[] mousePos) {
@@ -89,6 +93,8 @@ public class MainMenu {
                 && mousePos[1] > informationButton.getY()
                 && mousePos[1] < informationButton.getY() + informationButton.getHeight()) {
 
+            title2.delete();
+            title.delete();
             quitButton.delete();
             startButton.delete();
             informationButton.delete();
@@ -100,6 +106,8 @@ public class MainMenu {
                 startButton.draw();
             }
             quitButton.draw();
+            title2.draw();
+            title.draw();
             instrutionPanel.delete();
             informationButton.draw();
             onInstructionButton = false;

@@ -10,23 +10,37 @@ import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
  */
 public class Hud {
 
-    private Rectangle rect;
     private Picture heart;
+    private Rectangle powerUp;
+    private Rectangle life;
 
     public Hud() {
 
         double[] screenDimentions = Canvas.getInstance().getScreenDimentions();
 
-        rect = new Rectangle(1100, 0, 1100, 0);
 
-        heart = new Picture(1100, 0, "Power-ups/PNG/heart.png");
+        life = new Rectangle(870, 15, 250, 25);
+        //powerUp = new Rectangle(870, 40, 250, 25);
+
+        heart = new Picture(830, 0, "Bgs/heart.png");
+        //heart.draw();
+
     }
 
     public void getHud() {
 
+        life.draw();
+        life.fill();
+        life.setColor(Color.RED);
         heart.draw();
-        rect.draw();
-        rect.fill();
-        rect.setColor(Color.BLACK);
+
+
+      /*  powerUp.draw();
+        powerUp.fill();
+        powerUp.setColor(Color.GREEN); */
+
+
+
+
     }
 }
