@@ -70,12 +70,14 @@ public class MainMenu {
 
         int result = 0;
 
-        if(checkStartButton(mousePos)){
-            result=1;
+        if (checkStartButton(mousePos)) {
+            result = 1;
         }
-        if(quiting(mousePos)){
-            result=2;
+        if (quiting(mousePos)) {
+            result = 2;
         }
+
+        instructionsSlide(mousePos);
 
         return result;
 

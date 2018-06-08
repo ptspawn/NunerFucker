@@ -18,8 +18,8 @@ import java.util.List;
 public class Game {
 
     private Field field;
-    private List enemies;
-    private List projectiles;
+    private List<Enemy> enemies;
+    private List<Projectile> projectiles;
     private Player player;
     public static double[] SCREENDIMENTIONS;
     private boolean[] playerDirections;
@@ -69,6 +69,8 @@ public class Game {
         enemies = new LinkedList<Enemy>();
         projectiles=new LinkedList<Projectile>();
 
+        Projectile currentShot=null;
+
        /* double[] temp = {100, 700};
         double[] temp2 = {SCREENDIMENTIONS[0] - 20, 20};
         double[] temp3 = {SCREENDIMENTIONS[0] - 20, SCREENDIMENTIONS[1] - 20};
@@ -89,7 +91,18 @@ public class Game {
 
             if (input.isFiring()) {
                 //System.out.println("Is firing");
-                projectiles.add(player.shoot(input.getMousePos()));
+
+                if ((currentShot=player.shoot(input.getMousePos()))!=null){
+                    projectiles.add(currentShot);
+                }
+
+            }
+
+            while(projectiles.iterator().hasNext()){
+
+                System.out.println("Teste");
+                 projectiles.iterator().next().move();
+
             }
 
             player.move(playerDirections, input.getMousePos());
