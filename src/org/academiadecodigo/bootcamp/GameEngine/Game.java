@@ -1,9 +1,11 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
+import org.academiadecodigo.bootcamp.Characters.CharacterFactory;
 import org.academiadecodigo.bootcamp.Characters.Enemy;
 import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
+import org.academiadecodigo.bootcamp.Interfaces.LevelsType;
 import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
@@ -18,7 +20,6 @@ import java.util.List;
 public class Game {
 
     private Field field;
-    private List enemies;
     private List projectiles;
     private Player player;
     public static double[] SCREENDIMENTIONS;
@@ -66,21 +67,18 @@ public class Game {
 
     public void start() {
 
-        enemies = new LinkedList<Enemy>();
+        LinkedList enemies = new LinkedList<Enemy>();
         projectiles=new LinkedList<Projectile>();
-
-       /* double[] temp = {100, 700};
-        double[] temp2 = {SCREENDIMENTIONS[0] - 20, 20};
-        double[] temp3 = {SCREENDIMENTIONS[0] - 20, SCREENDIMENTIONS[1] - 20};
-        enemies.add(new Enemy(temp, CharactersType.ENEMY));
-        enemies.add(new Enemy(temp2,CharactersType.ENEMY));
-        enemies.add(new Enemy(temp3,CharactersType.ENEMY));*/
 
         Field field = new Field("bg.jpg");
 
         Hud hud = new Hud();
 
         player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
+
+        //CharacterFactory.enemySpawnByLevel(LevelsType.VIRGIN,enemies);
+
+
 
 
         while (!player.isDead()) {

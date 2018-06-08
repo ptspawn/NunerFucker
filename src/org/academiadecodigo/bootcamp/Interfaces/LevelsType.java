@@ -3,7 +3,7 @@ package org.academiadecodigo.bootcamp.Interfaces;
 /**
  * Created by codecadet on 08/06/2018.
  */
-public enum Levels{
+public enum LevelsType {
 
     VIRGIN(30, 10, 10, 10,10, 10, 1),
     EXPERIENT(40,15, 15, 15,15,15 , 1),
@@ -21,6 +21,16 @@ public enum Levels{
     private int zombieBossQty;
 
 
+    public int[] getEnemyQuantity(){
+
+        int[] result={enemyQty,bugsQty,spiderQty,humanQty,spaceshipQty,zombieQty,zombieBossQty};
+        return result;
+
+    }
+
+    public int getEnemyTotal(){
+        return enemyQty+bugsQty+spiderQty+humanQty+spaceshipQty+zombieQty+zombieBossQty;
+    }
     //purple Enemy
     public int getEnemyQty() {
         return enemyQty;
@@ -50,7 +60,7 @@ public enum Levels{
     }
 
     // Constructor
-    Levels(int enemyQty, int bugsQty, int spiderQty, int humanQty,int spaceshipQty , int zombieQty, int zombieBossQty) {
+    LevelsType(int enemyQty, int bugsQty, int spiderQty, int humanQty, int spaceshipQty , int zombieQty, int zombieBossQty) {
 
         this.enemyQty=enemyQty;
         this.bugsQty=bugsQty;
