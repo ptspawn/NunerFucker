@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.Tests;
 import org.academiadecodigo.bootcamp.GameEngine.Loader;
 import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
+import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 import java.awt.image.BufferedImage;
 import java.util.Map;
@@ -22,7 +23,9 @@ public class LoadTest {
 
         Canvas.getInstance().getScreenDimentions();
 
+        BufferedImage img = enemies(CharactersType.BUG);
 
+        Picture pic = new Picture(0,0,img);
 
     }
 
