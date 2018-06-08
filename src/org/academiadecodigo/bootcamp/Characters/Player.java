@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.Characters;
 
 import org.academiadecodigo.bootcamp.GameEngine.Game;
 import org.academiadecodigo.bootcamp.Interfaces.*;
+import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 
@@ -30,7 +31,7 @@ public class Player extends Character implements Drawable, Movable, Shootable {
 
         position = new double[2];
 
-        avatar = new Picture(xPos, yPos, "Characters/player.png");
+        avatar = new Picture(xPos, yPos, "avatar/nun_char.png");
         //avatar.grow(-100,-100);
 
         collisionRadius = (avatar.getHeight() + avatar.getWidth()) / 4;
@@ -38,7 +39,6 @@ public class Player extends Character implements Drawable, Movable, Shootable {
         draw();
 
     }
-
 
     public void die() {
 
@@ -62,10 +62,9 @@ public class Player extends Character implements Drawable, Movable, Shootable {
 
     }
 
-    public void shoot(double[] whereTo) {
+    public Projectile shoot(double[] whereTo) {
 
-
-        System.out.println("i'm Shooting");
+        return null;//ProjectileF
 
     }
 
