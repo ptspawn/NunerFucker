@@ -36,7 +36,6 @@ public class Game {
             ;
 
             if (input.isFiring() && mainMenu.checkButtons(mousePosition)!=0){
-
             }
 
 
