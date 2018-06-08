@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.Characters.Enemy;
 import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
+import org.academiadecodigo.bootcamp.MenuScreens.Hud;
 import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
@@ -47,9 +48,7 @@ public class Game {
                         start();
                     case 2:
                         System.exit(0);
-
                 }
-
             }
 
             Canvas.getInstance().repaint();
@@ -59,9 +58,7 @@ public class Game {
             } catch (InterruptedException e) {
                 System.out.println("Ups");
             }
-
         }
-
     }
 
     public void start() {
@@ -80,10 +77,9 @@ public class Game {
 
         Field field = new Field("bg.jpg");
 
-        Hud hud = new Hud();
-
         player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
 
+        Hud hud = new Hud();
 
         while (!player.isDead()) {
 
@@ -102,9 +98,6 @@ public class Game {
                 System.out.println("Teste" + projectiles.size());
                 projectiles.iterator().next().move();
             }
-
-
-
 
             player.move(playerDirections, input.getMousePos());
 

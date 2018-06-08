@@ -38,8 +38,6 @@ public class Hud {
 
     }
 
-
-
     public void lifeCheck() {
 
 
