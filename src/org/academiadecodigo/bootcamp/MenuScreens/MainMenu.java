@@ -73,11 +73,8 @@ public class MainMenu {
         if(checkStartButton(mousePos)){
             result=1;
         }
-        if (instructionsSlide(mousePos)){
-            result=2;
-        }
         if(quiting(mousePos)){
-            result=3;
+            result=2;
         }
 
         return result;
