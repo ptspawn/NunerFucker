@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.Characters;
 
 
+import org.academiadecodigo.bootcamp.GameEngine.Game;
 import org.academiadecodigo.bootcamp.Interfaces.*;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
@@ -28,8 +29,11 @@ public class Player extends Character implements Drawable, Movable, Shootable {
         this.name = name;
 
         position = new double[2];
+        double[] screenDimentions = Game.SCREENDIMENTIONS;
 
         avatar = new Picture(xPos, yPos, "Characters/player.png");
+        avatar.scaleToFit(avatar.getHeight()/2,avatar.getWidth()/2);
+
         collisionRadius = (avatar.getHeight() + avatar.getWidth()) / 4;
 
         draw();
