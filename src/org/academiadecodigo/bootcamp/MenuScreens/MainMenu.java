@@ -41,7 +41,7 @@ public class MainMenu {
 
         menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2_1920.jpg");
 
-        menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
+//        menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
         menuBackGround.draw();
 
         startButton = new Picture(1100, 410, "Bgs/video-play.png");
