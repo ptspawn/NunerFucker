@@ -33,9 +33,9 @@ public class Game {
 
             mousePosition = input.getMousePos();
 
-            mainMenu.checkButtons(mousePosition);
+            ;
 
-            if (input.isFiring()){
+            if (input.isFiring() && mainMenu.checkButtons(mousePosition)!=0){
 
             }
 
