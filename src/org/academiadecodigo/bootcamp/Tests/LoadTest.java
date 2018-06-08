@@ -17,7 +17,7 @@ public class LoadTest {
 
     public LoadTest(){
 
-        Loader loader=new Loader();
+      /*  Loader loader=new Loader();
 
         loader.loadPictureList(enemies);
 
@@ -25,7 +25,7 @@ public class LoadTest {
 
         BufferedImage img = enemies(CharactersType.BUG);
 
-        Picture pic = new Picture(0,0,img);
+        Picture pic = new Picture(0,0,img);*/
 
     }
 
