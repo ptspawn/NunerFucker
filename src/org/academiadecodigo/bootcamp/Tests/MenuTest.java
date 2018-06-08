@@ -18,7 +18,7 @@ public class MenuTest {
         MainMenu mainMenu = new MainMenu();
         double[] mousePosition;
 
-        while (true) {
+        /*while (true) {
 
             mousePosition = input.getMousePos();
 
@@ -30,7 +30,7 @@ public class MenuTest {
             Thread.sleep(50);
 
 
-        }
+        }*/
 
 
     }

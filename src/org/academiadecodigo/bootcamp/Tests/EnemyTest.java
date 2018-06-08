@@ -27,8 +27,8 @@ public class EnemyTest {
 
         InputManager input = new InputManager();
 
-        Field field = new Field("bg.jpg");
         SCREENDIMENTIONS = Canvas.getInstance().getScreenDimentions();
+        Field field = new Field("bg.jpg");
         enemies = new LinkedList<Enemy>();
         double[] temp = {100, 700};
         double[] temp2 = {SCREENDIMENTIONS[0] - 20, 20};

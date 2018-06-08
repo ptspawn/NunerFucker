@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.MenuScreens;
 
 import javafx.scene.input.MouseDragEvent;
+import org.academiadecodigo.bootcamp.GameEngine.Game;
 import org.academiadecodigo.bootcamp.GameEngine.InputManager;
 import org.academiadecodigo.bootcamp.Sound.Sound;
 import org.academiadecodigo.notsosimplegraphics.graphics.*;
@@ -36,11 +37,11 @@ public class MainMenu {
 
     public MainMenu() {
 
-        double[] screenDimentions = Canvas.getInstance().getScreenDimentions();
+        double[] screenDimentions = Game.SCREENDIMENTIONS;
 
         menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2_1920.jpg");
 
-        //menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
+        menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
         menuBackGround.draw();
 
         startButton = new Picture(1100, 410, "Bgs/video-play.png");
@@ -51,7 +52,7 @@ public class MainMenu {
         informationButton = new Picture(1805, 850, "Bgs/question.png");
         informationButton.draw();
 
-        quitButton = new Picture(1805 , 20, "Bgs/Door-Closed.png");
+        quitButton = new Picture(1805, 20, "Bgs/Door-Closed.png");
         quitButton.draw();
 
         title = new Picture(800, 190, "Bgs/NUNS.png");
@@ -65,7 +66,25 @@ public class MainMenu {
         youSuck = new Picture(1808, 20, "Bgs/middlefinger.png");
     }
 
-    public void checkButton(double[] mousePos) {
+    public int checkButtons(double[] mousePos) {
+
+        int result = 0;
+
+        if(checkStartButton(mousePos)){
+            result=1;
+        }
+        if (instructionsSlide(mousePos)){
+            result=2;
+        }
+        if(quiting(mousePos)){
+            result=3;
+        }
+
+        return result;
+
+    }
+
+    private boolean checkStartButton(double[] mousePos) {
 
         if (mousePos[0] > startButton.getX()
                 && mousePos[0] < startButton.getX() + startButton.getWidth()
@@ -75,6 +94,7 @@ public class MainMenu {
             startButton.delete();
             startPopUp.draw();
             onStartButton = true;
+            return true;
 
         } else {
             if (!onInstructionButton) {
@@ -82,11 +102,12 @@ public class MainMenu {
             }
             startPopUp.delete();
             onStartButton = false;
+            return false;
 
         }
     }
 
-    public void instructionsSlide(double[] mousePos) {
+    private boolean instructionsSlide(double[] mousePos) {
 
         if (mousePos[0] > informationButton.getX()
                 && mousePos[0] < informationButton.getX() + informationButton.getWidth()
@@ -100,6 +121,7 @@ public class MainMenu {
             informationButton.delete();
             instrutionPanel.draw();
             onInstructionButton = true;
+            return true;
 
         } else {
             if (!onStartButton) {
@@ -111,11 +133,11 @@ public class MainMenu {
             instrutionPanel.delete();
             informationButton.draw();
             onInstructionButton = false;
-
+            return false;
         }
     }
 
-    public void quiting(double[] mousePos) {
+    private boolean quiting(double[] mousePos) {
 
         if (mousePos[0] > quitButton.getX()
                 && mousePos[0] < quitButton.getX() + quitButton.getWidth()
@@ -124,11 +146,12 @@ public class MainMenu {
 
             quitButton.delete();
             youSuck.draw();
+            return true;
 
         } else {
             youSuck.delete();
             quitButton.draw();
-
+            return false;
         }
     }
 }
