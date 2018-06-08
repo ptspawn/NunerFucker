@@ -67,8 +67,9 @@ public class Player extends Character implements Drawable, Movable, Shootable {
 
     public Projectile shoot(double[] whereTo) {
 
+        System.out.println("Shoot countwer" + shotRateCounter);
         if (shotRateCounter++==ProjectileType.BULLET.getFireRate()) {
-
+            shotRateCounter=0;
             return ProjectileFactory.shoot(ProjectileType.BULLET, position, getVector(position, whereTo));
 
         }

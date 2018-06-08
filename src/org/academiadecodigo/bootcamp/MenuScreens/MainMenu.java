@@ -70,6 +70,8 @@ public class MainMenu {
 
         int result = 0;
 
+        instructionsSlide(mousePos);
+
         if (checkStartButton(mousePos)) {
             result = 1;
         }
@@ -77,7 +79,6 @@ public class MainMenu {
             result = 2;
         }
 
-        instructionsSlide(mousePos);
 
         return result;
 

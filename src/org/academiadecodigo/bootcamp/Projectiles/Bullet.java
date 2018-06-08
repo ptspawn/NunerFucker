@@ -28,7 +28,7 @@ public class Bullet extends Projectile implements Drawable, Movable {
         this.yPos = yPos;
         this.orientation = normalizedVector(orientation);
         this.screenDim = Canvas.getInstance().getScreenDimentions();
-        this.bullet = new Picture(xPos, yPos, "Bullets/Bullet.png");
+        this.bullet = new Picture(xPos, yPos, "Bullets/red_bullet.png");
         bullet.rotate(getRotationFromVector(orientation, bullet, Math.PI/2));
         draw();
     }

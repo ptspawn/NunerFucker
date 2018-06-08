@@ -97,13 +97,14 @@ public class Game {
                 }
 
             }
-
-            while(projectiles.iterator().hasNext()){
-
-                System.out.println("Teste");
-                 projectiles.iterator().next().move();
-
+            for (int i = 0; i < projectiles.size(); i++) {
+                System.out.println(projectiles.iterator().hasNext());
+                System.out.println("Teste" + projectiles.size());
+                projectiles.iterator().next().move();
             }
+
+
+
 
             player.move(playerDirections, input.getMousePos());
 
