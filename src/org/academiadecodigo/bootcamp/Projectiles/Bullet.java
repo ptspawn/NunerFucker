@@ -23,12 +23,12 @@ public class Bullet extends Projectile implements Drawable, Movable {
     private double[] orientation;
 
     public Bullet(double xPos, double yPos, double[] orientation) {
-        super(orientation, ProjectileType.BULLET.getDamage(), ProjectileType.BULLET.getSpeed());
+        super(orientation, ProjectileType.BULLET.getDamage(), ProjectileType.BULLET.getSpeed(),ProjectileType.BULLET.getFireRate());
         this.xPos = xPos;
         this.yPos = yPos;
         this.orientation = normalizedVector(orientation);
         this.screenDim = Canvas.getInstance().getScreenDimentions();
-        this.bullet = new Picture(xPos, yPos, "Bullets/Bullet.png");
+        this.bullet = new Picture(xPos, yPos, "Bullets/red_bullet.png");
         bullet.rotate(getRotationFromVector(orientation, bullet, Math.PI/2));
         draw();
     }
