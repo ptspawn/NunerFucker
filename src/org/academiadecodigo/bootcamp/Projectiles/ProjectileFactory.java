@@ -7,9 +7,7 @@ import org.academiadecodigo.bootcamp.Interfaces.ProjectileType;
  */
 public class ProjectileFactory {
 
-    public static Projectile getNewProjectile(ProjectileType projectileType, double[] startingPosition, double[] orientation) {
-
-        int random = (int) (Math.random() * ProjectileType.values().length);
+    public static Projectile shoot(ProjectileType projectileType, double[] startingPosition, double[] orientation) {
 
         Projectile projectile;
 

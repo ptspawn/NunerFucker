@@ -89,7 +89,7 @@ public class Game {
 
             if (input.isFiring()) {
                 //System.out.println("Is firing");
-                player.shoot(input.getMousePos());
+                projectiles.add(player.shoot(input.getMousePos()));
             }
 
             player.move(playerDirections, input.getMousePos());
