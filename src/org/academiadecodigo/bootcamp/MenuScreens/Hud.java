@@ -10,6 +10,7 @@ import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
  */
 public class Hud {
 
+    private Picture hudBackGround;
     private Picture heart;
     private Rectangle powerUp;
     private Rectangle life;
@@ -18,22 +19,21 @@ public class Hud {
 
         double[] screenDimentions = Canvas.getInstance().getScreenDimentions();
 
+        hudBackGround = new Picture(100,0, "Bgs/hubBackGround.png");
 
         life = new Rectangle(870, 15, 250, 25);
         //powerUp = new Rectangle(870, 40, 250, 25);
 
         heart = new Picture(830, 0, "Bgs/heart.png");
-        //heart.draw();
-
     }
 
     public void getHud() {
 
+        hudBackGround.draw();
         life.draw();
         life.fill();
         life.setColor(Color.RED);
         heart.draw();
-
 
       /*  powerUp.draw();
         powerUp.fill();

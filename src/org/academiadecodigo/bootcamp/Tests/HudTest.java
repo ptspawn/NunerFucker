@@ -11,6 +11,7 @@ public class HudTest {
     public static void main(String[] args) throws InterruptedException {
 
         Canvas.getInstance().repaint();
+
         InputManager inputManager = new InputManager();
         Hud hud = new Hud();
 
