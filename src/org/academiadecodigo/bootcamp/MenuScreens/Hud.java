@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.MenuScreens;
 
+import org.academiadecodigo.bootcamp.GameEngine.CheckCollision;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.graphics.Color;
 import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
@@ -10,36 +11,36 @@ import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
  */
 public class Hud {
 
-    private Picture hudBackGround;
+    private Picture cannabis;
     private Picture heart;
     private Rectangle powerUp;
     private Rectangle life;
+    private CheckCollision checkCollision;
 
     public Hud() {
 
         double[] screenDimentions = Canvas.getInstance().getScreenDimentions();
 
-        hudBackGround = new Picture(100,0, "Bgs/hubBackGround.png");
+        life = new Rectangle(30, 20, 250, 25);
+        powerUp = new Rectangle(1640, 20, 250, 25);
 
-        life = new Rectangle(870, 15, 250, 25);
-        //powerUp = new Rectangle(870, 40, 250, 25);
+        heart = new Picture(13, 5, "Bgs/heart.png");
+        cannabis = new Picture(1610, -3, "Bgs/powerup.png");
 
-        heart = new Picture(830, 0, "Bgs/heart.png");
-    }
-
-    public void getHud() {
-
-        hudBackGround.draw();
         life.draw();
         life.fill();
         life.setColor(Color.RED);
-        heart.draw();
-
-      /*  powerUp.draw();
+        powerUp.draw();
         powerUp.fill();
-        powerUp.setColor(Color.GREEN); */
+        powerUp.setColor(Color.GREEN);
+        heart.draw();
+        cannabis.draw();
+
+    }
 
 
+
+    public void lifeCheck() {
 
 
     }
