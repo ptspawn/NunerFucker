@@ -29,10 +29,9 @@ public class Player extends Character implements Drawable, Movable, Shootable {
         this.name = name;
 
         position = new double[2];
-        double[] screenDimentions = Game.SCREENDIMENTIONS;
 
         avatar = new Picture(xPos, yPos, "Characters/player.png");
-        avatar.scaleToFit(avatar.getHeight()/2,avatar.getWidth()/2);
+        //avatar.grow(-100,-100);
 
         collisionRadius = (avatar.getHeight() + avatar.getWidth()) / 4;
 
