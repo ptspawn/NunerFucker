@@ -66,7 +66,6 @@ public class MainMenu {
 
         youSuck = new Picture(1808, 20, "Bgs/middlefinger.png");
 
-        SoundType.MENU.playSound();
     }
 
     public int checkButtons(double[] mousePos) {

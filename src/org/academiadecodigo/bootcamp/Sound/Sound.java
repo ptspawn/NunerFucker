@@ -1,46 +1,46 @@
 package org.academiadecodigo.bootcamp.Sound;
 
+
+import java.applet.AudioClip;
+import java.io.*;
 import sun.audio.*;
-import  java.io.*;
 
-public class Sound {
+public class Sound implements AudioClip {
 
-    private static ContinuousAudioDataStream pLoop;
-    private static AudioStream pOnce;
+    private String filePath;
+    private AudioData audiodata;
+    private AudioDataStream audiostream;
+    private ContinuousAudioDataStream continuousaudiostream;
 
-    public static void playLoop(String fileName){
-
-        try {
-            InputStream in = new FileInputStream(fileName);
-            AudioStream as = new AudioStream(in);
-
-            AudioData data = as.getData();
-            pLoop = new ContinuousAudioDataStream(data);
-
-            AudioPlayer.player.start(pLoop);
-
-        } catch (Exception e){
-            System.out.println("Audio doesn't work " + e.getMessage());
+    public Sound(String filePath){
+        try{
+            FileInputStream fis = new FileInputStream(filePath);
+            AudioStream audioStream = new AudioStream(fis);
+            audiodata = audioStream.getData();
+            audiostream = null;
+            continuousaudiostream = null;
+        } catch (IOException e){
+            System.out.println(e.getMessage());
         }
     }
 
-    public static void playOnce(String fileName){
-        try {
-            InputStream in = new FileInputStream(fileName);
-            AudioStream pOnce = new AudioStream(in);
-
-            AudioPlayer.player.start(pOnce);
-
-        } catch (Exception e){
-            System.out.println("Audio doesn't work");
-        }
+    @Override
+    public void play() {
+        audiostream = new AudioDataStream(audiodata);
+        AudioPlayer.player.start(audiostream);
     }
 
-    public static void stopLoop(){
-
-        AudioPlayer.player.stop(pLoop);
-
-
+    @Override
+    public void loop() {
+        continuousaudiostream = new ContinuousAudioDataStream(audiodata);
+        AudioPlayer.player.start(continuousaudiostream);
     }
 
+    @Override
+    public void stop() {
+        if (audiostream != null)
+            AudioPlayer.player.stop(audiostream);
+        if (continuousaudiostream != null)
+            AudioPlayer.player.stop(continuousaudiostream);
+    }
 }
