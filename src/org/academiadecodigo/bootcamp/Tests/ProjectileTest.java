@@ -3,11 +3,7 @@ package org.academiadecodigo.bootcamp.Tests;
 import org.academiadecodigo.bootcamp.GameEngine.InputManager;
 import org.academiadecodigo.bootcamp.Projectiles.Bullet;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
-import org.academiadecodigo.bootcamp.Projectiles.ProjectileFactory;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
-import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
-
-import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.*;
 
 
 /**

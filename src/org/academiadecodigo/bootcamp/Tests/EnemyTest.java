@@ -4,7 +4,7 @@ import org.academiadecodigo.bootcamp.Characters.Enemy;
 import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.bootcamp.GameEngine.InputManager;
-import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
+import org.academiadecodigo.bootcamp.enums.CharactersType;
 import org.academiadecodigo.bootcamp.MenuScreens.Hud;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;

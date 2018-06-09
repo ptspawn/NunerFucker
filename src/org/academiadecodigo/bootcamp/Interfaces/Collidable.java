@@ -5,6 +5,6 @@ package org.academiadecodigo.bootcamp.Interfaces;
  */
 public interface Collidable {
 
-    double getCollisionRadius();
+    int getCollisionRadius();
 
 }

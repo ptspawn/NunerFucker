@@ -1,8 +1,6 @@
 package org.academiadecodigo.bootcamp.Tests;
 
 import org.academiadecodigo.bootcamp.Characters.Character;
-import org.academiadecodigo.bootcamp.Characters.CharacterFactory;
-import org.academiadecodigo.bootcamp.Characters.Enemy;
 import org.academiadecodigo.bootcamp.Characters.Player;
 
 /**
