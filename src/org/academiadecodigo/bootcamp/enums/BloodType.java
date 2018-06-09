@@ -18,7 +18,8 @@ public enum BloodType {
     BLOOD12("Characters/BloodStains/blood11.png"),
     BLOOD13("Characters/BloodStains/blood12.png"),
     BLOOD14("Characters/BloodStains/blood13.png"),
-    BLOOD15("Characters/BloodStains/blood14.png");
+    BLOOD15("Characters/BloodStains/blood14.png"),
+    BLOOD16("Characters/BloodStains/blood16.png");
 
     private String path;
 
