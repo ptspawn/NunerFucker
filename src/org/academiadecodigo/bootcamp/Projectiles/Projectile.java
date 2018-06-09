@@ -1,24 +1,26 @@
 package org.academiadecodigo.bootcamp.Projectiles;
 
+import org.academiadecodigo.bootcamp.Interfaces.Collidable;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.bootcamp.Interfaces.Movable;
 
 /**
  * Created by codecadet on 02/06/2018.
  */
-public abstract class Projectile implements Movable, Drawable{
+public abstract class Projectile implements Movable, Drawable, Collidable {
 
     private double[] vectorDirection;
     private int speed;
     private int damage;
     private int fireRate;
+    private double collisionRadius;
 
 
     public Projectile(double[] vectorDirection, int damage, int speed, int fireRate) {
         this.vectorDirection = vectorDirection;
         this.speed = speed;
         this.damage = damage;
-        this.fireRate=fireRate;
+        this.fireRate = fireRate;
     }
 
 
@@ -30,6 +32,11 @@ public abstract class Projectile implements Movable, Drawable{
     @Override
     public void preLoadGraphics() {
 
+    }
+
+    @Override
+    public int getCollisionRadius() {
+        return 0;
     }
 
     public int getSpeed() {

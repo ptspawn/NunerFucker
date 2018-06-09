@@ -21,7 +21,7 @@ public class Game {
 
     private Field field;
     private LinkedList<Enemy> enemies;
-    private List<Projectile> projectiles;
+    private LinkedList<Projectile> projectiles;
     private Player player;
     public static double[] SCREENDIMENTIONS;
     private boolean[] playerDirections;
@@ -69,8 +69,8 @@ public class Game {
     public void start() {
 
         enemies = new LinkedList<Enemy>();
-        projectiles=new LinkedList<Projectile>();
-        Projectile currentShot=null;
+        projectiles = new LinkedList<Projectile>();
+        Projectile currentShot = null;
 
         Field field = new Field("bg.jpg");
 
@@ -78,7 +78,7 @@ public class Game {
 
         player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
 
-        CharacterFactory.enemySpawnByLevel(LevelsType.VIRGIN,enemies);
+        CharacterFactory.enemySpawnByLevel(LevelsType.VIRGIN, enemies);
 
         while (!player.isDead()) {
 
@@ -86,7 +86,7 @@ public class Game {
 
             if (input.isFiring()) {
 
-                if ((currentShot=player.shoot(input.getMousePos()))!=null){
+                if ((currentShot = player.shoot(input.getMousePos())) != null) {
 
                     projectiles.add(currentShot);
 
@@ -112,20 +112,19 @@ public class Game {
 
     }
 
-    private void moveEnemies(){
+    private void moveEnemies() {
 
         Enemy enemy;
         double collisionRadius;
 
         for (int i = 0; i < enemies.size(); i++) {
 
-            enemy=enemies.get(i);
+            enemy = enemies.get(i);
             enemy.move(player.getPosition());
-            collisionRadius=player.getCollisionRadius()+enemy.getCollisionRadius();
+            collisionRadius = player.getCollisionRadius() + enemy.getCollisionRadius();
 
 
-
-            if (CheckCollision.checkCollision(player.getPosition(),enemy.getPosition(),collisionRadius)){
+            if (CheckCollision.checkCollision(player.getPosition(), enemy.getPosition(), collisionRadius)) {
 
                 player.getHit(enemy.getDamage());
             }
@@ -134,16 +133,43 @@ public class Game {
 
     }
 
-    private void moveProjectiles(){
+    private void moveProjectiles() {
+
+        Projectile projectile;
 
         for (int i = 0; i < projectiles.size(); i++) {
-            projectiles.get(i).move();
+            projectile=projectiles.get(i);
 
-
+            if (projectile.move() || projectileCollider(projectile)) {
+                projectiles.remove(i);
+            }
 
         }
 
     }
 
+    private boolean projectileCollider(Projectile projectile) {
+
+        boolean result=false;
+        int collideDistance;
+        Enemy enemy;
+
+        for (int i = 0; i < enemies.size(); i++) {
+
+            enemy=enemies.get(i);
+
+            collideDistance=enemy.getCollisionRadius()+projectile.getCollisionRadius();
+
+            if (CheckCollision.checkCollision(enemy.getPosition(),projectile.getPosition(),collideDistance)){
+
+                result=true;
+                break;
+
+            }
+
+        }
+
+        return result;
+    }
 
 }

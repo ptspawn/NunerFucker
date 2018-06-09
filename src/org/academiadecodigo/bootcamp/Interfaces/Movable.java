@@ -7,7 +7,7 @@ public interface Movable {
 
     void move(double[] vector);
 
-    void move();
+    boolean move();
 
     void move(boolean[] directions, double[] orientation);
 

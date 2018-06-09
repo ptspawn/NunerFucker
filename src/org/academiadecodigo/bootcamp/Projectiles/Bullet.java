@@ -36,20 +36,15 @@ public class Bullet extends Projectile implements Drawable, Movable,Collidable {
     }
 
     @Override
-    public double getCollisionRadius() {
-        return collisionRadius;
-    }
-
-    @Override
-    public void move() {
+    public boolean move() {
 
         if (bullet.getX() < 0 - bullet.getWidth() || bullet.getX() > screenDim[0] || bullet.getY() < 0 || bullet.getY() > screenDim[1]) {
             bullet.delete();
-            return;
+            return true;
         }
 
         bullet.translate(orientation[0] * super.getSpeed(), orientation[1] * super.getSpeed());
-
+        return false;
     }
 
     @Override

@@ -11,7 +11,7 @@ import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.*;
 /**
  * Created by codecadet on 02/06/2018.
  */
-public class Enemy extends Character implements Drawable, Movable, Shootable {
+public class Enemy extends Character {
 
     private double xPos;
     private double yPos;
@@ -71,7 +71,8 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
 
     @Override
     public void move(double[] vector) {
-        //System.out.println("Enemy: vX- " + vector[0] + " vY-"+vector[1]);
+
+        if (super.isDead()){return;}
 
         vector = normalizedVector(getVector(getPosition(), vector));
         //System.out.println("EnemyN: vX- " + vector[0] + " vY-"+vector[1]);
@@ -92,13 +93,13 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
     }
 
     @Override
-    public double getCollisionRadius() {
-        return collisionRadius;
+    public int getCollisionRadius() {
+        return (int)collisionRadius;
     }
 
     @Override
-    public void move() {
-
+    public boolean move() {
+        return false;
     }
 
     @Override

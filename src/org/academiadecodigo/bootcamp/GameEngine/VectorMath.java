@@ -18,18 +18,16 @@ public class VectorMath {
 
     public static double[] normalizedVector(double[] vector) {
 
+        double[] normalizedVector = {0, 0};
+
         double h = Math.sqrt(Math.pow(vector[0], 2) + Math.pow(vector[1], 2));
 
         if (h != 0) {
-            double[] normalizedVector = {vector[0] / h, vector[1] / h};
-            return normalizedVector;
+            normalizedVector[0] = vector[0] / h;
+            normalizedVector[1] = vector[1] / h;
         }
 
-        //if h is zero... then return [0,0]
-
-        double emptyVector[] = {0, 0};
-
-        return emptyVector;
+        return normalizedVector;
 
     }
 
@@ -57,6 +55,7 @@ public class VectorMath {
 
         return angle + buffer;
     }
+
     public static double getRotationFromVector(double[] vector, Picture picToRotate, double buffer) {
 
         double[] picCenter = new double[2];

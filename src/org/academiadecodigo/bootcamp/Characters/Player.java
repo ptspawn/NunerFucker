@@ -17,7 +17,7 @@ import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVect
 /**
  * Created by codecadet on 02/06/2018.
  */
-public class Player extends Character implements Drawable, Movable, Shootable, Collidable {
+public class Player extends Character {
 
     private String name;
     private Picture avatar;
@@ -53,8 +53,8 @@ public class Player extends Character implements Drawable, Movable, Shootable, C
     }
 
     @Override
-    public double getCollisionRadius() {
-        return collisionRadius;
+    public int getCollisionRadius() {
+        return (int)collisionRadius;
     }
 
     public void preLoadGraphics() {
@@ -74,9 +74,10 @@ public class Player extends Character implements Drawable, Movable, Shootable, C
 
     }
 
-    @Override
-    public void move() {
 
+    @Override
+    public boolean move() {
+        return false;
     }
 
     @Override
