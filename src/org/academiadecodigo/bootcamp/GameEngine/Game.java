@@ -11,7 +11,6 @@ import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 
 import java.util.LinkedList;
-import java.util.List;
 
 
 /**
@@ -124,7 +123,7 @@ public class Game {
             collisionRadius = player.getCollisionRadius() + enemy.getCollisionRadius();
 
 
-            if (CheckCollision.checkCollision(player.getPosition(), enemy.getPosition(), collisionRadius)) {
+            if (Collider.checkCollision(player.getPosition(), enemy.getPosition(), collisionRadius)) {
 
                 player.getHit(enemy.getDamage());
             }
@@ -138,9 +137,10 @@ public class Game {
         Projectile projectile;
 
         for (int i = 0; i < projectiles.size(); i++) {
-            projectile=projectiles.get(i);
+            projectile = projectiles.get(i);
 
             if (projectile.move() || projectileCollider(projectile)) {
+                projectile.delete();
                 projectiles.remove(i);
             }
 
@@ -150,19 +150,20 @@ public class Game {
 
     private boolean projectileCollider(Projectile projectile) {
 
-        boolean result=false;
+        boolean result = false;
         int collideDistance;
         Enemy enemy;
 
         for (int i = 0; i < enemies.size(); i++) {
 
-            enemy=enemies.get(i);
+            enemy = enemies.get(i);
 
-            collideDistance=enemy.getCollisionRadius()+projectile.getCollisionRadius();
+            collideDistance = enemy.getCollisionRadius() + projectile.getCollisionRadius();
 
-            if (CheckCollision.checkCollision(enemy.getPosition(),projectile.getPosition(),collideDistance)){
-
-                result=true;
+            if (Collider.checkCollision(enemy.getPosition(), projectile.getPosition(), collideDistance)) {
+                result = true;
+                System.out.println("Enemy got hit");
+                enemy.getHit(projectile.getDamage());
                 break;
 
             }

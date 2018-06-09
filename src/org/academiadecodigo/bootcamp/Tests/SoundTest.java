@@ -6,7 +6,7 @@ import org.academiadecodigo.bootcamp.Sound.SoundType;
 public class SoundTest {
 
     public static void main(String[] args){
-        SoundType.BACKGROUND.playSound();
+        SoundType.MENU.playSound();
     }
 
 }

@@ -20,7 +20,7 @@ public class Sound {
             AudioPlayer.player.start(pLoop);
 
         } catch (Exception e){
-            System.out.println("Audio doesn't work");
+            System.out.println("Audio doesn't work " + e.getMessage());
         }
     }
 
@@ -39,6 +39,7 @@ public class Sound {
     public static void stopLoop(){
 
         AudioPlayer.player.stop(pLoop);
+
 
     }
 

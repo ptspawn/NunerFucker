@@ -30,13 +30,13 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
 
         if (isDead){return;}
 
-        System.out.println(this.toString() + " has been hit for " + dmg);
-
         if ((health-=dmg)<=0){
 
             die();
 
         }
+
+        System.out.println(this.toString() + " has been hit for " + dmg);
 
     }
 
