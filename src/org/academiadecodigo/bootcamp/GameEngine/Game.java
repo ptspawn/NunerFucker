@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.Characters.Enemy;
 import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.bootcamp.GameEngine.factories.CharacterFactory;
+import org.academiadecodigo.bootcamp.MenuScreens.GameOverMenu;
 import org.academiadecodigo.bootcamp.enums.LevelsType;
 import org.academiadecodigo.bootcamp.MenuScreens.Hud;
 import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
@@ -83,10 +84,10 @@ public class Game {
 
         Hud hud = new Hud();
 
-        int liveEnemies;
+        int liveEnemies=-1;
 
 
-        while (!player.isDead()) {
+        while (!player.isDead() || liveEnemies==0) {
 
             playerDirections = input.getDirections();
 
@@ -110,18 +111,47 @@ public class Game {
 
             Canvas.getInstance().repaint();
 
-            if (liveEnemies==0){
-
-
-
-            }
-
             try {
                 Thread.sleep(20);
             } catch (InterruptedException e) {
                 System.out.println("ERROR");
 
             }
+
+
+
+            GameOverMenu gameOver = new GameOverMenu();
+
+            double[] mousePosition;
+
+            while (true) {
+
+               /* mousePosition = input.getMousePos();
+                int result = 0;
+
+                if ((result = gameOver.checkButtons(mousePosition)) != 0 && input.isFiring()) {
+
+                    switch (result) {
+
+                        case 1:
+                            start();
+                        case 2:
+                            System.exit(0);
+
+                    }
+
+                }*/
+
+                Canvas.getInstance().repaint();
+
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    System.out.println("Ups");
+                }
+
+            }
+
         }
 
     }
