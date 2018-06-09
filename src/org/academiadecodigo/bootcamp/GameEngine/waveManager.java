@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
 import org.academiadecodigo.bootcamp.Characters.Enemy;
+import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.enums.LevelsType;
 
 import java.util.LinkedList;
@@ -15,39 +16,52 @@ public class waveManager {
     private long elapsedTime;
     private LinkedList<Enemy> npcList;
     private final int MAX_PER_WAVE = 20;
-    private final int ENEMIES_BEFORE_NEXT=2;
+    private final int ENEMIES_BEFORE_NEXT = 2;
     private int waveCount;
     private int liveEnemies;
+    private Player player;
 
 
-    public waveManager(LevelsType level, LinkedList<Enemy> list) {
+    public waveManager(LevelsType level, LinkedList<Enemy> list, Player player) {
 
         currentLevel = level;
         waveStart = System.nanoTime();
         npcList = list;
         waveCount = 0;
+        this.player = player;
     }
 
     public boolean moveEnemies() {
 
         Enemy enemy;
-        liveEnemies=0;
+        liveEnemies = 0;
 
-        for (int i = 0; i < Math.min((MAX_PER_WAVE * (1 + waveCount)),npcList.size()); i++) {
+        double collisionRadius;
 
-            enemy=npcList.get(i);
+        for (int i = 0; i < Math.min((MAX_PER_WAVE * (1 + waveCount)), npcList.size()); i++) {
+
+            enemy = npcList.get(i);
 
             if (!enemy.isDead()) {
-                enemy.move();
+
+                enemy.move(player.getPosition());
                 liveEnemies++;
+
+                collisionRadius = player.getCollisionRadius() + enemy.getCollisionRadius();
+
+                if (Collider.checkCollision(player.getPosition(), enemy.getPosition(), collisionRadius)) {
+
+                    player.getHit(enemy.getDamage());
+                }
+
             }
         }
 
-        if (liveEnemies<=ENEMIES_BEFORE_NEXT){
+        if (liveEnemies <= ENEMIES_BEFORE_NEXT) {
             waveCount++;
         }
 
-        return liveEnemies>0;
+        return liveEnemies > 0;
     }
 
 

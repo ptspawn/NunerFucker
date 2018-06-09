@@ -69,6 +69,9 @@ public class Game {
 
         enemies = new LinkedList<>();
         projectiles = new LinkedList<>();
+
+
+
         Projectile currentShot = null;
 
         Field field = new Field("bg.jpg");
@@ -114,7 +117,10 @@ public class Game {
 
     private void moveEnemies() {
 
-        Enemy enemy;
+
+
+
+        /*Enemy enemy;
         double collisionRadius;
 
         for (int i = 0; i < enemies.size(); i++) {
@@ -129,7 +135,7 @@ public class Game {
                 player.getHit(enemy.getDamage());
             }
 
-        }
+        }*/
 
     }
 
