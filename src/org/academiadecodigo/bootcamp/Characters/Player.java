@@ -3,12 +3,15 @@ package org.academiadecodigo.bootcamp.Characters;
 
 import org.academiadecodigo.bootcamp.GameEngine.Game;
 import org.academiadecodigo.bootcamp.Interfaces.*;
+import org.academiadecodigo.bootcamp.Projectiles.Projectile;
+import org.academiadecodigo.bootcamp.Projectiles.ProjectileFactory;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 
 import java.awt.image.BufferedImage;
 
 import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getRotationFromMousePos;
+import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getVector;
 import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVector;
 
 /**
@@ -19,8 +22,9 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     private String name;
     private boolean isDead;
     private Picture avatar;
-    private BufferedImage playerAv;
     private double collisionRadius;
+
+    private int shotRateCounter=0;
 
     private double[] position;
 
@@ -30,7 +34,7 @@ public class Player extends Character implements Drawable, Movable, Shootable {
 
         position = new double[2];
 
-        avatar = new Picture(xPos, yPos, "Characters/player.png");
+        avatar = new Picture(xPos, yPos, "avatar/nun_char.png");
         //avatar.grow(-100,-100);
 
         collisionRadius = (avatar.getHeight() + avatar.getWidth()) / 4;
@@ -38,7 +42,6 @@ public class Player extends Character implements Drawable, Movable, Shootable {
         draw();
 
     }
-
 
     public void die() {
 
@@ -62,10 +65,16 @@ public class Player extends Character implements Drawable, Movable, Shootable {
 
     }
 
-    public void shoot(double[] whereTo) {
+    public Projectile shoot(double[] whereTo) {
 
+        System.out.println("Shoot countwer" + shotRateCounter);
+        if (shotRateCounter++==ProjectileType.BULLET.getFireRate()) {
+            shotRateCounter=0;
+            return ProjectileFactory.shoot(ProjectileType.BULLET, position, getVector(position, whereTo));
 
-        System.out.println("i'm Shooting");
+        }
+
+        return null;
 
     }
 

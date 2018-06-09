@@ -33,7 +33,7 @@ public class CharacterFactory {
         double[] spawnPos = new double[2];
         double[] screen = Game.SCREENDIMENTIONS;
 
-        side = (int) Math.random() * 4;
+        side = (int) (Math.random() * 4);
         random = Math.random();
         //spawnPos = new double[]{0, screen[0] * random};
 

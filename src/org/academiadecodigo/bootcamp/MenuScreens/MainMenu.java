@@ -41,7 +41,7 @@ public class MainMenu {
 
         menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2_1920.jpg");
 
-        menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
+//        menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
         menuBackGround.draw();
 
         startButton = new Picture(1100, 410, "Bgs/video-play.png");
@@ -70,12 +70,15 @@ public class MainMenu {
 
         int result = 0;
 
-        if(checkStartButton(mousePos)){
-            result=1;
+        instructionsSlide(mousePos);
+
+        if (checkStartButton(mousePos)) {
+            result = 1;
         }
-        if(quiting(mousePos)){
-            result=2;
+        if (quiting(mousePos)) {
+            result = 2;
         }
+
 
         return result;
 

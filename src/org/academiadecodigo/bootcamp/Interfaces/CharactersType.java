@@ -18,13 +18,13 @@ public enum CharactersType {
 
     private int health;
     private int speed;
-    private URL path;
+    private String path;
     private double collisionRadius;
 
     CharactersType(int health, int speed,String path) {
         this.health = health;
         this.speed = speed;
-        this.path=this.getClass().getResource(path);
+        this.path=path;
 
     }
 
@@ -36,7 +36,7 @@ public enum CharactersType {
         return speed;
     }
 
-    public URL getPath() {
+    public String getPath() {
         return path;
     }
 }

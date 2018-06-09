@@ -87,6 +87,18 @@ public class InputManager implements KeyboardHandler,MouseHandler {
         keyboard.addEventListener(southUp);
         keyboard.addEventListener(southDown);
 
+        KeyboardEvent spaceDown = new KeyboardEvent();
+        KeyboardEvent spaceUp = new KeyboardEvent();
+
+        spaceDown.setKey(KeyboardEvent.KEY_SPACE);
+        spaceUp.setKey(KeyboardEvent.KEY_SPACE);
+
+        spaceUp.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        spaceDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        keyboard.addEventListener(spaceUp);
+        keyboard.addEventListener(spaceDown);
+
         //Same for mouse events
         Mouse mouse = new Mouse(this);
 
@@ -115,6 +127,9 @@ public class InputManager implements KeyboardHandler,MouseHandler {
             case KeyboardEvent.KEY_S:
                 goingDown =true;
                 break;
+            case KeyboardEvent.KEY_SPACE:
+                isFiring =true;
+                break;
         }
     }
 
@@ -133,6 +148,9 @@ public class InputManager implements KeyboardHandler,MouseHandler {
             case KeyboardEvent.KEY_S:
                 goingDown =false;
                 break;
+            case KeyboardEvent.KEY_SPACE:
+                isFiring =false;
+                break;
         }
     }
 
@@ -143,7 +161,6 @@ public class InputManager implements KeyboardHandler,MouseHandler {
     public boolean[] getDirections(){
 
         boolean input[]= {goingUp,goingRight, goingDown,goingLeft};
-        //System.out.println(goingDown + " " + goingUp + " " + goingLeft + " " + goingRight);
         return input;
 
     }

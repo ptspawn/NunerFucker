@@ -23,7 +23,7 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
         this.xPos = statingPosition[0];
         this.yPos = statingPosition[1];
         this.type = type;
-        this.enemy = new Picture(xPos, yPos, "Characters/Enemies/purpleEnemy.png");
+        this.enemy = new Picture(xPos, yPos, type.getPath());
         draw();
 
 

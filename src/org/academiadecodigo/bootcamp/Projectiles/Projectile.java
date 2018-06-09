@@ -11,12 +11,14 @@ public abstract class Projectile implements Movable, Drawable{
     private double[] vectorDirection;
     private int speed;
     private int damage;
+    private int fireRate;
 
 
-    public Projectile(double[] vectorDirection, int damage, int speed) {
+    public Projectile(double[] vectorDirection, int damage, int speed, int fireRate) {
         this.vectorDirection = vectorDirection;
         this.speed = speed;
         this.damage = damage;
+        this.fireRate=fireRate;
     }
 
 
@@ -36,5 +38,9 @@ public abstract class Projectile implements Movable, Drawable{
 
     public int getDamage() {
         return damage;
+    }
+
+    public int getFireRate() {
+        return fireRate;
     }
 }

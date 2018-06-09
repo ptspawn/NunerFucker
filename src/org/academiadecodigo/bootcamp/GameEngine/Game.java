@@ -6,6 +6,7 @@ import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
 import org.academiadecodigo.bootcamp.Interfaces.LevelsType;
+import org.academiadecodigo.bootcamp.MenuScreens.Hud;
 import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
@@ -20,7 +21,8 @@ import java.util.List;
 public class Game {
 
     private Field field;
-    private List projectiles;
+    private LinkedList<Enemy> enemies;
+    private List<Projectile> projectiles;
     private Player player;
     public static double[] SCREENDIMENTIONS;
     private boolean[] playerDirections;
@@ -67,8 +69,9 @@ public class Game {
 
     public void start() {
 
-        LinkedList enemies = new LinkedList<Enemy>();
+        enemies = new LinkedList<Enemy>();
         projectiles=new LinkedList<Projectile>();
+        Projectile currentShot=null;
 
         Field field = new Field("bg.jpg");
 
@@ -76,19 +79,25 @@ public class Game {
 
         player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
 
-        //CharacterFactory.enemySpawnByLevel(LevelsType.VIRGIN,enemies);
-
-
-
+        CharacterFactory.enemySpawnByLevel(LevelsType.VIRGIN,enemies);
 
         while (!player.isDead()) {
 
             playerDirections = input.getDirections();
 
             if (input.isFiring()) {
-                //System.out.println("Is firing");
-                player.shoot(input.getMousePos());
+
+                if ((currentShot=player.shoot(input.getMousePos()))!=null){
+
+                    projectiles.add(currentShot);
+
+                }
+
             }
+
+            moveEnemies();
+
+            moveProjectiles();
 
             player.move(playerDirections, input.getMousePos());
 
@@ -100,6 +109,22 @@ public class Game {
                 System.out.println("ERROR");
 
             }
+        }
+
+    }
+
+    private void moveEnemies(){
+
+        for (int i = 0; i < enemies.size(); i++) {
+            enemies.get(i).move(player.getPosition());
+        }
+
+    }
+
+    private void moveProjectiles(){
+
+        for (int i = 0; i < projectiles.size(); i++) {
+            projectiles.get(i).move();
         }
 
     }
