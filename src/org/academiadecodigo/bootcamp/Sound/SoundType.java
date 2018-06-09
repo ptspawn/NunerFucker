@@ -1,52 +1,59 @@
 package org.academiadecodigo.bootcamp.Sound;
 
 public enum SoundType {
-    BACKGROUND,
-    BACKGROUND2,
-    BACKGROUND3,
-    BACKGROUND4,
-    BOSS,
-    ELEVATOR,
-    GAMEOVER,
-    MENU,
-    ROCKET,
-    GUN,
-    PUNCH;
+    BACKGROUND(new Sound("Resources/Sounds/background.wav")),
+    BACKGROUND2(new Sound("Resources/Sounds/background2.wav")),
+    BACKGROUND3(new Sound("Resources/Sounds/background3.wav")),
+    BACKGROUND4(new Sound("Resources/Sounds/background4.wav")),
+    BOSS(new Sound("Resources/Sounds/boss.wav")),
+    GAMEOVER(new Sound("Resources/Sounds/gameOver.wav")),
+    MENU(new Sound("Resources/Sounds/menu.wav")),
+    ROCKET(new Sound("Resources/Sounds/rocket.wav")),
+    GUN(new Sound("Resources/Sounds/gun.wav")),
+    PUNCH(new Sound("Resources/Sounds/punch.wav"));
+
+    private final Sound sound;
+
+    SoundType(Sound sound){
+        this.sound = sound;
+    }
 
     public void playSound(){
         switch (this){
             case BACKGROUND:
-                Sound.playLoop("Resources/Sounds/background.wav");
+                sound.loop();
                 break;
             case BACKGROUND2:
-                Sound.playLoop("Resources/Sounds/background2.wav");
+                sound.loop();
                 break;
             case BACKGROUND3:
-                Sound.playLoop("Resources/Sounds/background3.wav");
+                sound.loop();
                 break;
             case BACKGROUND4:
-                Sound.playLoop("Resources/Sounds/background4.wav");
+                sound.loop();
                 break;
             case BOSS:
-                Sound.playLoop("Resources/Sounds/boss.wav");
-                break;
-            case ELEVATOR:
-                Sound.playLoop("Resources/Sounds/elevator.wav");
+                sound.loop();
                 break;
             case GAMEOVER:
-                Sound.playLoop("Resources/Sounds/gameOver.wav");
+                sound.play();
                 break;
             case MENU:
-                Sound.playOnce("Resources/Sounds/menu.wav");
+                sound.loop();
                 break;
             case ROCKET:
-                Sound.playOnce("Resources/Sounds/rocket.wav");
+                sound.play();
+                break;
             case GUN:
-                Sound.playOnce("Resources/Sounds/gun.wav");
+                sound.play();
                 break;
             case PUNCH:
-                Sound.playOnce("Resources/Sounds/punch.wav");
+                sound.play();
                 break;
         }
+    }
+
+    public void stopSound(){
+        sound.stop();
     }
 }
