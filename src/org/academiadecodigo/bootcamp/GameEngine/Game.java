@@ -115,8 +115,15 @@ public class Game {
 
     private void moveEnemies(){
 
+        Enemy enemy;
+
         for (int i = 0; i < enemies.size(); i++) {
-            enemies.get(i).move(player.getPosition());
+
+            enemy=enemies.get(i);
+            enemy.move(player.getPosition());
+
+            CheckCollision.checkCollision(player.getPosition(),enemy.getPosition(),player.getCollisionRadius()+enemy.get);
+
         }
 
     }

@@ -39,15 +39,10 @@ public class Bullet extends Projectile implements Drawable, Movable {
 
         if (bullet.getX() < 0 - bullet.getWidth() || bullet.getX() > screenDim[0] || bullet.getY() < 0 || bullet.getY() > screenDim[1]) {
             bullet.delete();
-            System.out.println("stop at " + bullet.getX() + " " + bullet.getY());
             return;
         }
 
-        System.out.println(orientation[0] + "/" + orientation[1]);
-
         bullet.translate(orientation[0] * super.getSpeed(), orientation[1] * super.getSpeed());
-
-       // enemy.translate(vector[0] * super.getSpeed(), vector[1] * super.getSpeed());
 
     }
 

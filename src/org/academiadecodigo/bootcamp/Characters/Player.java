@@ -1,14 +1,12 @@
 package org.academiadecodigo.bootcamp.Characters;
 
 
-import org.academiadecodigo.bootcamp.GameEngine.Game;
 import org.academiadecodigo.bootcamp.Interfaces.*;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.bootcamp.Projectiles.ProjectileFactory;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 
-import java.awt.image.BufferedImage;
 
 import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getRotationFromMousePos;
 import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.getVector;
@@ -17,7 +15,7 @@ import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVect
 /**
  * Created by codecadet on 02/06/2018.
  */
-public class Player extends Character implements Drawable, Movable, Shootable {
+public class Player extends Character implements Drawable, Movable, Shootable, Collidable {
 
     private String name;
     private boolean isDead;
@@ -116,12 +114,14 @@ public class Player extends Character implements Drawable, Movable, Shootable {
     }
 
     public void getHit(int dmg) {
+
+
+
     }
 
     public void updatePosition() {
         position[0] = avatar.getWidth()/2 + avatar.getX();
         position[1] = avatar.getHeight()/2 + avatar.getY();
-        System.out.println("Player: x"+ position[0]+ " y" + position[1]);
     }
 
     public double[] getPosition() {

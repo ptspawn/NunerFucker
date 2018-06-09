@@ -72,6 +72,11 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
     }
 
     @Override
+    public double getCollisionRadius() {
+        return Math.min(enemy.getHeight(),enemy.getWidth())/2.1;
+    }
+
+    @Override
     public void move() {
 
     }

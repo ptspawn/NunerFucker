@@ -19,14 +19,30 @@ public class CheckCollision {
         double[] centerDestination = getCenter(destination);
         double[] centerOrigin = getCenter(origin);
 
-        return Math.sqrt((Math.pow(centerDestination[0] - centerOrigin[0], 2) + Math.pow(centerDestination[1] - centerOrigin[1], 2)));
+        return Math.sqrt((Math.pow(centerDestination[0] - centerOrigin[0], 2)
+                + Math.pow(centerDestination[1] - centerOrigin[1], 2)));
+    }
+
+    private static double getDistance(double[] origin, double[] destination){
+
+        return Math.sqrt((Math.pow(destination[0] - origin[0], 2)
+                + Math.pow(destination[1] - origin[1], 2)));
     }
 
     // Check projectile vs Enemy
 
     public static boolean checkCollision(Picture origin, Picture destination, double hitDistance) {
 
-        // hitDistance = origin.getHeight() / 2 + destination.getHeight() / 2;
+
+        if (getDistance(destination, origin) < hitDistance) {
+            return true;
+        }
+        return false;
+
+    }
+
+    public static boolean checkCollision(double[] origin, double[] destination, double hitDistance) {
+
 
         if (getDistance(destination, origin) < hitDistance) {
             return true;

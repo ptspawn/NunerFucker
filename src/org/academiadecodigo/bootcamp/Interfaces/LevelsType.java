@@ -5,11 +5,11 @@ package org.academiadecodigo.bootcamp.Interfaces;
  */
 public enum LevelsType {
 
-    VIRGIN(30, 10, 10, 10,10, 10, 1),
-    EXPERIENT(40,15, 15, 15,15,15 , 1),
-    USED (50,20, 20, 20,20,20, 1 ),
-    XXX (60, 25, 25, 25,25,25, 1),
-    SLUT (80, 30, 30, 30,30,30, 1);
+    VIRGIN(30, 50, 50, 50, 50, 50, 1),
+    EXPERIENT(40, 15, 15, 15, 15, 15, 1),
+    USED(50, 20, 20, 20, 20, 20, 1),
+    XXX(60, 25, 25, 25, 25, 25, 1),
+    SLUT(80, 30, 30, 30, 30, 30, 1);
 
 
     private int enemyQty;
@@ -21,16 +21,17 @@ public enum LevelsType {
     private int zombieBossQty;
 
 
-    public int[] getEnemyQuantity(){
+    public int[] getEnemyQuantity() {
 
-        int[] result={enemyQty,bugsQty,spiderQty,humanQty,spaceshipQty,zombieQty,zombieBossQty};
+        int[] result = {enemyQty, bugsQty, spiderQty, humanQty, spaceshipQty, zombieQty, zombieBossQty};
         return result;
 
     }
 
-    public int getEnemyTotal(){
-        return enemyQty+bugsQty+spiderQty+humanQty+spaceshipQty+zombieQty+zombieBossQty;
+    public int getEnemyTotal() {
+        return enemyQty + bugsQty + spiderQty + humanQty + spaceshipQty + zombieQty + zombieBossQty;
     }
+
     //purple Enemy
     public int getEnemyQty() {
         return enemyQty;
@@ -40,35 +41,40 @@ public enum LevelsType {
     public int getBugsQty() {
         return bugsQty;
     }
+
     //Spider
     public int getSpiderQty() {
         return spiderQty;
     }
+
     public int getHumanQty() {
         return humanQty;
     }
+
     public int getSpaceshipQty() {
         return spaceshipQty;
     }
+
     //Zombie
     public int getZombieQty() {
         return zombieQty;
     }
+
     //ZombieBoss
     public int getZombieBossQty() {
         return zombieBossQty;
     }
 
     // Constructor
-    LevelsType(int enemyQty, int bugsQty, int spiderQty, int humanQty, int spaceshipQty , int zombieQty, int zombieBossQty) {
+    LevelsType(int enemyQty, int bugsQty, int spiderQty, int humanQty, int spaceshipQty, int zombieQty, int zombieBossQty) {
 
-        this.enemyQty=enemyQty;
-        this.bugsQty=bugsQty;
-        this.spiderQty=spiderQty;
-        this.humanQty=humanQty;
-        this.spaceshipQty=spaceshipQty;
-        this.zombieQty=zombieQty;
-        this.zombieBossQty=zombieBossQty;
+        this.enemyQty = enemyQty;
+        this.bugsQty = bugsQty;
+        this.spiderQty = spiderQty;
+        this.humanQty = humanQty;
+        this.spaceshipQty = spaceshipQty;
+        this.zombieQty = zombieQty;
+        this.zombieBossQty = zombieBossQty;
     }
 
 }
