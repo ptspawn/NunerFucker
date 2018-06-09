@@ -28,7 +28,7 @@ public class Player extends Character {
     private double[] position;
 
     public Player(String name, double xPos, double yPos) {
-        super(CharactersType.PLAYER.getHealth(), CharactersType.PLAYER.getSpeed());
+        super(CharactersType.PLAYER.getHealth(), CharactersType.PLAYER.getSpeed(),CharactersType.PLAYER);
         this.name = name;
 
         position = new double[2];

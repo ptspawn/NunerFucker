@@ -23,7 +23,7 @@ public class Enemy extends Character {
     private int hitCounter;
 
     public Enemy(double[] statingPosition, CharactersType type) {
-        super(type.getHealth(), type.getSpeed());
+        super(type.getHealth(), type.getSpeed(),type);
         this.xPos = statingPosition[0];
         this.yPos = statingPosition[1];
         this.type = type;
