@@ -3,7 +3,7 @@ package org.academiadecodigo.bootcamp.Characters;
 import org.academiadecodigo.bootcamp.Interfaces.*;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.bootcamp.Interfaces.Movable;
-import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
+import org.academiadecodigo.bootcamp.enums.CharactersType;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.*;
@@ -17,6 +17,10 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
     private double yPos;
     private Picture enemy;
     private CharactersType type;
+    private double collisionRadius;
+    private double damage;
+
+    private int hitCounter;
 
     public Enemy(double[] statingPosition, CharactersType type) {
         super(type.getHealth(), type.getSpeed());
@@ -24,6 +28,11 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
         this.yPos = statingPosition[1];
         this.type = type;
         this.enemy = new Picture(xPos, yPos, type.getPath());
+
+        damage=type.getDamage();
+        hitCounter=type.getHitRate();
+
+        collisionRadius=Math.min(enemy.getHeight(),enemy.getWidth())/2.1;
         draw();
 
 
@@ -38,6 +47,17 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
         return yPos;
     }
 
+    public int getDamage() {
+
+        int damage=0;
+
+        if (hitCounter++==type.getHitRate()){
+            hitCounter=0;
+            damage=(int)this.damage;
+        }
+
+        return damage;
+    }
 
     @Override
     public void getHit(int damage) {
@@ -73,7 +93,7 @@ public class Enemy extends Character implements Drawable, Movable, Shootable {
 
     @Override
     public double getCollisionRadius() {
-        return Math.min(enemy.getHeight(),enemy.getWidth())/2.1;
+        return collisionRadius;
     }
 
     @Override

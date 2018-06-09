@@ -1,8 +1,11 @@
-package org.academiadecodigo.bootcamp.Characters;
+package org.academiadecodigo.bootcamp.GameEngine.factories;
 
+import org.academiadecodigo.bootcamp.Characters.Character;
+import org.academiadecodigo.bootcamp.Characters.Enemy;
+import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.GameEngine.Game;
-import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
-import org.academiadecodigo.bootcamp.Interfaces.LevelsType;
+import org.academiadecodigo.bootcamp.enums.CharactersType;
+import org.academiadecodigo.bootcamp.enums.LevelsType;
 
 import java.util.LinkedList;
 

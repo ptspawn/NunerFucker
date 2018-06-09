@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.Interfaces;
+package org.academiadecodigo.bootcamp.enums;
 
 /**
  * Created by codecadet on 02/06/2018.

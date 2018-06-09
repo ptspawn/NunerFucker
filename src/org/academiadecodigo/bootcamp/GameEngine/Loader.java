@@ -1,12 +1,8 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
-import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
-import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
+import org.academiadecodigo.bootcamp.enums.CharactersType;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Map;
 
 /**

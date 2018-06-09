@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.Characters;
 
 import org.academiadecodigo.bootcamp.Interfaces.*;
+import org.academiadecodigo.bootcamp.enums.DirectionType;
 
 /**
  * Created by codecadet on 02/06/2018.
@@ -10,6 +11,7 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
     private DirectionType directionType;
     private int health;
     private int speed;
+    private boolean isDead=false;
 
 
     public Character(int health, int speed) {
@@ -26,6 +28,8 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
 
     public void getHit(int dmg){
 
+        if (isDead){return;}
+
         System.out.println(this.toString() + " has been hit for " + dmg);
 
         if ((health-=dmg)<=0){
@@ -38,9 +42,13 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
 
     public void die(){
 
-        System.out.println(this.toString() + " is dead");
+        isDead=true;
     }
 
+    @Override
+    public boolean isDead() {
+        return isDead;
+    }
 
     public void move(double[] vector){
 

@@ -1,6 +1,8 @@
-package org.academiadecodigo.bootcamp.Projectiles;
+package org.academiadecodigo.bootcamp.GameEngine.factories;
 
-import org.academiadecodigo.bootcamp.Interfaces.ProjectileType;
+import org.academiadecodigo.bootcamp.Projectiles.Bullet;
+import org.academiadecodigo.bootcamp.Projectiles.Projectile;
+import org.academiadecodigo.bootcamp.enums.ProjectileType;
 
 /**
  * Created by codecadet on 02/06/2018.

@@ -9,4 +9,6 @@ public interface Shootable {
 
     void die();
 
+    boolean isDead();
+
 }

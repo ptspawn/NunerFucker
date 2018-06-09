@@ -1,11 +1,10 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
-import org.academiadecodigo.bootcamp.Characters.CharacterFactory;
 import org.academiadecodigo.bootcamp.Characters.Enemy;
 import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.Field.Field;
-import org.academiadecodigo.bootcamp.Interfaces.CharactersType;
-import org.academiadecodigo.bootcamp.Interfaces.LevelsType;
+import org.academiadecodigo.bootcamp.GameEngine.factories.CharacterFactory;
+import org.academiadecodigo.bootcamp.enums.LevelsType;
 import org.academiadecodigo.bootcamp.MenuScreens.Hud;
 import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
@@ -95,9 +94,9 @@ public class Game {
 
             }
 
-            moveEnemies();
-
             moveProjectiles();
+
+            moveEnemies();
 
             player.move(playerDirections, input.getMousePos());
 
@@ -116,13 +115,20 @@ public class Game {
     private void moveEnemies(){
 
         Enemy enemy;
+        double collisionRadius;
 
         for (int i = 0; i < enemies.size(); i++) {
 
             enemy=enemies.get(i);
             enemy.move(player.getPosition());
+            collisionRadius=player.getCollisionRadius()+enemy.getCollisionRadius();
 
-            CheckCollision.checkCollision(player.getPosition(),enemy.getPosition(),player.getCollisionRadius()+enemy.get);
+
+
+            if (CheckCollision.checkCollision(player.getPosition(),enemy.getPosition(),collisionRadius)){
+
+                player.getHit(enemy.getDamage());
+            }
 
         }
 
@@ -132,6 +138,9 @@ public class Game {
 
         for (int i = 0; i < projectiles.size(); i++) {
             projectiles.get(i).move();
+
+
+
         }
 
     }
