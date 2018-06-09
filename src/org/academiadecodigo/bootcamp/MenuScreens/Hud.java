@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.MenuScreens;
 
 import org.academiadecodigo.bootcamp.GameEngine.Collider;
+import org.academiadecodigo.bootcamp.GameEngine.Game;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.graphics.Color;
 import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
@@ -15,14 +16,16 @@ public class Hud {
     private Picture heart;
     private Rectangle powerUp;
     private Rectangle life;
-    private Collider collider;
+
+    private int lifeMax=250;
+    private int weedMax=250;
 
     public Hud() {
 
-        double[] screenDimentions = Canvas.getInstance().getScreenDimentions();
+        double[] screenDimentions = Game.SCREENDIMENTIONS;
 
-        life = new Rectangle(30, 20, 250, 25);
-        powerUp = new Rectangle(1640, 20, 250, 25);
+        life = new Rectangle(30, 20, 1, 25);
+        powerUp = new Rectangle(1640, 20, 1, 25);
 
         heart = new Picture(13, 5, "Bgs/heart.png");
         cannabis = new Picture(1610, -3, "Bgs/powerup.png");
@@ -38,8 +41,11 @@ public class Hud {
 
     }
 
-    public void lifeCheck() {
+    public void setLife(int life) {
 
+        int currentWidth=this.life.getWidth();
+
+        this.life.grow(life/100*lifeMax,0);
 
     }
 }

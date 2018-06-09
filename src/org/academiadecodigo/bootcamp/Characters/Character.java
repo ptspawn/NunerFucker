@@ -54,14 +54,14 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
 
     public void die() {
 
-        String path="";
+        String path;
 
         switch (type) {
-            case PLAYER: path="avatar/nun_dead_blood";
+            case PLAYER: path= "avatar/nun_dead_blood.png";
             break;
             case ZOMBIEBOSS: path=BloodType.values()[BloodType.values().length-1].getPath();
             break;
-            default:path:BloodType.values()[(int) (Math.random() * BloodType.values().length)].getPath();
+            default:path=BloodType.values()[(int) (Math.random() * (BloodType.values().length-1))].getPath();
             break;
         }
 

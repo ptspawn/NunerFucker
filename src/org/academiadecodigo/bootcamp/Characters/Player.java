@@ -35,6 +35,8 @@ public class Player extends Character {
 
         avatar = new Picture(xPos, yPos, "avatar/nun_char.png");
 
+        super.setAvatar(avatar);
+
         collisionRadius = Math.min(avatar.getHeight(), avatar.getWidth()) / 2.1;
 
         draw();

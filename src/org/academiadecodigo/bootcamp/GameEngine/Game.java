@@ -67,17 +67,18 @@ public class Game {
 
     public void start() {
 
-        enemies = new LinkedList<Enemy>();
-        projectiles = new LinkedList<Projectile>();
+        enemies = new LinkedList<>();
+        projectiles = new LinkedList<>();
         Projectile currentShot = null;
 
         Field field = new Field("bg.jpg");
 
-        Hud hud = new Hud();
-
         CharacterFactory.enemySpawnByLevel(LevelsType.VIRGIN, enemies);
 
         player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
+
+        Hud hud = new Hud();
+
 
         while (!player.isDead()) {
 
