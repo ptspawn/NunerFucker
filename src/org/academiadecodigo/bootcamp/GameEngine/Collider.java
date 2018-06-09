@@ -5,7 +5,7 @@ import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 /**
  * Created by codecadet on 04/06/2018.
  */
-public class CheckCollision {
+public class Collider {
 
     private static double[] getCenter(Picture r) {
 
@@ -43,8 +43,7 @@ public class CheckCollision {
 
     public static boolean checkCollision(double[] origin, double[] destination, double hitDistance) {
 
-
-        if (getDistance(destination, origin) < hitDistance) {
+        if (getDistance(destination, origin) <= hitDistance) {
             return true;
         }
         return false;

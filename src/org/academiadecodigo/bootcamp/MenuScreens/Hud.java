@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.MenuScreens;
 
-import org.academiadecodigo.bootcamp.GameEngine.CheckCollision;
+import org.academiadecodigo.bootcamp.GameEngine.Collider;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.graphics.Color;
 import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
@@ -15,7 +15,7 @@ public class Hud {
     private Picture heart;
     private Rectangle powerUp;
     private Rectangle life;
-    private CheckCollision checkCollision;
+    private Collider collider;
 
     public Hud() {
 

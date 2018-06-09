@@ -14,7 +14,7 @@ import static org.academiadecodigo.bootcamp.GameEngine.VectorMath.normalizedVect
 /**
  * Created by codecadet on 02/06/2018.
  */
-public class Bullet extends Projectile implements Drawable, Movable,Collidable {
+public class Bullet extends Projectile implements Drawable, Movable, Collidable {
 
     private double xPos;
     private double yPos;
@@ -24,14 +24,17 @@ public class Bullet extends Projectile implements Drawable, Movable,Collidable {
     private double collisionRadius;
 
     public Bullet(double xPos, double yPos, double[] orientation) {
-        super(orientation, ProjectileType.BULLET.getDamage(), ProjectileType.BULLET.getSpeed(),ProjectileType.BULLET.getFireRate());
+        super(orientation, ProjectileType.BULLET.getDamage(), ProjectileType.BULLET.getSpeed(), ProjectileType.BULLET.getFireRate());
         this.xPos = xPos;
         this.yPos = yPos;
         this.orientation = normalizedVector(orientation);
         this.screenDim = Canvas.getInstance().getScreenDimentions();
         this.bullet = new Picture(xPos, yPos, "Bullets/red_bullet.png");
-        this.collisionRadius=Math.min(bullet.getHeight(),bullet.getWidth())/2.1;
-        bullet.rotate(getRotationFromVector(orientation, bullet, Math.PI/2));
+
+        super.setPicture(bullet);
+
+        this.collisionRadius = Math.min(bullet.getHeight(), bullet.getWidth()) / 2.1;
+        bullet.rotate(getRotationFromVector(orientation, bullet, Math.PI / 2));
         draw();
     }
 
@@ -44,6 +47,7 @@ public class Bullet extends Projectile implements Drawable, Movable,Collidable {
         }
 
         bullet.translate(orientation[0] * super.getSpeed(), orientation[1] * super.getSpeed());
+        updatePosition();
         return false;
     }
 
@@ -59,18 +63,20 @@ public class Bullet extends Projectile implements Drawable, Movable,Collidable {
 
     @Override
     public double[] getPosition() {
-        double[] pos ={xPos, yPos};
+        double[] pos = {xPos, yPos};
         return pos;
     }
 
     @Override
     public void updatePosition() {
-        xPos= bullet.getWidth()/2 + bullet.getX();
-        yPos = bullet.getHeight()/2 + bullet.getY();
-        System.out.println("Player: x"+ xPos+ " y" + yPos);
+        xPos = bullet.getWidth() / 2 + bullet.getX();
+        yPos = bullet.getHeight() / 2 + bullet.getY();
 
     }
 
+    public void delete(){
+        bullet.delete();
+    }
     @Override
     public void draw() {
         bullet.draw();

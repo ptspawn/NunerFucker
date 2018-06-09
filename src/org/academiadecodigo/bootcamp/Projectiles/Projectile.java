@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.Projectiles;
 import org.academiadecodigo.bootcamp.Interfaces.Collidable;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.bootcamp.Interfaces.Movable;
+import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 02/06/2018.
@@ -14,6 +15,7 @@ public abstract class Projectile implements Movable, Drawable, Collidable {
     private int damage;
     private int fireRate;
     private double collisionRadius;
+    private Picture projectile;
 
 
     public Projectile(double[] vectorDirection, int damage, int speed, int fireRate) {
@@ -23,6 +25,12 @@ public abstract class Projectile implements Movable, Drawable, Collidable {
         this.fireRate = fireRate;
     }
 
+    public void setPicture(Picture projectile){
+        this.projectile=projectile;
+    }
+    public void delete(){
+        projectile.delete();
+    }
 
     @Override
     public void setDirection(double[] vector) {

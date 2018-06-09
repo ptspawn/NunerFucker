@@ -37,10 +37,10 @@ public enum SoundType {
                 Sound.playLoop("Resources/Sounds/gameOver.wav");
                 break;
             case MENU:
-                Sound.playLoop("Resources/Sounds/menu.wav");
+                Sound.playOnce("Resources/Sounds/menu.wav");
                 break;
             case ROCKET:
-                Sound.playLoop("Resources/Sounds/rocket.wav");
+                Sound.playOnce("Resources/Sounds/rocket.wav");
             case GUN:
                 Sound.playOnce("Resources/Sounds/gun.wav");
                 break;
