@@ -21,7 +21,7 @@ public class Field implements Drawable{
 
         double[] screenDimentions = Game.SCREENDIMENTIONS;
         //System.out.println(screenDimentions[0] + " " + screenDimentions[1]);
-        bg=new Picture(0,0,"Bgs/bg.jpg");
+        bg=new Picture(0,0,"Bgs/bg_fullhd.jpg");
         bg.scaleToFit(screenDimentions[0],screenDimentions[1]);
         bg.translate((screenDimentions[0]-bg.getWidth())/2,(screenDimentions[1]-bg.getHeight())/2);
         draw();

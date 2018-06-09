@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.Characters;
 
 import org.academiadecodigo.bootcamp.Interfaces.*;
 import org.academiadecodigo.bootcamp.enums.DirectionType;
+import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 02/06/2018.
@@ -12,6 +13,7 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
     private int health;
     private int speed;
     private boolean isDead=false;
+    private Picture avatar;
 
 
     public Character(int health, int speed) {
@@ -24,6 +26,10 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
 
         this.directionType = directionType;
 
+    }
+
+    public void setAvatar(Picture avatar) {
+        this.avatar = avatar;
     }
 
     public void getHit(int dmg){
@@ -41,6 +47,8 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
     }
 
     public void die(){
+
+        avatar.load();
 
         isDead=true;
     }

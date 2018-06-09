@@ -29,6 +29,8 @@ public class Enemy extends Character {
         this.type = type;
         this.enemy = new Picture(xPos, yPos, type.getPath());
 
+        super.setAvatar(enemy);
+
         damage=type.getDamage();
         hitCounter=type.getHitRate();
 
@@ -48,6 +50,8 @@ public class Enemy extends Character {
     }
 
     public int getDamage() {
+
+        if (super.isDead()){return 0;}
 
         int damage=0;
 
@@ -81,6 +85,8 @@ public class Enemy extends Character {
         xPos = enemy.getX() + enemy.getWidth() / 2;
         yPos = enemy.getY() + enemy.getHeight() / 2;
     }
+
+
 
     @Override
     public int getCollisionRadius() {

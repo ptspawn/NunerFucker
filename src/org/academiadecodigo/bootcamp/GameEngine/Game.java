@@ -75,9 +75,9 @@ public class Game {
 
         Hud hud = new Hud();
 
-        player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
-
         CharacterFactory.enemySpawnByLevel(LevelsType.VIRGIN, enemies);
+
+        player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
 
         while (!player.isDead()) {
 
@@ -157,6 +157,7 @@ public class Game {
         for (int i = 0; i < enemies.size(); i++) {
 
             enemy = enemies.get(i);
+            if (enemy.isDead()){continue;}
 
             collideDistance = enemy.getCollisionRadius() + projectile.getCollisionRadius();
 
