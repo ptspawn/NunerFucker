@@ -68,9 +68,8 @@ public class Game {
     public void start() {
 
         enemies = new LinkedList<>();
+
         projectiles = new LinkedList<>();
-
-
 
         Projectile currentShot = null;
 
@@ -80,7 +79,11 @@ public class Game {
 
         player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
 
+        WaveManager waveManager=new WaveManager(LevelsType.VIRGIN,enemies,player);
+
         Hud hud = new Hud();
+
+        int liveEnemies;
 
 
         while (!player.isDead()) {
@@ -99,11 +102,19 @@ public class Game {
 
             moveProjectiles();
 
-            moveEnemies();
+            //moveEnemies();
+
+            liveEnemies=waveManager.moveEnemies();
 
             player.move(playerDirections, input.getMousePos());
 
             Canvas.getInstance().repaint();
+
+            if (liveEnemies==0){
+
+
+
+            }
 
             try {
                 Thread.sleep(20);
@@ -117,10 +128,7 @@ public class Game {
 
     private void moveEnemies() {
 
-
-
-
-        /*Enemy enemy;
+        Enemy enemy;
         double collisionRadius;
 
         for (int i = 0; i < enemies.size(); i++) {
@@ -135,7 +143,7 @@ public class Game {
                 player.getHit(enemy.getDamage());
             }
 
-        }*/
+        }
 
     }
 

@@ -5,7 +5,7 @@ package org.academiadecodigo.bootcamp.enums;
  */
 public enum LevelsType {
 
-    VIRGIN(20, 20, 20, 20, 20, 20, 1),
+    VIRGIN(20, 20, 20, 20, 20, 19, 1),
     EXPERIENT(40, 30, 15, 15, 40, 25, 1),
     USED(50, 20, 20, 20, 20, 20, 1),
     XXX(60, 25, 25, 25, 25, 25, 1),

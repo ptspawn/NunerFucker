@@ -8,7 +8,7 @@ public enum CharactersType {
     PLAYER(100, 10,10,50, "Characters/Enemies/human.png"),
     ENEMY(50, 3,30,50, "Characters/Enemies/purpleEnemy.png"),
     BUG(30, 3,20,40, "Characters/Enemies/bug.png"),
-    SPIDER(60, 3,25,35, "Characters/Enemies/bug.png"),
+    SPIDER(60, 3,25,35, "Characters/Enemies/spider.png"),
     HUMAN(80, 4,20,40, "Characters/Enemies/human.png"),
     SPACESHIP(100, 5, 10,30, "Characters/Enemies/spaceship.png"),
     ZOMBIE(80, 2,40,55, "Characters/Enemies/whiteEnemy.png"),

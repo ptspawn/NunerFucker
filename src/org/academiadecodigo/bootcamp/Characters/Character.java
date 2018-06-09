@@ -48,8 +48,6 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
 
         }
 
-        System.out.println(this.toString() + " has been hit for " + dmg);
-
     }
 
     public void die() {

@@ -9,20 +9,20 @@ import java.util.LinkedList;
 /**
  * Created by codecadet on 09/06/2018.
  */
-public class waveManager {
+public class WaveManager {
 
     private LevelsType currentLevel;
     private long waveStart;
     private long elapsedTime;
     private LinkedList<Enemy> npcList;
     private final int MAX_PER_WAVE = 20;
-    private final int ENEMIES_BEFORE_NEXT = 2;
+    private final int ENEMIES_BEFORE_NEXT = 5;
     private int waveCount;
     private int liveEnemies;
     private Player player;
 
 
-    public waveManager(LevelsType level, LinkedList<Enemy> list, Player player) {
+    public WaveManager(LevelsType level, LinkedList<Enemy> list, Player player) {
 
         currentLevel = level;
         waveStart = System.nanoTime();
@@ -31,7 +31,7 @@ public class waveManager {
         this.player = player;
     }
 
-    public boolean moveEnemies() {
+    public int moveEnemies() {
 
         Enemy enemy;
         liveEnemies = 0;
@@ -45,6 +45,7 @@ public class waveManager {
             if (!enemy.isDead()) {
 
                 enemy.move(player.getPosition());
+
                 liveEnemies++;
 
                 collisionRadius = player.getCollisionRadius() + enemy.getCollisionRadius();
@@ -55,13 +56,18 @@ public class waveManager {
                 }
 
             }
+
         }
 
         if (liveEnemies <= ENEMIES_BEFORE_NEXT) {
+
+            //System.out.println("Live enemies:" + liveEnemies);
+
             waveCount++;
+            //System.out.println(" now entering " + waveCount);
         }
 
-        return liveEnemies > 0;
+        return liveEnemies;
     }
 
 
