@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp.Tests;
 
 import org.academiadecodigo.bootcamp.GameEngine.FileManagement;
-import org.academiadecodigo.bootcamp.MenuScreens.HighScores;
+import org.academiadecodigo.bootcamp.MenuScreens.GameOverMenu;
 
 import java.io.IOException;
 
@@ -11,13 +11,13 @@ import java.io.IOException;
 public class FileManagementTest {
     public static void main(String[] args) throws IOException {
         FileManagement fileManagement = new FileManagement();
-        fileManagement.readScores(FileManagement.PATH_FILE);
+
   //      fileManagement.showHighScore();
 //        fileManagement.writeScores(FileManagement.PATH_FILE, "Sardinha - 140 Nun");
  //       fileManagement.readScores(FileManagement.PATH_FILE);
   //      fileManagement.showHighScore();
 
 
-        HighScores highScores = new HighScores(fileManagement);
+        GameOverMenu gameOverMenu = new GameOverMenu();
     }
 }

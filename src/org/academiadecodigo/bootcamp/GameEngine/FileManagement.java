@@ -9,9 +9,16 @@ public class FileManagement {
     public static final String PATH_FILE = "Resources/HighScore/highscores.nun";
     private String[] highScores = new String[10];
 
+    public FileManagement() {
+        try {
+            readScores();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public void readScores(String file) throws IOException {
-        FileReader reader = new FileReader(file);
+    public void readScores() throws IOException {
+        FileReader reader = new FileReader(PATH_FILE);
         BufferedReader bRead = new BufferedReader(reader);
         String line = bRead.readLine();
         int count = 0;
