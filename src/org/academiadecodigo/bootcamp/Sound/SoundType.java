@@ -12,11 +12,11 @@ public enum SoundType {
     GUN(new Sound("Resources/Sounds/gun.wav")),
     PUNCH(new Sound("Resources/Sounds/punch.wav"));
 
+    private final Sound sound;
+
     SoundType(Sound sound){
         this.sound = sound;
     }
-
-    private final Sound sound;
 
     public void playSound(){
         switch (this){
