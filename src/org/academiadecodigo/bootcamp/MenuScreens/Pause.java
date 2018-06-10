@@ -22,12 +22,15 @@ public class Pause {
     private Picture[] pNun;
     private int[] animCounter;
 
+    private int frameCounter=20;
+    private int frameRate=20;
+
     private final int nunQty = 3;
 
     public Pause() {
 
         screenDimentions = Game.SCREENDIMENTIONS;
-        pauseText = new Text(screenDimentions[0] / 2, screenDimentions[1] / 2, "Game Paused", fonts.SERIF);
+        pauseText = new Text(screenDimentions[0] / 2, screenDimentions[1] / 2, "Game Paused", fonts.SERIF,20);
         purpleNun = new Picture[4];
         blackNun = new Picture[4];
         bNun = new Picture[nunQty];
@@ -37,8 +40,8 @@ public class Pause {
 
         for (int i = 0; i < 4; i++) {
 
-            blackNun[i] = new Picture(0, 0, "avatar/Sprites/blackNun" + i + 1 + ".png");
-            purpleNun[i] = new Picture(0, 0, "avatar/Sprites/blackNun" + i + 1 + ".png");
+            blackNun[i] = new Picture(-100, -100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
+            purpleNun[i] = new Picture(-100, -100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
 
         }
 
@@ -46,8 +49,8 @@ public class Pause {
 
             animCounter[i]=(int) (Math.random() * blackNun.length);
 
-            bNun[i] = new Picture((int)(Math.random()*screenDimentions[0]), , blackNun[animCounter[i]].getImage());
-            pNun[i] = new Picture(0, 0, purpleNun[animCounter[i]].getImage());
+            bNun[i] = new Picture((int)(Math.random()*screenDimentions[0]), (int)(Math.random()*(-100)), blackNun[animCounter[i]].getImage());
+            pNun[i] = new Picture((int)(Math.random()*screenDimentions[0]), (int)(Math.random()*(-100)), purpleNun[animCounter[i]].getImage());
 
         }
 
@@ -57,7 +60,14 @@ public class Pause {
 
         for (int i = 0; i < nunQty; i++) {
 
+            if (frameCounter++ == frameRate) {
 
+                bNun[i].translate(0,-10);
+                pNun[i].translate(0,-20);
+
+                frameCounter=0;
+
+            }
 
         }
 
@@ -68,6 +78,7 @@ public class Pause {
     public void show() {
 
         pauseText.draw();
+
         SoundType.ELEVATOR.playSound();
 
     }
