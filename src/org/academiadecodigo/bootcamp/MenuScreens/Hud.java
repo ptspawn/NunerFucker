@@ -14,44 +14,35 @@ public class Hud {
     private Picture heart;
     private Rectangle powerUp;
     private Rectangle life;
+    private Text textScore;
+
 
     private int lifeMax = 250;
     private int weedMax = 250;
-
     private int currentWeed = 1;
-
     private int score;
-    private Text textScore;
 
     public Hud() {
 
         double[] screenDimentions = Game.SCREENDIMENTIONS;
 
         life = new Rectangle(30, 20, 1, 25); //max width 250
+        life.setColor(Color.RED);
+
         powerUp = new Rectangle(1640, 20, 1, 25); //max width 250
+        powerUp.setColor(Color.GREEN);
 
         heart = new Picture(13, 5, "Bgs/heart.png");
-        cannabis = new Picture(1610, -3, "Bgs/powerup.png");
 
-        life.draw();
-        life.fill();
-        life.setColor(Color.RED);
-        powerUp.draw();
-        powerUp.fill();
-        powerUp.setColor(Color.GREEN);
-        heart.draw();
-        cannabis.draw();
+        cannabis = new Picture(1610, -3, "Bgs/powerup.png");
 
         textScore = new Text(screenDimentions[0] / 2 - 190, 10, "BLOOD SPILT - " + score, fonts.SERIF, 40);
         textScore.setColor(Color.LIGHT_GRAY);
-        textScore.draw();
-
     }
 
     public void setLife(int life) {
 
         this.life.setDimentions(life / 100 * lifeMax, 25);
-        this.life.draw();
 
     }
 
@@ -67,7 +58,6 @@ public class Hud {
         }
 
         this.powerUp.setDimentions(currentWeed / 100 * weedMax, 25);
-        this.powerUp.draw();
         return false;
     }
 
@@ -84,5 +74,24 @@ public class Hud {
         this.score += score;
     }
 
+    public void showHud() {
+        life.draw();
+        life.fill();
+        powerUp.draw();
+        powerUp.fill();
+        heart.draw();
+        cannabis.draw();
+        textScore.draw();
+    }
+
+    public void hideHud() {
+
+        cannabis.delete();
+        heart.delete();
+        powerUp.delete();
+        life.delete();
+        textScore.delete();
+        textScore.draw();
+    }
 
 }
