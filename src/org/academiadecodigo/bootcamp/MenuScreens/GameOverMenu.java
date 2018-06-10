@@ -150,7 +150,7 @@ public class GameOverMenu implements Menuable {
 
         for (int i = 0; i < highScores.length; i++) {
             if (highScores[i] != null) {
-                this.highScores[i] = new Text(1200, 800 + i * 30, highScores[i], fonts.SERIF);
+                this.highScores[i] = new Text(1200, 800 + i * 30, highScores[i], fonts.SERIF,20);
                 this.highScores[i].draw();
             }
         }

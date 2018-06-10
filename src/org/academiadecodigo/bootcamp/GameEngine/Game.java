@@ -29,6 +29,8 @@ public class Game {
     private LinkedList<Projectile> projectiles;
     private Player player;
     public static double[] SCREENDIMENTIONS;
+
+
     private boolean[] playerDirections;
     private InputManager input;
     private Hud hud;
@@ -133,7 +135,7 @@ public class Game {
 
         int liveEnemies = -1;
 
-        //gameLoop.playSound();
+        gameLoop.playSound();
 
 
         while (!player.isDead() || liveEnemies == 0) {
@@ -141,7 +143,7 @@ public class Game {
 
             if (input.isPaused) {
 
-                //gameLoop.stopSound();
+                gameLoop.stopSound();
                 pause.show();
 
                 while (input.isPaused) {
@@ -158,7 +160,7 @@ public class Game {
 
                 pause.hide();
 
-                //gameLoop.playSound();
+                gameLoop.playSound();
             }
 
             playerDirections = input.getDirections();
@@ -193,7 +195,7 @@ public class Game {
 
         field.hide();
 
-        //gameLoop.stopSound();
+        gameLoop.stopSound();
 
         showGameOver();
 

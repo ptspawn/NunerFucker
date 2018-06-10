@@ -15,8 +15,6 @@ public class ScoreTest {
         Picture picture= new Picture(0, 0, "Bgs/bg_fullhd.jpg");
         picture.draw();
 
-        Score score = new Score();
-        score.incrementScore(100);
 
         Canvas.getInstance().repaint();
     }

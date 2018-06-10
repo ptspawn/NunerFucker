@@ -1,10 +1,10 @@
 package org.academiadecodigo.bootcamp.enums;
 
 public enum PowerUpType {
-    HEALTH(10, "PowerUps/life.png"),
-    TIME(5000, "PowerUps/pocketwatch.png"),
-    GUN(5000, "PowerUps/gunpowerup.png"),
-    WEED(100, "PowerUps/weed.png");
+    HEALTH(10, "Resources/PowerUps/life.png"),
+    TIME(5000, "Resources/PowerUps/pocketwatch.png"),
+    GUN(5000, "Resources/PowerUps/gunpowerup.png"),
+    WEED(100, "Resources/PowerUps/weed.png");
 
 
     private int value;
