@@ -33,15 +33,14 @@ public class GameOverMenu {
 
         System.out.println(SCREENDIMENTIONS[0] + " " + SCREENDIMENTIONS[1]);
 
-
-        background = new Picture(0, 0, "Bgs/bg_gameover.png");
+        background = new Picture(0, -100, "Bgs/bg_gameover.png");
         background.scaleToFit(SCREENDIMENTIONS[0], SCREENDIMENTIONS[1]);
         background.draw();
 
         gameOver = new Picture(20, SCREENDIMENTIONS[1] - 150, "Bgs/gameover.png");
         gameOver.draw();
 
-        highScoreBoard = new Picture(1080, SCREENDIMENTIONS[1] - 961, "Bgs/highscore.png");
+        highScoreBoard = new Picture(0, 0, "Bgs/grava.png");
         highScoreBoard.draw();
 
         startButton = new Picture(1808, 150, "Bgs/go2_small.png");
@@ -123,7 +122,7 @@ public class GameOverMenu {
 
         for (int i = 0; i < highScores.length; i++) {
             if (highScores[i] != null) {
-                Text text = new Text(1300, 480 + i * 30, highScores[i]);
+                Text text = new Text(110, 100 + i * 30, highScores[i]);
                 text.draw();
             }
         }
