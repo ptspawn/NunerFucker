@@ -1,10 +1,9 @@
 package org.academiadecodigo.bootcamp.MenuScreens;
 
 import org.academiadecodigo.bootcamp.GameEngine.FileManagement;
-import org.academiadecodigo.bootcamp.GameEngine.Game;
+import org.academiadecodigo.bootcamp.Interfaces.Menuable;
+import org.academiadecodigo.bootcamp.enums.SoundType;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
-import org.academiadecodigo.notsosimplegraphics.graphics.Color;
-import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
 import org.academiadecodigo.notsosimplegraphics.graphics.Text;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
@@ -13,7 +12,7 @@ import java.io.File;
 /**
  * Created by codecadet on 04/06/2018.
  */
-public class GameOverMenu {
+public class GameOverMenu implements Menuable {
     private Picture background;
     private Picture gameOver;
     private Picture highScoreBoard;
@@ -22,42 +21,35 @@ public class GameOverMenu {
     private Picture startButton;
     private Picture startPopUp;
     boolean onStartButton;
+    boolean isVisible;
+    private Text[] highScores;
 
     public GameOverMenu() {
 
         double[] SCREENDIMENTIONS = Canvas.getInstance().getScreenDimentions();
 
-        Rectangle rectangle = new Rectangle(0, 0, SCREENDIMENTIONS[0], SCREENDIMENTIONS[1]);
-        rectangle.setColor(Color.BLACK);
-        rectangle.fill();
 
         System.out.println(SCREENDIMENTIONS[0] + " " + SCREENDIMENTIONS[1]);
 
 
         background = new Picture(0, 0, "Bgs/bg_gameover.png");
         background.scaleToFit(SCREENDIMENTIONS[0], SCREENDIMENTIONS[1]);
-        background.draw();
 
         gameOver = new Picture(20, SCREENDIMENTIONS[1] - 150, "Bgs/gameover.png");
-        gameOver.draw();
 
         highScoreBoard = new Picture(1080, SCREENDIMENTIONS[1] - 961, "Bgs/highscore.png");
-        highScoreBoard.draw();
 
         startButton = new Picture(1808, 150, "Bgs/go2_small.png");
 
-        startButton.draw();
         quitButton = new Picture(1805, 20, "Bgs/Door-Closed.png");
 
-        quitButton.draw();
         youSuck = new Picture(1808, 20, "Bgs/middlefinger.png");
 
         startPopUp = new Picture(1808, 150, "Bgs/go_small.png");
 
+        highScores=new Text[5];
+
         highScores();
-
-        Canvas.getInstance().repaint();
-
     }
 
 
@@ -77,7 +69,38 @@ public class GameOverMenu {
 
     }
 
+    @Override
+    public void show() {
+        background.draw();
+        gameOver.draw();
+        highScoreBoard.draw();
+        startButton.draw();
+        quitButton.draw();
+        highScores();
+        SoundType.GAMEOVER.playSound();
+
+        //  Canvas.getInstance().repaint();
+    }
+
+    @Override
+    public void hide() {
+        background.delete();
+        gameOver.delete();
+        highScoreBoard.delete();
+        quitButton.delete();
+        youSuck.delete();
+        startButton.delete();
+        startPopUp.delete();
+        SoundType.GAMEOVER.stopSound();
+
+        //Canvas.getInstance().repaint();
+    }
+
     private boolean checkStartButton(double[] mousePos) {
+
+        if (!isVisible) {
+            return false;
+        }
 
         if (mousePos[0] > startButton.getX()
                 && mousePos[0] < startButton.getX() + startButton.getWidth()
@@ -99,6 +122,10 @@ public class GameOverMenu {
 
     private boolean quiting(double[] mousePos) {
 
+        if (!isVisible) {
+            return false;
+        }
+
         if (mousePos[0] > quitButton.getX()
                 && mousePos[0] < quitButton.getX() + quitButton.getWidth()
                 && mousePos[1] > quitButton.getY()
@@ -118,15 +145,14 @@ public class GameOverMenu {
 
     public void highScores() {
 
+
         FileManagement fileManagement = new FileManagement();
         String[] highScores = fileManagement.getHighScores();
 
         for (int i = 0; i < highScores.length; i++) {
             if (highScores[i] != null) {
-                Text text = new Text(1300, 480 + i * 30, highScores[i]);
-                text.draw();
+                this.highScores[i] = new Text(1300, 480 + i * 30, highScores[i]);
             }
         }
-
     }
 }

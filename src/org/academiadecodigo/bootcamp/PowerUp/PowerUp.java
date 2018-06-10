@@ -39,7 +39,6 @@ public abstract class PowerUp implements Collidable, Drawable {
     public void setCaught(){
         isCaught = true;
         powerUp.delete();
-        Canvas.getInstance().repaint();
     }
 
     public int getValue() {
