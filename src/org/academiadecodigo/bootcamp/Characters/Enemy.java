@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.Characters;
 
+import org.academiadecodigo.bootcamp.GameEngine.Game;
 import org.academiadecodigo.bootcamp.Interfaces.*;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.bootcamp.Interfaces.Movable;
@@ -21,6 +22,8 @@ public class Enemy extends Character {
     private double damage;
 
     private int hitCounter;
+    private int directionCounter;
+    private double[] currentDirection;
 
     public Enemy(double[] statingPosition, CharactersType type) {
         super(type.getHealth(), type.getSpeed(),type);
@@ -32,7 +35,13 @@ public class Enemy extends Character {
         super.setAvatar(enemy);
 
         damage=type.getDamage();
-        hitCounter=type.getHitRate();
+
+        hitCounter=(int)(Math.random()*type.getHitRate());
+        directionCounter=(int)(Math.random()*type.getDirectionRate());
+
+
+        double[] originalDir={Game.SCREENDIMENTIONS[0]/2,Game.SCREENDIMENTIONS[1]/2};
+        currentDirection=normalizedVector(getVector(getPosition(),originalDir));
 
         collisionRadius=Math.min(enemy.getHeight(),enemy.getWidth())/2.1;
         draw();
@@ -66,14 +75,25 @@ public class Enemy extends Character {
     @Override
     public void move(double[] vector) {
 
-        if (super.isDead()){return;}
+        if (!super.isDead()) {
 
-        vector = normalizedVector(getVector(getPosition(), vector));
-        //System.out.println("EnemyN: vX- " + vector[0] + " vY-"+vector[1]);
-        enemy.rotate(getRotationFromVector(vector, enemy, Math.PI / 2));
-        enemy.translate(vector[0] * super.getSpeed(), vector[1] * super.getSpeed());
 
-        updatePosition();
+
+            if (directionCounter++==type.getDirectionRate()){
+                directionCounter=0;
+
+                vector=getVector(getPosition(),vector);
+
+                //vector = normalizedVector(vector);
+                currentDirection=getDeviatedNormalizedVector(vector,type);
+
+            }
+
+            enemy.rotate(getRotationFromVector(currentDirection, enemy, Math.PI / 2));
+            enemy.translate(currentDirection[0] * super.getSpeed(), currentDirection[1] * super.getSpeed());
+
+            updatePosition();
+        }
     }
 
     public double[] getPosition() {
