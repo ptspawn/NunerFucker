@@ -5,6 +5,7 @@ import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.bootcamp.GameEngine.factories.CharacterFactory;
 import org.academiadecodigo.bootcamp.MenuScreens.GameOverMenu;
+import org.academiadecodigo.bootcamp.MenuScreens.Pause;
 import org.academiadecodigo.bootcamp.enums.LevelsType;
 import org.academiadecodigo.bootcamp.MenuScreens.Hud;
 import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
@@ -36,7 +37,9 @@ public class Game {
     private MainMenu mainMenu;
 
     private Picture redFlash;
+    private Pause pause;
 
+    private SoundType gameLoop = SoundType.BACKGROUND2;
 
 
     public Game() {
@@ -47,9 +50,11 @@ public class Game {
         showMainMenu();
     }
 
-    private void showMainMenu(){
+    private void showMainMenu() {
 
-        if (mainMenu==null){mainMenu = new MainMenu();}
+        if (mainMenu == null) {
+            mainMenu = new MainMenu();
+        }
 
         mainMenu.show();
 
@@ -95,35 +100,63 @@ public class Game {
         Projectile currentShot = null;
 
 
-        if (field==null){
+        if (field == null) {
 
             field = new Field("bg.jpg");
 
+        } else {
+
+            field.draw();
         }
 
         CharacterFactory.enemySpawnByLevel(level, enemies);
 
         //if (player==null) {
-            player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
+        player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
         //}
 
         WaveManager waveManager = new WaveManager(level, enemies, player);
 
-        if (hud==null){
+        if (hud == null) {
             hud = new Hud();
         } else {
 
         }
 
-        if (redFlash==null) {
+        if (redFlash == null) {
             redFlash = new Picture(0, 0, "Bgs/red.png");
+        }
+
+        if (pause == null) {
+            pause = new Pause();
         }
 
         int liveEnemies = -1;
 
-        SoundType.BACKGROUND4.playSound();
+        gameLoop.playSound();
+
 
         while (!player.isDead() || liveEnemies == 0) {
+
+
+            if (input.isPaused) {
+                
+                gameLoop.stopSound();
+                pause.show();
+
+                while (input.isPaused) {
+
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        System.out.println("merda");
+                    }
+                }
+
+                pause.hide();
+
+                gameLoop.playSound();
+            }
 
             playerDirections = input.getDirections();
 
@@ -155,6 +188,8 @@ public class Game {
 
         }
 
+        field.hide();
+
         SoundType.BACKGROUND4.stopSound();
 
         showGameOver();
@@ -162,9 +197,11 @@ public class Game {
     }
 
 
-    private void showGameOver(){
+    private void showGameOver() {
 
-        if (gameOver==null){gameOver = new GameOverMenu();}
+        if (gameOver == null) {
+            gameOver = new GameOverMenu();
+        }
 
         gameOver.show();
 
@@ -172,23 +209,23 @@ public class Game {
 
         while (true) {
 
-                mousePosition = input.getMousePos();
-                int result = 0;
+            mousePosition = input.getMousePos();
+            int result = 0;
 
-                if ((result = gameOver.checkButtons(mousePosition)) != 0 && input.isFiring()) {
+            if ((result = gameOver.checkButtons(mousePosition)) != 0 && input.isFiring()) {
 
-                    switch (result) {
+                switch (result) {
 
-                        case 1:
-                            gameOver.hide();
-                            start(LevelsType.VIRGIN);
-                        case 2:
-                            gameOver.hide();
-                            showMainMenu();
-
-                    }
+                    case 1:
+                        gameOver.hide();
+                        start(LevelsType.VIRGIN);
+                    case 2:
+                        gameOver.hide();
+                        showMainMenu();
 
                 }
+
+            }
 
             Canvas.getInstance().repaint();
 
@@ -201,7 +238,6 @@ public class Game {
         }
 
     }
-
 
 
     private void moveEnemies() {

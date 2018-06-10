@@ -1,9 +1,7 @@
 package org.academiadecodigo.bootcamp.Characters;
 
 import org.academiadecodigo.bootcamp.Interfaces.*;
-import org.academiadecodigo.bootcamp.enums.BloodType;
-import org.academiadecodigo.bootcamp.enums.CharactersType;
-import org.academiadecodigo.bootcamp.enums.DirectionType;
+import org.academiadecodigo.bootcamp.enums.*;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 /**
@@ -56,12 +54,15 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
 
         switch (type) {
             case PLAYER:
+                PlayerVoiceType.DAMN.playSound();
                 path = "avatar/nun_dead_blood.png";
                 break;
             case ZOMBIEBOSS:
+                PlayerVoiceType.values()[(int)(Math.random()*(PlayerVoiceType.values().length-3))+3].playSound();
                 path = BloodType.values()[BloodType.values().length - 1].getPath();
                 break;
             default:
+                PlayerVoiceType.values()[(int)(Math.random()*(PlayerVoiceType.values().length-3))+3].playSound();
                 path = BloodType.values()[(int) (Math.random() * (BloodType.values().length - 1))].getPath();
                 break;
         }

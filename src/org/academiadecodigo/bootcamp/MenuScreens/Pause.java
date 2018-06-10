@@ -18,20 +18,51 @@ public class Pause {
     private Picture[] blackNun;
     private Picture[] purpleNun;
 
+    private Picture[] bNun;
+    private Picture[] pNun;
+    private int[] animCounter;
+
+    private final int nunQty = 3;
 
     public Pause() {
 
-        screenDimentions = Canvas.getInstance().getScreenDimentions();//Game.SCREENDIMENTIONS;
+        screenDimentions = Game.SCREENDIMENTIONS;
         pauseText = new Text(screenDimentions[0] / 2, screenDimentions[1] / 2, "Game Paused", fonts.SERIF);
         purpleNun = new Picture[4];
         blackNun = new Picture[4];
+        bNun = new Picture[nunQty];
+        pNun = new Picture[nunQty];
+        animCounter=new int[nunQty];
 
 
         for (int i = 0; i < 4; i++) {
 
+            blackNun[i] = new Picture(0, 0, "avatar/Sprites/blackNun" + i + 1 + ".png");
+            purpleNun[i] = new Picture(0, 0, "avatar/Sprites/blackNun" + i + 1 + ".png");
+
+        }
+
+        for (int i = 0; i < nunQty; i++) {
+
+            animCounter[i]=(int) (Math.random() * blackNun.length);
+
+            bNun[i] = new Picture((int)(Math.random()*screenDimentions[0]), , blackNun[animCounter[i]].getImage());
+            pNun[i] = new Picture(0, 0, purpleNun[animCounter[i]].getImage());
+
+        }
+
+    }
+
+    public void animate() {
+
+        for (int i = 0; i < nunQty; i++) {
+
 
 
         }
+
+
+
     }
 
     public void show() {
