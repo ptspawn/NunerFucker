@@ -33,10 +33,11 @@ public class GameOverMenu implements Menuable {
         System.out.println(SCREENDIMENTIONS[0] + " " + SCREENDIMENTIONS[1]);
 
         background = new Picture(20, -2, "Bgs/bg_gameover.png");
+
         background.scaleToFit(SCREENDIMENTIONS[0], SCREENDIMENTIONS[1]);
 
         highScoreBoard = new Picture(0, 0, "Bgs/gameover.png");
-        highScoreBoard.draw();
+
 
         startButton = new Picture(1808, 150, "Bgs/go2_small.png");
 
@@ -74,8 +75,9 @@ public class GameOverMenu implements Menuable {
         highScoreBoard.draw();
         startButton.draw();
         quitButton.draw();
+        highScoreBoard.draw();
 
-        for (Text text:highScores){
+        for (Text text : highScores) {
             text.draw();
         }
 
@@ -91,6 +93,9 @@ public class GameOverMenu implements Menuable {
         youSuck.delete();
         startButton.delete();
         startPopUp.delete();
+        for (Text text : highScores) {
+            text.delete();
+        }
         SoundType.GAMEOVER.stopSound();
 
     }
@@ -145,8 +150,8 @@ public class GameOverMenu implements Menuable {
 
         for (int i = 0; i < highScores.length; i++) {
             if (highScores[i] != null) {
-                Text text = new Text(1200, 800 + i * 30, highScores[i], fonts.SERIF);
-                text.draw();
+                this.highScores[i] = new Text(1200, 800 + i * 30, highScores[i], fonts.SERIF);
+                this.highScores[i].draw();
             }
         }
     }
