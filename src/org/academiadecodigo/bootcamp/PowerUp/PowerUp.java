@@ -12,6 +12,7 @@ public abstract class PowerUp implements Collidable, Drawable {
     private PowerUpType type;
     private boolean isCaught = false;
     private int value;
+    private double collisionRadius;
 
     public PowerUp(PowerUpType type){
         this.type = type;
@@ -39,6 +40,11 @@ public abstract class PowerUp implements Collidable, Drawable {
     public void setCaught(){
         isCaught = true;
         powerUp.delete();
+    }
+
+    @Override
+    public int getCollisionRadius() {
+        return (int)collisionRadius;
     }
 
     public int getValue() {
