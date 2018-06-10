@@ -140,14 +140,17 @@ public class Game {
 
 
             if (input.isPaused) {
-                
+
                 gameLoop.stopSound();
                 pause.show();
 
                 while (input.isPaused) {
 
+
+                    pause.animate();
+
                     try {
-                        Thread.sleep(50);
+                        Thread.sleep(20);
                     } catch (InterruptedException e) {
                         System.out.println("merda");
                     }
