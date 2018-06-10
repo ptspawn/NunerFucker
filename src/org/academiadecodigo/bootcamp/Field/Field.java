@@ -34,6 +34,10 @@ public class Field implements Drawable{
 
     }
 
+    public void hide(){
+        bg.delete();
+    }
+
     public void preLoadGraphics(){
 
 

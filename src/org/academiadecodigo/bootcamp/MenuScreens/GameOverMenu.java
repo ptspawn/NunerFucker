@@ -77,10 +77,13 @@ public class GameOverMenu implements Menuable {
         highScoreBoard.draw();
         startButton.draw();
         quitButton.draw();
-        highScores();
+
+        for (Text text:highScores){
+            text.draw();
+        }
+
         SoundType.GAMEOVER.playSound();
 
-        //  Canvas.getInstance().repaint();
     }
 
     @Override
@@ -94,14 +97,10 @@ public class GameOverMenu implements Menuable {
         startPopUp.delete();
         SoundType.GAMEOVER.stopSound();
 
-        //Canvas.getInstance().repaint();
     }
 
     private boolean checkStartButton(double[] mousePos) {
 
-        if (!isVisible) {
-            return false;
-        }
 
         if (mousePos[0] > startButton.getX()
                 && mousePos[0] < startButton.getX() + startButton.getWidth()
@@ -115,6 +114,7 @@ public class GameOverMenu implements Menuable {
 
         } else {
             startPopUp.delete();
+            startButton.draw();
             onStartButton = false;
             return false;
 
@@ -123,9 +123,6 @@ public class GameOverMenu implements Menuable {
 
     private boolean quiting(double[] mousePos) {
 
-        if (!isVisible) {
-            return false;
-        }
 
         if (mousePos[0] > quitButton.getX()
                 && mousePos[0] < quitButton.getX() + quitButton.getWidth()

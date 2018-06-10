@@ -55,12 +55,15 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
         String path;
 
         switch (type) {
-            case PLAYER: path= "avatar/nun_dead_blood.png";
-            break;
-            case ZOMBIEBOSS: path=BloodType.values()[BloodType.values().length-1].getPath();
-            break;
-            default:path=BloodType.values()[(int) (Math.random() * (BloodType.values().length-1))].getPath();
-            break;
+            case PLAYER:
+                path = "avatar/nun_dead_blood.png";
+                break;
+            case ZOMBIEBOSS:
+                path = BloodType.values()[BloodType.values().length - 1].getPath();
+                break;
+            default:
+                path = BloodType.values()[(int) (Math.random() * (BloodType.values().length - 1))].getPath();
+                break;
         }
 
         avatar.load(path);

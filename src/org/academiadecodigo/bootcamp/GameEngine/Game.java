@@ -11,7 +11,10 @@ import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.bootcamp.enums.SoundType;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
+import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.util.LinkedList;
 
 
@@ -27,13 +30,27 @@ public class Game {
     public static double[] SCREENDIMENTIONS;
     private boolean[] playerDirections;
     private InputManager input;
+    private Hud hud;
+
+    private GameOverMenu gameOver;
+    private MainMenu mainMenu;
+
+    private Picture redFlash;
+
+
 
     public Game() {
         input = new InputManager();
 
         SCREENDIMENTIONS = Canvas.getInstance().getScreenDimentions();
 
-        MainMenu mainMenu = new MainMenu();
+        showMainMenu();
+    }
+
+    private void showMainMenu(){
+
+        if (mainMenu==null){mainMenu = new MainMenu();}
+
         mainMenu.show();
 
         double[] mousePosition;
@@ -49,7 +66,7 @@ public class Game {
 
                     case 1:
                         mainMenu.hide();
-                        start();
+                        start(LevelsType.VIRGIN);
                     case 2:
                         System.exit(0);
 
@@ -69,7 +86,7 @@ public class Game {
 
     }
 
-    public void start() {
+    public void start(LevelsType level) {
 
         enemies = new LinkedList<>();
 
@@ -77,20 +94,34 @@ public class Game {
 
         Projectile currentShot = null;
 
-        Field field = new Field("bg.jpg");
 
-        CharacterFactory.enemySpawnByLevel(LevelsType.VIRGIN, enemies);
+        if (field==null){
 
-        player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
+            field = new Field("bg.jpg");
 
-        WaveManager waveManager = new WaveManager(LevelsType.VIRGIN, enemies, player);
+        }
 
-        Hud hud = new Hud();
+        CharacterFactory.enemySpawnByLevel(level, enemies);
+
+        //if (player==null) {
+            player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
+        //}
+
+        WaveManager waveManager = new WaveManager(level, enemies, player);
+
+        if (hud==null){
+            hud = new Hud();
+        } else {
+
+        }
+
+        if (redFlash==null) {
+            redFlash = new Picture(0, 0, "Bgs/red.png");
+        }
 
         int liveEnemies = -1;
 
         SoundType.BACKGROUND4.playSound();
-
 
         while (!player.isDead() || liveEnemies == 0) {
 
@@ -108,11 +139,9 @@ public class Game {
 
             moveProjectiles();
 
-            //moveEnemies();
+            player.move(playerDirections, input.getMousePos());
 
             liveEnemies = waveManager.moveEnemies();
-
-            player.move(playerDirections, input.getMousePos());
 
             Canvas.getInstance().repaint();
 
@@ -126,15 +155,24 @@ public class Game {
 
         }
 
+        SoundType.BACKGROUND4.stopSound();
+
+        showGameOver();
+
+    }
 
 
-        GameOverMenu gameOver = new GameOverMenu();
+    private void showGameOver(){
+
+        if (gameOver==null){gameOver = new GameOverMenu();}
+
+        gameOver.show();
 
         double[] mousePosition;
 
         while (true) {
 
-               /* mousePosition = input.getMousePos();
+                mousePosition = input.getMousePos();
                 int result = 0;
 
                 if ((result = gameOver.checkButtons(mousePosition)) != 0 && input.isFiring()) {
@@ -142,13 +180,15 @@ public class Game {
                     switch (result) {
 
                         case 1:
-                            start();
+                            gameOver.hide();
+                            start(LevelsType.VIRGIN);
                         case 2:
-                            System.exit(0);
+                            gameOver.hide();
+                            showMainMenu();
 
                     }
 
-                }*/
+                }
 
             Canvas.getInstance().repaint();
 
@@ -159,7 +199,10 @@ public class Game {
             }
 
         }
+
     }
+
+
 
     private void moveEnemies() {
 
