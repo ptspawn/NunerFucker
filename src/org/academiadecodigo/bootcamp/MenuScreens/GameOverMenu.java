@@ -5,6 +5,7 @@ import org.academiadecodigo.bootcamp.Interfaces.Menuable;
 import org.academiadecodigo.bootcamp.enums.SoundType;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.graphics.Text;
+import org.academiadecodigo.notsosimplegraphics.graphics.fonts;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 import java.io.File;
@@ -47,7 +48,7 @@ public class GameOverMenu implements Menuable {
 
         startPopUp = new Picture(1808, 150, "Bgs/go_small.png");
 
-        highScores=new Text[5];
+        highScores= new Text[5];
 
         highScores();
     }
@@ -151,7 +152,8 @@ public class GameOverMenu implements Menuable {
 
         for (int i = 0; i < highScores.length; i++) {
             if (highScores[i] != null) {
-                this.highScores[i] = new Text(1300, 480 + i * 30, highScores[i]);
+                this.highScores[i] = new Text(1300,480+i*30,highScores[i], fonts.SERIF);
+                        //new Text(1300, 480 + i * 30, highScores[i]);
             }
         }
     }

@@ -9,6 +9,7 @@ import org.academiadecodigo.bootcamp.enums.LevelsType;
 import org.academiadecodigo.bootcamp.MenuScreens.Hud;
 import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
+import org.academiadecodigo.bootcamp.enums.SoundType;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 
 import java.util.LinkedList;
@@ -33,6 +34,7 @@ public class Game {
         SCREENDIMENTIONS = Canvas.getInstance().getScreenDimentions();
 
         MainMenu mainMenu = new MainMenu();
+        mainMenu.show();
 
         double[] mousePosition;
 
@@ -46,6 +48,7 @@ public class Game {
                 switch (result) {
 
                     case 1:
+                        mainMenu.hide();
                         start();
                     case 2:
                         System.exit(0);
@@ -86,6 +89,8 @@ public class Game {
 
         int liveEnemies = -1;
 
+        SoundType.BACKGROUND4.playSound();
+
 
         while (!player.isDead() || liveEnemies == 0) {
 
@@ -120,6 +125,8 @@ public class Game {
 
 
         }
+
+
 
         GameOverMenu gameOver = new GameOverMenu();
 
