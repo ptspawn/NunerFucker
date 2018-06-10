@@ -1,0 +1,21 @@
+package org.academiadecodigo.bootcamp.Tests;
+
+import org.academiadecodigo.bootcamp.GameEngine.InputManager;
+import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
+import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
+
+/**
+ * Created by codecadet on 10/06/2018.
+ */
+public class ScoreTest {
+
+    public static void main(String[] args) {
+        InputManager inputManager = new InputManager();
+
+        Picture picture= new Picture(0, 0, "Bgs/bg_fullhd.jpg");
+        picture.draw();
+
+
+        Canvas.getInstance().repaint();
+    }
+}

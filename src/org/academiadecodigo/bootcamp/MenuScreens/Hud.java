@@ -2,9 +2,7 @@ package org.academiadecodigo.bootcamp.MenuScreens;
 
 import org.academiadecodigo.bootcamp.GameEngine.Collider;
 import org.academiadecodigo.bootcamp.GameEngine.Game;
-import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
-import org.academiadecodigo.notsosimplegraphics.graphics.Color;
-import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
+import org.academiadecodigo.notsosimplegraphics.graphics.*;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 /**
@@ -16,58 +14,84 @@ public class Hud {
     private Picture heart;
     private Rectangle powerUp;
     private Rectangle life;
+    private Text textScore;
+
 
     private int lifeMax = 250;
     private int weedMax = 250;
-
-    private int currentWeed=1;
+    private int currentWeed = 1;
+    private int score;
 
     public Hud() {
 
         double[] screenDimentions = Game.SCREENDIMENTIONS;
 
         life = new Rectangle(30, 20, 1, 25); //max width 250
+        life.setColor(Color.RED);
+
         powerUp = new Rectangle(1640, 20, 1, 25); //max width 250
+        powerUp.setColor(Color.GREEN);
 
         heart = new Picture(13, 5, "Bgs/heart.png");
+
         cannabis = new Picture(1610, -3, "Bgs/powerup.png");
 
-        life.draw();
-        life.fill();
-        life.setColor(Color.RED);
-        powerUp.draw();
-        powerUp.fill();
-        powerUp.setColor(Color.GREEN);
-        heart.draw();
-        cannabis.draw();
-
+        textScore = new Text(screenDimentions[0] / 2 - 190, 10, "BLOOD SPILT - " + score, fonts.SERIF, 40);
+        textScore.setColor(Color.LIGHT_GRAY);
     }
 
     public void setLife(int life) {
 
-
-        this.life.setDimentions( life / 100 * lifeMax, 25);
-        this.life.draw();
+        this.life.setDimentions(life / 100 * lifeMax, 25);
 
     }
 
-    public boolean setCurrentWeed(int weedIncrement){
+    public boolean increaseCurrentWeed(int weedIncrement) {
 
-        if (this.currentWeed==weedMax){
+        if (this.currentWeed == 100) {
             return true;
         }
-        currentWeed+=weedIncrement;
-        this.powerUp.setDimentions(currentWeed/100*weedMax,25);
-        this.powerUp.draw();
+
+        this.currentWeed += weedIncrement;
+        if (this.currentWeed > 100) {
+            this.currentWeed = 100;
+        }
+
+        this.powerUp.setDimentions(currentWeed / 100 * weedMax, 25);
         return false;
     }
 
-    public void resetWeed(){
-        currentWeed=1;
-
+    public void resetWeed() {
+        currentWeed = 1;
     }
 
+    // SCORE
+    public int getScore() {
+        return score;
+    }
 
+    public void incrementScore(int score) {
+        this.score += score;
+    }
 
+    public void showHud() {
+        life.draw();
+        life.fill();
+        powerUp.draw();
+        powerUp.fill();
+        heart.draw();
+        cannabis.draw();
+        textScore.draw();
+    }
+
+    public void hideHud() {
+
+        cannabis.delete();
+        heart.delete();
+        powerUp.delete();
+        life.delete();
+        textScore.delete();
+        textScore.draw();
+    }
 
 }

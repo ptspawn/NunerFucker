@@ -6,6 +6,7 @@ import org.academiadecodigo.bootcamp.Interfaces.*;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.bootcamp.GameEngine.factories.ProjectileFactory;
 import org.academiadecodigo.bootcamp.enums.CharactersType;
+import org.academiadecodigo.bootcamp.enums.PlayerVoiceType;
 import org.academiadecodigo.bootcamp.enums.ProjectileType;
 import org.academiadecodigo.bootcamp.enums.SoundType;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
@@ -141,5 +142,11 @@ public class Player extends Character {
         }
 
         return true;
+    }
+
+    @Override
+    public void getHit(int dmg) {
+        PlayerVoiceType.values()[(int)(Math.random()*3)+4].playSound();
+        super.getHit(dmg);
     }
 }

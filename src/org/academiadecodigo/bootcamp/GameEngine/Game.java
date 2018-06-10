@@ -29,6 +29,8 @@ public class Game {
     private LinkedList<Projectile> projectiles;
     private Player player;
     public static double[] SCREENDIMENTIONS;
+
+
     private boolean[] playerDirections;
     private InputManager input;
     private Hud hud;
@@ -193,7 +195,7 @@ public class Game {
 
         field.hide();
 
-        SoundType.BACKGROUND4.stopSound();
+        gameLoop.stopSound();
 
         showGameOver();
 
