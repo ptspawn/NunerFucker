@@ -16,7 +16,11 @@ public enum PlayerVoiceType {
     LIKETHERESR(new Sound("Resources/Sounds/voice/liketheresr.wav")),
     MEDIEVAL(new Sound("Resources/Sounds/voice/medieval.wav")),
     UGLY(new Sound("Resources/Sounds/voice/ugly.wav")),
-    YIPPIE(new Sound("Resources/Sounds/voice/yippie.wav"));
+    YIPPIE(new Sound("Resources/Sounds/voice/yippie.wav")),
+    AHCURTO2(new Sound("Sounds/voice/ahcurto2.wav")),
+    AHFUCKERS(new Sound("Sounds/voice/ahfuckers.wav")),
+    BASTARDS(new Sound("Sounds/voice/bastards.wav"));
+
 
     private final Sound voice;
 
@@ -38,6 +42,15 @@ public enum PlayerVoiceType {
             case DAMN:
                 voice.play();
                 break;
+            case AHCURTO2:
+                voice.play();
+                break;
+            case AHFUCKERS:
+                voice.play();
+                break;
+            case BASTARDS:
+                voice.play();
+                break;
             case BIRTHCONTROL:
                 voice.play();
                 break;
@@ -56,7 +69,6 @@ public enum PlayerVoiceType {
             case YIPPIE:
                 voice.play();
                 break;
-
         }
     }
 

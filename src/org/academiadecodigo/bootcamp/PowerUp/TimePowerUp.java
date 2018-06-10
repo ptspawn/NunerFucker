@@ -7,8 +7,8 @@ import org.academiadecodigo.bootcamp.enums.PowerUpType;
  */
 public class TimePowerUp extends PowerUp {
 
-    public TimePowerUp(double xPos, double yPos) {
-        super(PowerUpType.TIME);
-        setPowerUp(PowerUpType.TIME.getPath(), xPos, yPos);
+    public TimePowerUp(double[] position) {
+        super(PowerUpType.TIME, position);
     }
+
 }

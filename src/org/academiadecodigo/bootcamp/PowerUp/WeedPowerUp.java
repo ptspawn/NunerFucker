@@ -7,12 +7,8 @@ import org.academiadecodigo.bootcamp.enums.PowerUpType;
  */
 public class WeedPowerUp extends PowerUp {
 
-    public WeedPowerUp(double xPos, double yPos){
-        super(PowerUpType.WEED);
-        super.setPowerUp(PowerUpType.WEED.getPath(), xPos, yPos );
-        super.draw();
-
-
+    public WeedPowerUp(double[] position){
+        super(PowerUpType.WEED, position);
     }
 
 }

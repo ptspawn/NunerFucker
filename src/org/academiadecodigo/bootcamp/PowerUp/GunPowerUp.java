@@ -7,9 +7,7 @@ import org.academiadecodigo.bootcamp.enums.PowerUpType;
  */
 public class GunPowerUp extends PowerUp{
 
-    public GunPowerUp(double xPos, double yPos){
-        super(PowerUpType.GUN);
-        super.setPowerUp(PowerUpType.GUN.getPath(), xPos, yPos);
-        super.draw();
+    public GunPowerUp(double[] position){
+        super(PowerUpType.GUN, position);
     }
 }
