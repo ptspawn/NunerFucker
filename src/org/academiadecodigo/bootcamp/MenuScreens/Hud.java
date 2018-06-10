@@ -2,9 +2,7 @@ package org.academiadecodigo.bootcamp.MenuScreens;
 
 import org.academiadecodigo.bootcamp.GameEngine.Collider;
 import org.academiadecodigo.bootcamp.GameEngine.Game;
-import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
-import org.academiadecodigo.notsosimplegraphics.graphics.Color;
-import org.academiadecodigo.notsosimplegraphics.graphics.Rectangle;
+import org.academiadecodigo.notsosimplegraphics.graphics.*;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 /**
@@ -21,6 +19,9 @@ public class Hud {
     private int weedMax = 250;
 
     private int currentWeed = 1;
+
+    private int score;
+    private Text textScore;
 
     public Hud() {
 
@@ -40,6 +41,10 @@ public class Hud {
         powerUp.setColor(Color.GREEN);
         heart.draw();
         cannabis.draw();
+
+        textScore = new Text(screenDimentions[0] / 2 - 190, 10, "BLOOD SPILT - " + score, fonts.SERIF, 40);
+        textScore.setColor(Color.LIGHT_GRAY);
+        textScore.draw();
 
     }
 
@@ -68,7 +73,15 @@ public class Hud {
 
     public void resetWeed() {
         currentWeed = 1;
+    }
 
+    // SCORE
+    public int getScore() {
+        return score;
+    }
+
+    public void incrementScore(int score) {
+        this.score += score;
     }
 
 
