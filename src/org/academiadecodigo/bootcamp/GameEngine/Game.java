@@ -80,14 +80,14 @@ public class Game {
 
         player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
 
-        WaveManager waveManager=new WaveManager(LevelsType.VIRGIN,enemies,player);
+        WaveManager waveManager = new WaveManager(LevelsType.VIRGIN, enemies, player);
 
         Hud hud = new Hud();
 
-        int liveEnemies=-1;
+        int liveEnemies = -1;
 
 
-        while (!player.isDead() || liveEnemies==0) {
+        while (!player.isDead() || liveEnemies == 0) {
 
             playerDirections = input.getDirections();
 
@@ -105,7 +105,7 @@ public class Game {
 
             //moveEnemies();
 
-            liveEnemies=waveManager.moveEnemies();
+            liveEnemies = waveManager.moveEnemies();
 
             player.move(playerDirections, input.getMousePos());
 
@@ -119,12 +119,13 @@ public class Game {
             }
 
 
+        }
 
-            GameOverMenu gameOver = new GameOverMenu();
+        GameOverMenu gameOver = new GameOverMenu();
 
-            double[] mousePosition;
+        double[] mousePosition;
 
-            while (true) {
+        while (true) {
 
                /* mousePosition = input.getMousePos();
                 int result = 0;
@@ -142,18 +143,15 @@ public class Game {
 
                 }*/
 
-                Canvas.getInstance().repaint();
+            Canvas.getInstance().repaint();
 
-                try {
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    System.out.println("Ups");
-                }
-
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                System.out.println("Ups");
             }
 
         }
-
     }
 
     private void moveEnemies() {
@@ -202,7 +200,9 @@ public class Game {
         for (int i = 0; i < enemies.size(); i++) {
 
             enemy = enemies.get(i);
-            if (enemy.isDead()){continue;}
+            if (enemy.isDead()) {
+                continue;
+            }
 
             collideDistance = enemy.getCollisionRadius() + projectile.getCollisionRadius();
 
