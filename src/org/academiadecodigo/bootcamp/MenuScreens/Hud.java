@@ -20,7 +20,7 @@ public class Hud {
     private int lifeMax = 250;
     private int weedMax = 250;
 
-    private int currentWeed=1;
+    private int currentWeed = 1;
 
     public Hud() {
 
@@ -45,29 +45,31 @@ public class Hud {
 
     public void setLife(int life) {
 
-
-        this.life.setDimentions( life / 100 * lifeMax, 25);
+        this.life.setDimentions(life / 100 * lifeMax, 25);
         this.life.draw();
 
     }
 
-    public boolean setCurrentWeed(int weedIncrement){
+    public boolean increaseCurrentWeed(int weedIncrement) {
 
-        if (this.currentWeed==weedMax){
+        if (this.currentWeed == 100) {
             return true;
         }
-        currentWeed+=weedIncrement;
-        this.powerUp.setDimentions(currentWeed/100*weedMax,25);
+
+        this.currentWeed += weedIncrement;
+        if (this.currentWeed > 100) {
+            this.currentWeed = 100;
+        }
+
+        this.powerUp.setDimentions(currentWeed / 100 * weedMax, 25);
         this.powerUp.draw();
         return false;
     }
 
-    public void resetWeed(){
-        currentWeed=1;
+    public void resetWeed() {
+        currentWeed = 1;
 
     }
-
-
 
 
 }
