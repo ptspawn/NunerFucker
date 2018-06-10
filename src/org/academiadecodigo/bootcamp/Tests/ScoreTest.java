@@ -1,7 +1,6 @@
 package org.academiadecodigo.bootcamp.Tests;
 
 import org.academiadecodigo.bootcamp.GameEngine.InputManager;
-import org.academiadecodigo.bootcamp.MenuScreens.Score;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
