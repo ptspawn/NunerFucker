@@ -1,4 +1,6 @@
-package org.academiadecodigo.bootcamp.Sound;
+package org.academiadecodigo.bootcamp.enums;
+
+import org.academiadecodigo.bootcamp.Sound.Sound;
 
 public enum SoundType {
     BACKGROUND(new Sound("Resources/Sounds/background.wav")),

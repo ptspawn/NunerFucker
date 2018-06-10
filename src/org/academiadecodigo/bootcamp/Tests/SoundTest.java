@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.Tests;
 
-import org.academiadecodigo.bootcamp.Sound.SoundType;
+import org.academiadecodigo.bootcamp.enums.SoundType;
 
 
 public class SoundTest {

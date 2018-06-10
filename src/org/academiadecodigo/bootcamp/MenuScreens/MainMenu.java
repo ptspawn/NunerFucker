@@ -1,23 +1,8 @@
 package org.academiadecodigo.bootcamp.MenuScreens;
 
-import javafx.scene.input.MouseDragEvent;
 import org.academiadecodigo.bootcamp.GameEngine.Game;
-import org.academiadecodigo.bootcamp.GameEngine.InputManager;
-import org.academiadecodigo.bootcamp.Sound.Sound;
-import org.academiadecodigo.bootcamp.Sound.SoundType;
-import org.academiadecodigo.notsosimplegraphics.graphics.*;
-import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
-import org.academiadecodigo.notsosimplegraphics.graphics.Color;
-import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.notsosimplegraphics.mouse.Mouse;
-import org.academiadecodigo.notsosimplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.notsosimplegraphics.mouse.MouseEventType;
-import org.academiadecodigo.notsosimplegraphics.mouse.MouseHandler;
+import org.academiadecodigo.bootcamp.enums.SoundType;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
-
-import java.awt.*;
-import java.awt.event.MouseListener;
 
 /**
  * Created by codecadet on 04/06/2018.
@@ -65,6 +50,9 @@ public class MainMenu {
         instrutionPanel = new Picture(1000, 35, "Bgs/instructions.png");
 
         youSuck = new Picture(1808, 20, "Bgs/middlefinger.png");
+
+        SoundType sound = SoundType.MENU;
+        sound.playSound();
 
     }
 
