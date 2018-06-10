@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.Tests;
 
 import org.academiadecodigo.bootcamp.GameEngine.Loader;
+import org.academiadecodigo.bootcamp.MenuScreens.Pause;
 import org.academiadecodigo.bootcamp.enums.CharactersType;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 
@@ -12,20 +13,14 @@ import java.util.Map;
  */
 public class LoadTest {
 
-    private Map<CharactersType,BufferedImage> enemies;
 
-    public LoadTest(){
+    public static void main(String[] args) {
 
-        Loader loader=new Loader();
 
-        loader.loadPictureList(enemies);
 
-        Canvas.getInstance().getScreenDimentions();
+       Pause pause = new Pause();
 
-        //BufferedImage img = enemies(CharactersType.BUG);
-
-   //     Picture pic = new Picture(0,0,img);*/
-        //Picture pic = new Picture(0,0,img);
+       pause.show();
 
     }
 

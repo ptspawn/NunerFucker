@@ -20,6 +20,7 @@ public class InputManager implements KeyboardHandler,MouseHandler {
     boolean goingUp;
     boolean goingDown;
     boolean isFiring;
+    boolean isPaused;
 
     double[] mousePos;
 
@@ -99,6 +100,20 @@ public class InputManager implements KeyboardHandler,MouseHandler {
         keyboard.addEventListener(spaceUp);
         keyboard.addEventListener(spaceDown);
 
+
+        KeyboardEvent pauseUp = new KeyboardEvent();
+        KeyboardEvent pauseDown = new KeyboardEvent();
+
+        pauseDown.setKey(KeyboardEvent.KEY_P);
+        pauseUp.setKey(KeyboardEvent.KEY_P);
+
+        pauseUp.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        pauseDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        keyboard.addEventListener(pauseUp);
+        keyboard.addEventListener(pauseDown);
+
+
         //Same for mouse events
         Mouse mouse = new Mouse(this);
 
@@ -130,6 +145,9 @@ public class InputManager implements KeyboardHandler,MouseHandler {
             case KeyboardEvent.KEY_SPACE:
                 isFiring =true;
                 break;
+            case KeyboardEvent.KEY_P:
+                isPaused = !isPaused;
+                break;
         }
     }
 
@@ -156,6 +174,10 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
     public boolean isFiring(){
         return isFiring;
+    }
+
+    public boolean isPaused(){
+        return isPaused;
     }
 
     public boolean[] getDirections(){
@@ -195,5 +217,10 @@ public class InputManager implements KeyboardHandler,MouseHandler {
     public void mouseReleased(MouseEvent mouseEvent) {
         //System.out.println("Mouse released");
         isFiring=false;
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent mouseEvent) {
+
     }
 }
