@@ -11,7 +11,7 @@ public enum SoundType {
     GAMEOVER(new Sound("Resources/Sounds/gameOver.wav")),
     MENU(new Sound("Resources/Sounds/menu.wav")),
     ROCKET(new Sound("Resources/Sounds/rocket.wav")),
-    GUN(new Sound("Resources/Sounds/gun.wav")),
+    GUN(new Sound("Resources/Sounds/bullets/skorpion.wav")),
     PUNCH(new Sound("Resources/Sounds/punch.wav"));
 
     private final Sound sound;
