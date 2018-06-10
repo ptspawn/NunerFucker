@@ -17,8 +17,8 @@ public class Hud {
     private Rectangle powerUp;
     private Rectangle life;
 
-    private int lifeMax=250;
-    private int weedMax=250;
+    private int lifeMax = 250;
+    private int weedMax = 250;
 
     public Hud() {
 
@@ -43,9 +43,9 @@ public class Hud {
 
     public void setLife(int life) {
 
-        int currentWidth=this.life.getWidth();
+        int currentWidth = this.life.getWidth();
 
-        this.life.grow(life/100*lifeMax,0);
+        this.life.grow(life / 100 * lifeMax, 0);
 
     }
 }

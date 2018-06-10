@@ -8,6 +8,8 @@ import org.academiadecodigo.bootcamp.GameEngine.Game;
 public class NunsnGuns {
 
     public static void main(String[] args) {
+
             Game game = new Game();
+
     }
 }
