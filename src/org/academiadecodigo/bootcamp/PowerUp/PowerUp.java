@@ -4,7 +4,6 @@ import org.academiadecodigo.bootcamp.Interfaces.Collidable;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
 import org.academiadecodigo.bootcamp.enums.PowerUpType;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
-import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 
 public abstract class PowerUp implements Collidable, Drawable {
 
@@ -17,13 +16,10 @@ public abstract class PowerUp implements Collidable, Drawable {
     public PowerUp(PowerUpType type, double[] position){
         this.type = type;
         this.powerUp = new Picture(position[0],position[1],type.getPath());
+        collisionRadius = (powerUp.getHeight() + powerUp.getWidth()) / 4;
         value = type.getValue();
         powerUp.draw();
     }
-
-  /*  public void setPowerUp(String pictureFile, double xPos, double yPos){
-        this.powerUp = new Picture(xPos, yPos, pictureFile);
-    }*/
 
     @Override
     public void draw() {
