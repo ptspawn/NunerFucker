@@ -20,12 +20,14 @@ public class Hud {
     private int lifeMax = 250;
     private int weedMax = 250;
 
+    private int currentWeed=1;
+
     public Hud() {
 
         double[] screenDimentions = Game.SCREENDIMENTIONS;
 
-        life = new Rectangle(30, 20, 1, 25);
-        powerUp = new Rectangle(1640, 20, 1, 25);
+        life = new Rectangle(30, 20, 1, 25); //max width 250
+        powerUp = new Rectangle(1640, 20, 1, 25); //max width 250
 
         heart = new Picture(13, 5, "Bgs/heart.png");
         cannabis = new Picture(1610, -3, "Bgs/powerup.png");
@@ -43,9 +45,29 @@ public class Hud {
 
     public void setLife(int life) {
 
-        int currentWidth = this.life.getWidth();
 
-        this.life.grow(life / 100 * lifeMax, 0);
+        this.life.setDimentions( life / 100 * lifeMax, 25);
+        this.life.draw();
 
     }
+
+    public boolean setCurrentWeed(int weedIncrement){
+
+        if (this.currentWeed==weedMax){
+            return true;
+        }
+        currentWeed+=weedIncrement;
+        this.powerUp.setDimentions(currentWeed/100*weedMax,25);
+        this.powerUp.draw();
+        return false;
+    }
+
+    public void resetWeed(){
+        currentWeed=1;
+
+    }
+
+
+
+
 }
