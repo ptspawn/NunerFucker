@@ -58,11 +58,11 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
                 path = "avatar/nun_dead_blood.png";
                 break;
             case ZOMBIEBOSS:
-                PlayerVoiceType.values()[(int)(Math.random()*(PlayerVoiceType.values().length-3))+3].playSound();
+                PlayerVoiceType.values()[(int)(Math.random()*(PlayerVoiceType.values().length-7))+7].playSound();
                 path = BloodType.values()[BloodType.values().length - 1].getPath();
                 break;
             default:
-                PlayerVoiceType.values()[(int)(Math.random()*(PlayerVoiceType.values().length-3))+3].playSound();
+                PlayerVoiceType.values()[(int)(Math.random()*(PlayerVoiceType.values().length-7))+7].playSound();
                 path = BloodType.values()[(int) (Math.random() * (BloodType.values().length - 1))].getPath();
                 break;
         }

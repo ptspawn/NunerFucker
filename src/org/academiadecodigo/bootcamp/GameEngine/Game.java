@@ -133,7 +133,7 @@ public class Game {
 
         int liveEnemies = -1;
 
-        gameLoop.playSound();
+        //gameLoop.playSound();
 
 
         while (!player.isDead() || liveEnemies == 0) {
@@ -141,7 +141,7 @@ public class Game {
 
             if (input.isPaused) {
 
-                gameLoop.stopSound();
+                //gameLoop.stopSound();
                 pause.show();
 
                 while (input.isPaused) {
@@ -158,7 +158,7 @@ public class Game {
 
                 pause.hide();
 
-                gameLoop.playSound();
+                //gameLoop.playSound();
             }
 
             playerDirections = input.getDirections();
@@ -193,7 +193,7 @@ public class Game {
 
         field.hide();
 
-        SoundType.BACKGROUND4.stopSound();
+        //gameLoop.stopSound();
 
         showGameOver();
 

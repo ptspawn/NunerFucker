@@ -17,9 +17,9 @@ public enum PlayerVoiceType {
     MEDIEVAL(new Sound("Resources/Sounds/voice/medieval.wav")),
     UGLY(new Sound("Resources/Sounds/voice/ugly.wav")),
     YIPPIE(new Sound("Resources/Sounds/voice/yippie.wav")),
-    AHCURTO2(new Sound("Sounds/voice/ahcurto2.wav")),
-    AHFUCKERS(new Sound("Sounds/voice/ahfuckers.wav")),
-    BASTARDS(new Sound("Sounds/voice/bastards.wav"));
+    AHCURTO2(new Sound("Resources/Sounds/voice/ahcurto2.wav")),
+    AHFUCKERS(new Sound("Resources/Sounds/voice/ahfuckers.wav")),
+    BASTARDS(new Sound("Resources/Sounds/voice/bastards.wav"));
 
 
     private final Sound voice;
@@ -31,42 +31,54 @@ public enum PlayerVoiceType {
     public void playSound() {
         switch (this) {
             case AAAAHHH:
+                voice.stop();
                 voice.play();
                 break;
             case KILL:
+                voice.stop();
                 voice.play();
                 break;
             case MUCHBETTER:
+                voice.stop();
                 voice.play();
                 break;
             case DAMN:
+                voice.stop();
                 voice.play();
                 break;
             case AHCURTO2:
+                voice.stop();
                 voice.play();
                 break;
             case AHFUCKERS:
                 voice.play();
                 break;
             case BASTARDS:
+                voice.stop();
                 voice.play();
                 break;
             case BIRTHCONTROL:
+                voice.stop();
                 voice.play();
                 break;
             case EATSHIT:
+                voice.stop();
                 voice.play();
                 break;
             case LIKETHERESR:
+                voice.stop();
                 voice.play();
                 break;
             case MEDIEVAL:
+                voice.stop();
                 voice.play();
                 break;
             case UGLY:
+                voice.stop();
                 voice.play();
                 break;
             case YIPPIE:
+                voice.stop();
                 voice.play();
                 break;
         }

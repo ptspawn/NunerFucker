@@ -29,7 +29,7 @@ public class Pause {
 
     public Pause() {
 
-        screenDimentions = Game.SCREENDIMENTIONS;
+        screenDimentions = Canvas.getInstance().getScreenDimentions();//Game.SCREENDIMENTIONS;
         pauseText = new Text(screenDimentions[0] / 2, screenDimentions[1] / 2, "Game Paused", fonts.SERIF,20);
         purpleNun = new Picture[4];
         blackNun = new Picture[4];
@@ -42,6 +42,7 @@ public class Pause {
 
             blackNun[i] = new Picture(-100, -100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
             purpleNun[i] = new Picture(-100, -100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
+            System.out.println("Instantiated pictures " + i);
 
         }
 
@@ -51,6 +52,8 @@ public class Pause {
 
             bNun[i] = new Picture((int)(Math.random()*screenDimentions[0]), (int)(Math.random()*(-100)), blackNun[animCounter[i]].getImage());
             pNun[i] = new Picture((int)(Math.random()*screenDimentions[0]), (int)(Math.random()*(-100)), purpleNun[animCounter[i]].getImage());
+
+            System.out.println("drawn pictures " + i);
 
         }
 
@@ -79,12 +82,30 @@ public class Pause {
 
         pauseText.draw();
 
+        for (int i = 0; i < nunQty; i++) {
+
+
+            bNun[i].draw();
+            pNun[i].draw();
+            System.out.println("drawn pictures " + i);
+
+        }
+
         SoundType.ELEVATOR.playSound();
 
     }
 
     public void hide() {
         SoundType.ELEVATOR.stopSound();
+
+        for (int i = 0; i < nunQty; i++) {
+
+
+            bNun[i].delete();
+            pNun[i].delete();
+            System.out.println("drawn pictures " + i);
+
+        }
         pauseText.delete();
     }
 
