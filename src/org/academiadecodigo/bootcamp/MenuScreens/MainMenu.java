@@ -1,28 +1,14 @@
 package org.academiadecodigo.bootcamp.MenuScreens;
 
-import javafx.scene.input.MouseDragEvent;
 import org.academiadecodigo.bootcamp.GameEngine.Game;
-import org.academiadecodigo.bootcamp.GameEngine.InputManager;
-import org.academiadecodigo.bootcamp.Sound.Sound;
-import org.academiadecodigo.bootcamp.Sound.SoundType;
-import org.academiadecodigo.notsosimplegraphics.graphics.*;
-import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
-import org.academiadecodigo.notsosimplegraphics.graphics.Color;
-import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.notsosimplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.notsosimplegraphics.mouse.Mouse;
-import org.academiadecodigo.notsosimplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.notsosimplegraphics.mouse.MouseEventType;
-import org.academiadecodigo.notsosimplegraphics.mouse.MouseHandler;
+import org.academiadecodigo.bootcamp.Interfaces.Menuable;
+import org.academiadecodigo.bootcamp.enums.SoundType;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
-
-import java.awt.*;
-import java.awt.event.MouseListener;
 
 /**
  * Created by codecadet on 04/06/2018.
  */
-public class MainMenu {
+public class MainMenu implements Menuable {
 
     private Picture title2;
     private Picture startPopUp;
@@ -35,32 +21,26 @@ public class MainMenu {
     private Picture title;
     boolean onStartButton;
     boolean onInstructionButton;
+    boolean isVisible;
 
     public MainMenu() {
-
         double[] screenDimentions = Game.SCREENDIMENTIONS;
 
         menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2_1920.jpg");
 
 //        menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
-        menuBackGround.draw();
 
         startButton = new Picture(1100, 410, "Bgs/video-play.png");
-        startButton.draw();
 
         startPopUp = new Picture(1100, 410, "Bgs/2c_go.png");
 
         informationButton = new Picture(1805, 850, "Bgs/question.png");
-        informationButton.draw();
 
         quitButton = new Picture(1805, 20, "Bgs/Door-Closed.png");
-        quitButton.draw();
 
         title = new Picture(800, 190, "Bgs/NUNS.png");
-        title.draw();
 
         title2 = new Picture(1280, 210, "Bgs/ng.png");
-        title2.draw();
 
         instrutionPanel = new Picture(1000, 35, "Bgs/instructions.png");
 
@@ -86,7 +66,38 @@ public class MainMenu {
 
     }
 
+    @Override
+    public void show() {
+        isVisible = true;
+        menuBackGround.draw();
+        startButton.draw();
+        informationButton.draw();
+        quitButton.draw();
+        title.draw();
+        title2.draw();
+        SoundType.MENU.playSound();
+    }
+
+    @Override
+    public void hide() {
+        isVisible = false;
+        title2.delete();
+        startPopUp.delete();
+        quitButton.delete();
+        instrutionPanel.delete();
+        informationButton.delete();
+        startButton.delete();
+        menuBackGround.delete();
+        youSuck.delete();
+        title.delete();
+        SoundType.MENU.stopSound();
+    }
+
     private boolean checkStartButton(double[] mousePos) {
+
+        if (!isVisible) {
+            return false;
+        }
 
         if (mousePos[0] > startButton.getX()
                 && mousePos[0] < startButton.getX() + startButton.getWidth()
@@ -110,6 +121,10 @@ public class MainMenu {
     }
 
     private boolean instructionsSlide(double[] mousePos) {
+
+        if (!isVisible) {
+            return false;
+        }
 
         if (mousePos[0] > informationButton.getX()
                 && mousePos[0] < informationButton.getX() + informationButton.getWidth()
@@ -140,6 +155,10 @@ public class MainMenu {
     }
 
     private boolean quiting(double[] mousePos) {
+
+        if (!isVisible) {
+            return false;
+        }
 
         if (mousePos[0] > quitButton.getX()
                 && mousePos[0] < quitButton.getX() + quitButton.getWidth()

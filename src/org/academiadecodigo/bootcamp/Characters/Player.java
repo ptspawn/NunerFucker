@@ -7,6 +7,7 @@ import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.bootcamp.GameEngine.factories.ProjectileFactory;
 import org.academiadecodigo.bootcamp.enums.CharactersType;
 import org.academiadecodigo.bootcamp.enums.ProjectileType;
+import org.academiadecodigo.bootcamp.enums.SoundType;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 
@@ -64,11 +65,10 @@ public class Player extends Character {
     }
 
     public Projectile shoot(double[] whereTo) {
-
         if (shotRateCounter++ == ProjectileType.BULLET.getFireRate()) {
 
             shotRateCounter = 0;
-            
+            SoundType.GUN.playSound();
             return ProjectileFactory.shoot(ProjectileType.BULLET, position, getVector(position, whereTo));
 
         }

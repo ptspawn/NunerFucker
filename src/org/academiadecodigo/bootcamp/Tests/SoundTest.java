@@ -1,21 +1,23 @@
 package org.academiadecodigo.bootcamp.Tests;
 
-import org.academiadecodigo.bootcamp.Sound.SoundType;
+import org.academiadecodigo.bootcamp.enums.SoundType;
 
 
 public class SoundTest {
 
-    public static void main(String[] args) throws Exception{
-        SoundType menu = SoundType.MENU;
-        menu.playSound();
+    public static void main(String[] args) throws Exception {
+        SoundType.GAMEOVER.playSound();
+
+       /* for (int i = 0; i < 50; i++) {
+            gun.playSound();
+            Thread.sleep(200);
+
 
         /*while (true){
             Thread.sleep(500);
             SoundType.ROCKET.playSound();
         }*/
-        Thread.sleep(5000);
-        menu.stopSound();
+
+        }
 
     }
-
-}

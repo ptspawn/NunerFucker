@@ -13,6 +13,13 @@ public class GameOverTest {
         InputManager input = new InputManager();
         GameOverMenu gameOverMenu = new GameOverMenu();
         double[] mousePosition;
+        gameOverMenu.show();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        gameOverMenu.hide();
 
         while (true) {
 
@@ -24,7 +31,7 @@ public class GameOverTest {
                 switch (result) {
 
                     case 1:
-                //        start();
+                        //        start();
                     case 2:
                         System.exit(0);
 

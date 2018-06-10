@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
+import org.academiadecodigo.bootcamp.enums.CharactersType;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 /**
@@ -73,6 +74,32 @@ public class VectorMath {
         }
 
         return angle + imgRotation;
+    }
+
+    public static double[] getDeviatedNormalizedVector(double[] vector, CharactersType type){
+
+        double xDeviated=vector[0]+((int)(Math.random()*2*type.getDirectionGap()-type.getDirectionGap()));
+
+        double yDeviated = vector[1]+((int)(Math.random()*2*type.getDirectionGap()-type.getDirectionGap()));
+
+        double[] result = {xDeviated,yDeviated};
+
+        return normalizedVector(result);
+
+    }
+
+    private static double[]  PerpendicularClockwise(double[] vector,CharactersType type) {
+
+        double result[] = {vector[1]*type.getDirectionGap(),-vector[0]*type.getDirectionGap()};
+
+        return result;
+    }
+
+    private static double[] PerpendicularCounterClockwise(double[] vector, CharactersType type) {
+
+        double result[] = {-vector[1]*type.getDirectionGap(),vector[0]*type.getDirectionGap()};
+
+        return result;
     }
 
 }

@@ -8,17 +8,17 @@ import sun.audio.*;
 public class Sound implements AudioClip {
 
     private String filePath;
-    private AudioData audiodata;
-    private AudioDataStream audiostream;
-    private ContinuousAudioDataStream continuousaudiostream;
+    private AudioData audioData;
+    private AudioDataStream audioStream;
+    private ContinuousAudioDataStream continuousAudioDataStream;
 
     public Sound(String filePath){
         try{
             FileInputStream fis = new FileInputStream(filePath);
             AudioStream audioStream = new AudioStream(fis);
-            audiodata = audioStream.getData();
-            audiostream = null;
-            continuousaudiostream = null;
+            audioData = audioStream.getData();
+            this.audioStream = null;
+            continuousAudioDataStream = null;
         } catch (IOException e){
             System.out.println(e.getMessage());
         }
@@ -26,21 +26,21 @@ public class Sound implements AudioClip {
 
     @Override
     public void play() {
-        audiostream = new AudioDataStream(audiodata);
-        AudioPlayer.player.start(audiostream);
+        audioStream = new AudioDataStream(audioData);
+        AudioPlayer.player.start(audioStream);
     }
 
     @Override
     public void loop() {
-        continuousaudiostream = new ContinuousAudioDataStream(audiodata);
-        AudioPlayer.player.start(continuousaudiostream);
+        continuousAudioDataStream = new ContinuousAudioDataStream(audioData);
+        AudioPlayer.player.start(continuousAudioDataStream);
     }
 
     @Override
     public void stop() {
-        if (audiostream != null)
-            AudioPlayer.player.stop(audiostream);
-        if (continuousaudiostream != null)
-            AudioPlayer.player.stop(continuousaudiostream);
+        if (audioStream != null)
+            AudioPlayer.player.stop(audioStream);
+        if (continuousAudioDataStream != null)
+            AudioPlayer.player.stop(continuousAudioDataStream);
     }
 }
