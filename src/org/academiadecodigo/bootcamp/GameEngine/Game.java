@@ -13,6 +13,7 @@ import org.academiadecodigo.bootcamp.enums.LevelsType;
 import org.academiadecodigo.bootcamp.MenuScreens.Hud;
 import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
+import org.academiadecodigo.bootcamp.enums.PowerUpType;
 import org.academiadecodigo.bootcamp.enums.SoundType;
 import org.academiadecodigo.notsosimplegraphics.graphics.Canvas;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
@@ -42,6 +43,7 @@ public class Game {
     private InputManager input;
     private Hud hud;
     private int cycleCount;
+    private int currentLevel;
 
     private GameOverMenu gameOver;
     private MainMenu mainMenu;
@@ -49,6 +51,11 @@ public class Game {
     private Picture redFlash;
     private Pause pause;
 
+    private boolean bulletTime;
+    private int bulletTImeCounter;
+    private boolean machineGun;
+    private int machineGunCounter;
+    private boolean flashOn;
 
     private SoundType gameLoop = SoundType.BACKGROUND2;
 
@@ -82,7 +89,8 @@ public class Game {
 
                     case 1:
                         mainMenu.hide();
-                        start(LevelsType.VIRGIN);
+                        currentLevel = 1;
+                        start(LevelsType.values()[currentLevel - 1]);
                     case 2:
                         System.exit(0);
 
@@ -106,8 +114,8 @@ public class Game {
 
         SCORE = 0;
 
-        BULLETTIME=1;
-        FIRE_RATE_MODIFIER=1;
+        BULLETTIME = 1;
+        FIRE_RATE_MODIFIER = 1;
 
         cycleCount = 0;
 
@@ -152,6 +160,8 @@ public class Game {
 
         if (redFlash == null) {
             redFlash = new Picture(0, 0, "Bgs/red.png");
+            redFlash.scaleToFit(SCREENDIMENTIONS[0], SCREENDIMENTIONS[1]);
+
         }
 
         if (pause == null) {
@@ -163,10 +173,20 @@ public class Game {
         gameLoop.playSound();
 
 
-        while (!player.isDead() || liveEnemies == 0) {
+        while (!player.isDead() && liveEnemies != 0) {
 
             if (cycleCount++ % 50 == 0) {
                 SCORE++;
+            }
+
+            if (player.tookDamage() && !flashOn) {
+                redFlash.draw();
+                flashOn = true;
+            }
+
+            if (!player.tookDamage() && flashOn) {
+                redFlash.delete();
+                flashOn = false;
             }
 
             if (input.isPaused) {
@@ -177,6 +197,7 @@ public class Game {
                 while (input.isPaused) {
 
                     pause.animate();
+                    Canvas.getInstance().repaint();
 
                     try {
                         Thread.sleep(20);
@@ -210,6 +231,8 @@ public class Game {
 
             checkPowerUps();
 
+            manageEffects();
+
             hud.setLife(player.getHealth());
             hud.incrementScore(SCORE);
 
@@ -225,13 +248,66 @@ public class Game {
 
         }
 
-        //field.hide();
-
         hud.hideHud();
 
         gameLoop.stopSound();
 
+        if (liveEnemies == 0){
+            System.out.println("ended level");
+           // ++currentLevel <= LevelsType.values().length
+
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                System.out.println("deu merda");
+            } finally {
+
+                if (++currentLevel<LevelsType.values().length) {
+                    start(LevelsType.values()[currentLevel]);
+                } else {
+                    System.out.println("You beat the game!");
+
+                }
+            }
+
+        }
+
         showGameOver();
+
+    }
+
+    private void manageEffects() {
+
+        if (BULLETTIME != 1 && !bulletTime) {
+
+            System.out.println(cycleCount + "Entered bulletTIme");
+            bulletTime = true;
+            bulletTImeCounter = cycleCount;
+
+        }
+
+        if (bulletTime && bulletTImeCounter + PowerUpType.TIME.getValue() < cycleCount) {
+            System.out.println(cycleCount + "Left bulletTIme");
+            BULLETTIME = 1;
+            bulletTime = false;
+
+        }
+
+        if (FIRE_RATE_MODIFIER != 1 && !machineGun) {
+
+            System.out.println(cycleCount + "Got machine Gun");
+            machineGun = true;
+            machineGunCounter = cycleCount;
+
+        }
+
+        if (machineGun && machineGunCounter + PowerUpType.GUN.getValue() < cycleCount) {
+            System.out.println(cycleCount+" lostMachineGun ");
+            FIRE_RATE_MODIFIER = 1;
+            machineGun = false;
+
+        }
+
 
     }
 
@@ -251,8 +327,8 @@ public class Game {
             }
         }
 
-        if (powerUps!=null){
-            for (PowerUp powerUp:powerUps){
+        if (powerUps != null) {
+            for (PowerUp powerUp : powerUps) {
                 powerUp.setCaught();
             }
         }
@@ -279,7 +355,8 @@ public class Game {
 
                     case 1:
                         gameOver.hide();
-                        start(LevelsType.VIRGIN);
+                        currentLevel = 1;
+                        start(LevelsType.values()[currentLevel - 1]);
                     case 2:
                         gameOver.hide();
                         showMainMenu();
@@ -311,7 +388,6 @@ public class Game {
             powerUp = powerUps.get(i);
             collisionRadius = player.getCollisionRadius() + powerUp.getCollisionRadius();
 
-            System.out.println("checking powerup " + i + " for collisions");
             if (Collider.checkCollision(player.getPosition(), powerUp.getPosition(), collisionRadius)) {
 
                 player.catchPowerup(powerUp.getType());

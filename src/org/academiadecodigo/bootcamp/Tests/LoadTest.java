@@ -14,13 +14,20 @@ import java.util.Map;
 public class LoadTest {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
 
 
 
        Pause pause = new Pause();
 
        pause.show();
+
+       while (true){
+
+           pause.animate();
+           Canvas.getInstance().repaint();
+           Thread.sleep(20);
+       }
 
     }
 

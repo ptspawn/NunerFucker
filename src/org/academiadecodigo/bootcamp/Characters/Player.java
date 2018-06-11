@@ -2,7 +2,6 @@ package org.academiadecodigo.bootcamp.Characters;
 
 
 import org.academiadecodigo.bootcamp.GameEngine.Game;
-import org.academiadecodigo.bootcamp.Interfaces.*;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.bootcamp.GameEngine.factories.ProjectileFactory;
 import org.academiadecodigo.bootcamp.enums.*;
@@ -25,6 +24,7 @@ public class Player extends Character {
     private int shotRateCounter = 0;
 
     private double[] position;
+    private boolean tookDamage;
 
     public Player(String name, double xPos, double yPos) {
         super(CharactersType.PLAYER.getHealth(), CharactersType.PLAYER.getSpeed(), CharactersType.PLAYER);
@@ -62,11 +62,20 @@ public class Player extends Character {
 
     }
 
+    public boolean tookDamage(){
+        return tookDamage;
+    }
+
     public Projectile shoot(double[] whereTo) {
         if (shotRateCounter++ >= ProjectileType.BULLET.getFireRate()/Game.FIRE_RATE_MODIFIER) {
 
             shotRateCounter = 0;
-            SoundType.GUN.playSound();
+
+            if (Game.BULLETTIME==1) {
+                SoundType.GUN.playSound();
+            }else{
+                SoundType.BULLETTIME.playSound();
+            }
             return ProjectileFactory.shoot(ProjectileType.BULLET, position, getVector(position, whereTo));
 
         }
@@ -87,6 +96,8 @@ public class Player extends Character {
         if (super.isDead()) {
             return;
         }
+
+        tookDamage=false;
 
         avatar.rotate(getRotationFromMousePos(orientation, avatar, Math.PI / 2));
 
@@ -164,6 +175,7 @@ public class Player extends Character {
     public void getHit(int dmg) {
         if (dmg != 0 && !isDead()) {
             PlayerVoiceType.values()[(int) (Math.random() * 3) + 4].playSound();
+            tookDamage=true;
             super.getHit(dmg);
         }
     }

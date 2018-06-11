@@ -13,7 +13,8 @@ public enum SoundType {
     ROCKET(new Sound("Resources/Sounds/rocket.wav")),
     GUN(new Sound("Resources/Sounds/bullets/skorpion.wav")),
     PUNCH(new Sound("Resources/Sounds/punch.wav")),
-    ELEVATOR(new Sound("Resources/Sounds/ElevatorMusic.wav"));
+    ELEVATOR(new Sound("Resources/Sounds/ElevatorMusic.wav")),
+    BULLETTIME(new Sound("Resources/Sounds/bullets/BulletTIme.wav"));
 
     private final Sound sound;
 
@@ -56,6 +57,10 @@ public enum SoundType {
             case ELEVATOR:
                 sound.loop();
                 break;
+            case BULLETTIME:
+                sound.play();
+                break;
+
         }
     }
 

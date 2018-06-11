@@ -66,7 +66,7 @@ public class WaveManager {
             waveCount++;
             //System.out.println(" now entering " + waveCount);
         }
-
+        System.out.println(liveEnemies);
         return liveEnemies;
     }
 

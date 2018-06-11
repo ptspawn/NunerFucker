@@ -30,7 +30,9 @@ public class Pause {
     public Pause() {
 
         screenDimentions = Canvas.getInstance().getScreenDimentions();//Game.SCREENDIMENTIONS;
-        pauseText = new Text(screenDimentions[0] / 2, screenDimentions[1] / 2, "Game Paused", fonts.SERIF,20);
+        System.out.println(screenDimentions[0] + " " + screenDimentions[1]);
+
+        pauseText = new Text(screenDimentions[0] / 2, screenDimentions[1] / 2, "Game Paused", fonts.SERIF,50);
         purpleNun = new Picture[4];
         blackNun = new Picture[4];
         bNun = new Picture[nunQty];
@@ -40,7 +42,7 @@ public class Pause {
 
         for (int i = 0; i < 4; i++) {
 
-            blackNun[i] = new Picture(-100, -100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
+            blackNun[i] = new Picture(100, 100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
             purpleNun[i] = new Picture(-100, -100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
             System.out.println("Instantiated pictures " + i);
 
@@ -50,9 +52,12 @@ public class Pause {
 
             animCounter[i]=(int) (Math.random() * blackNun.length);
 
-            bNun[i] = new Picture((int)(Math.random()*screenDimentions[0]), (int)(Math.random()*(-100)), blackNun[animCounter[i]].getImage());
-            pNun[i] = new Picture((int)(Math.random()*screenDimentions[0]), (int)(Math.random()*(-100)), purpleNun[animCounter[i]].getImage());
+            bNun[i] = new Picture((int)(Math.random()*screenDimentions[0]), -100, blackNun[animCounter[i]].getImage());
+            pNun[i] = new Picture((int)(Math.random()*screenDimentions[0]), -100, purpleNun[animCounter[i]].getImage());
 
+
+            bNun[i]=new Picture((int)screenDimentions[0]/2, screenDimentions[1]/2, blackNun[animCounter[i]].getImage());
+            //bNun[i].draw();
             System.out.println("drawn pictures " + i);
 
         }
@@ -91,6 +96,14 @@ public class Pause {
 
         }
 
+     /*   for (int i = 0; i < 4; i++) {
+
+            blackNun[i].draw();// = new Picture(100, 100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
+            purpleNun[i].draw();// = new Picture(-100, -100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
+            System.out.println("Instantiated pictures " + i);
+
+        }
+*/
         SoundType.ELEVATOR.playSound();
 
     }
