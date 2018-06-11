@@ -5,7 +5,7 @@ package org.academiadecodigo.bootcamp.enums;
  * Created by codecadet on 02/06/2018.
  */
 public enum CharactersType {
-    PLAYER(100, 10, 10, 50, 0, 0, "Resources/Characters/Enemies/human.png"),
+    PLAYER(1000, 10, 10, 50, 0, 0, "Resources/Characters/Enemies/human.png"),
     ENEMY(50, 3, 30, 50, 2, 100, "Resources/Characters/Enemies/purpleEnemy.png"),
     BUG(30, 3, 20, 40, 2, 50, "Resources/Characters/Enemies/bug.png"),
     SPIDER(60, 3, 25, 35, 10, 200, "Resources/Characters/Enemies/spider.png"),

@@ -58,6 +58,10 @@ public class Enemy extends Character {
         return yPos;
     }
 
+    public void hide(){
+        enemy.delete();
+    }
+
     public int getDamage() {
 
         if (super.isDead()){return 0;}

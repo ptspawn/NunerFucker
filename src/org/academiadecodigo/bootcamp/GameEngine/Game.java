@@ -6,6 +6,7 @@ import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.bootcamp.GameEngine.factories.CharacterFactory;
 import org.academiadecodigo.bootcamp.MenuScreens.GameOverMenu;
 import org.academiadecodigo.bootcamp.MenuScreens.Pause;
+import org.academiadecodigo.bootcamp.Projectiles.Bullet;
 import org.academiadecodigo.bootcamp.enums.LevelsType;
 import org.academiadecodigo.bootcamp.MenuScreens.Hud;
 import org.academiadecodigo.bootcamp.MenuScreens.MainMenu;
@@ -29,11 +30,13 @@ public class Game {
     private LinkedList<Projectile> projectiles;
     private Player player;
     public static double[] SCREENDIMENTIONS;
+    public static int SCORE;
 
 
     private boolean[] playerDirections;
     private InputManager input;
     private Hud hud;
+    private int cycleCount;
 
     private GameOverMenu gameOver;
     private MainMenu mainMenu;
@@ -95,6 +98,12 @@ public class Game {
 
     public void start(LevelsType level) {
 
+        SCORE=0;
+
+        cycleCount=0;
+
+        cleanScreen();
+
         enemies = new LinkedList<>();
 
         projectiles = new LinkedList<>();
@@ -105,10 +114,12 @@ public class Game {
         if (field == null) {
 
             field = new Field("bg.jpg");
+            field.draw();
 
         } else {
 
             field.draw();
+            cleanScreen();
         }
 
         CharacterFactory.enemySpawnByLevel(level, enemies);
@@ -121,9 +132,14 @@ public class Game {
 
         if (hud == null) {
             hud = new Hud();
+            hud.showHud();
         } else {
+            hud.showHud();
 
         }
+
+
+
 
         if (redFlash == null) {
             redFlash = new Picture(0, 0, "Bgs/red.png");
@@ -140,6 +156,7 @@ public class Game {
 
         while (!player.isDead() || liveEnemies == 0) {
 
+            if (cycleCount++ % 50==0){SCORE++;}
 
             if (input.isPaused) {
 
@@ -181,6 +198,9 @@ public class Game {
 
             liveEnemies = waveManager.moveEnemies();
 
+            hud.setLife(player.getHealth());
+            hud.incrementScore(SCORE);
+
             Canvas.getInstance().repaint();
 
             try {
@@ -193,7 +213,9 @@ public class Game {
 
         }
 
-        field.hide();
+        //field.hide();
+
+        hud.hideHud();
 
         gameLoop.stopSound();
 
@@ -201,7 +223,22 @@ public class Game {
 
     }
 
+    private void cleanScreen(){
 
+        if (enemies!=null) {
+            for (Enemy enemy : enemies) {
+                if (!enemy.isDead()) {
+                    enemy.hide();
+                }
+            }
+        }
+        if (projectiles!=null){
+            for (Projectile projectile : projectiles) {
+
+                ((Bullet) projectile).hide();
+            }
+        }
+    }
     private void showGameOver() {
 
         if (gameOver == null) {

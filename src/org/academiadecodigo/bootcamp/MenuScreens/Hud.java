@@ -15,6 +15,7 @@ public class Hud {
     private Rectangle powerUp;
     private Rectangle life;
     private Text textScore;
+    private Text currentlife;
 
 
     private int lifeMax = 250;
@@ -38,11 +39,18 @@ public class Hud {
 
         textScore = new Text(screenDimentions[0] / 2 - 190, 10, "BLOOD SPILT - " + score, fonts.SERIF, 40);
         textScore.setColor(Color.LIGHT_GRAY);
+
+        currentlife = new Text(heart.getWidth()+heart.getX()+5, 10, ""+lifeMax , fonts.SERIF, 25);
+        currentlife.setColor(Color.LIGHT_GRAY);
     }
 
     public void setLife(int life) {
 
-        this.life.setDimentions(life / 100 * lifeMax, 25);
+        //this.life.setDimentions( (life / 1000 )* lifeMax, 25);
+        currentlife.setText(""+life);
+        System.out.println(life);
+        System.out.println("teoric width" + life / 100 * lifeMax);
+        System.out.println("width" + this.life.getWidth());
 
     }
 
@@ -66,17 +74,15 @@ public class Hud {
     }
 
     // SCORE
-    public int getScore() {
-        return score;
-    }
 
     public void incrementScore(int score) {
-        this.score += score;
+        textScore.setText("BLOOD SPILT - " + score);
     }
 
     public void showHud() {
-        life.draw();
-        life.fill();
+        //life.draw();
+        //life.fill();
+        currentlife.draw();
         powerUp.draw();
         powerUp.fill();
         heart.draw();
@@ -85,11 +91,11 @@ public class Hud {
     }
 
     public void hideHud() {
-
+        currentlife.delete();
         cannabis.delete();
         heart.delete();
         powerUp.delete();
-        life.delete();
+        //life.delete();
         textScore.delete();
         textScore.draw();
     }
