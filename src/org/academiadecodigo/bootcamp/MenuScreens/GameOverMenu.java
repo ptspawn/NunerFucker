@@ -36,7 +36,7 @@ public class GameOverMenu implements Menuable {
 
         background.scaleToFit(SCREENDIMENTIONS[0], SCREENDIMENTIONS[1]);
 
-        highScoreBoard = new Picture(0, 0, "Bgs/gameover.png");
+        highScoreBoard = new Picture(5, -20, "Bgs/gameover.png");
 
 
         startButton = new Picture(1808, 150, "Bgs/go2_small.png");
