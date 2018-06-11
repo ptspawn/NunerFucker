@@ -19,6 +19,7 @@ public abstract class PowerUp implements Collidable, Drawable {
         this.powerUp = new Picture(position[0],position[1],type.getPath());
         this.powerUp.translate(-powerUp.getWidth()/2,-powerUp.getHeight()/2);
 
+        this.position=new double[2];
         this.position[0]=position[0]-powerUp.getWidth()/2;
         this.position[1]=position[1]-powerUp.getHeight()/2;
 

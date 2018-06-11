@@ -55,6 +55,6 @@ public class PowerUpFactory {
     }
 
     public static void setList(LinkedList powerUps){
-        this.powerUps=powerUps;
+        //this.powerUps=powerUps;
     }
 }
