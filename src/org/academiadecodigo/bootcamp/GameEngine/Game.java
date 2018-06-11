@@ -112,7 +112,7 @@ public class Game {
 
     public void start(LevelsType level) {
 
-        SCORE = 0;
+        if (level==LevelsType.VIRGIN){SCORE = 0;}
 
         BULLETTIME = 1;
         FIRE_RATE_MODIFIER = 1;
@@ -152,6 +152,7 @@ public class Game {
         if (hud == null) {
             hud = new Hud();
             hud.showHud();
+
         } else {
             hud.showHud();
 

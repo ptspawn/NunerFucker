@@ -33,9 +33,9 @@ public class Hud {
         powerUp = new Rectangle(1640, 20, 1, 25); //max width 250
         powerUp.setColor(Color.GREEN);
 
-        heart = new Picture(13, 5, "Bgs/heart.png");
+        heart = new Picture(13, 5, "resources/Bgs/heart.png");
 
-        cannabis = new Picture(1610, -3, "Bgs/powerup.png");
+        cannabis = new Picture(1610, -3, "resources/Bgs/powerup.png");
 
         textScore = new Text(screenDimentions[0] / 2 - 190, 10, "BLOOD SPILT - " + score, fonts.SERIF, 40);
         textScore.setColor(Color.LIGHT_GRAY);
@@ -83,8 +83,8 @@ public class Hud {
         //life.draw();
         //life.fill();
         currentlife.draw();
-        powerUp.draw();
-        powerUp.fill();
+        //powerUp.draw();
+        //powerUp.fill();
         heart.draw();
         //cannabis.draw();
         textScore.draw();
@@ -94,7 +94,7 @@ public class Hud {
         currentlife.delete();
         //cannabis.delete();
         heart.delete();
-        powerUp.delete();
+        //powerUp.delete();
         //life.delete();
         textScore.delete();
         textScore.draw();
