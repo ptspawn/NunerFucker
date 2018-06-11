@@ -4,8 +4,10 @@ import org.academiadecodigo.bootcamp.Characters.Enemy;
 import org.academiadecodigo.bootcamp.Characters.Player;
 import org.academiadecodigo.bootcamp.Field.Field;
 import org.academiadecodigo.bootcamp.GameEngine.factories.CharacterFactory;
+import org.academiadecodigo.bootcamp.GameEngine.factories.PowerUpFactory;
 import org.academiadecodigo.bootcamp.MenuScreens.GameOverMenu;
 import org.academiadecodigo.bootcamp.MenuScreens.Pause;
+import org.academiadecodigo.bootcamp.PowerUp.PowerUp;
 import org.academiadecodigo.bootcamp.Projectiles.Bullet;
 import org.academiadecodigo.bootcamp.enums.LevelsType;
 import org.academiadecodigo.bootcamp.MenuScreens.Hud;
@@ -28,9 +30,11 @@ public class Game {
     private Field field;
     private LinkedList<Enemy> enemies;
     private LinkedList<Projectile> projectiles;
+    private LinkedList<PowerUp> powerUps;
     private Player player;
     public static double[] SCREENDIMENTIONS;
     public static int SCORE;
+    public static int BULLETTIME;
 
 
     private boolean[] playerDirections;
@@ -43,6 +47,7 @@ public class Game {
 
     private Picture redFlash;
     private Pause pause;
+
 
     private SoundType gameLoop = SoundType.BACKGROUND2;
 
@@ -98,15 +103,21 @@ public class Game {
 
     public void start(LevelsType level) {
 
-        SCORE=0;
+        SCORE = 0;
 
-        cycleCount=0;
+        BULLETTIME=1;
+
+        cycleCount = 0;
 
         cleanScreen();
 
         enemies = new LinkedList<>();
 
         projectiles = new LinkedList<>();
+
+        powerUps = new LinkedList<>();
+
+        PowerUpFactory.setList(powerUps);
 
         Projectile currentShot = null;
 
@@ -139,8 +150,6 @@ public class Game {
         }
 
 
-
-
         if (redFlash == null) {
             redFlash = new Picture(0, 0, "Bgs/red.png");
         }
@@ -156,7 +165,9 @@ public class Game {
 
         while (!player.isDead() || liveEnemies == 0) {
 
-            if (cycleCount++ % 50==0){SCORE++;}
+            if (cycleCount++ % 50 == 0) {
+                SCORE++;
+            }
 
             if (input.isPaused) {
 
@@ -164,7 +175,6 @@ public class Game {
                 pause.show();
 
                 while (input.isPaused) {
-
 
                     pause.animate();
 
@@ -198,6 +208,8 @@ public class Game {
 
             liveEnemies = waveManager.moveEnemies();
 
+            checkPowerUps();
+
             hud.setLife(player.getHealth());
             hud.incrementScore(SCORE);
 
@@ -223,22 +235,23 @@ public class Game {
 
     }
 
-    private void cleanScreen(){
+    private void cleanScreen() {
 
-        if (enemies!=null) {
+        if (enemies != null) {
             for (Enemy enemy : enemies) {
                 if (!enemy.isDead()) {
                     enemy.hide();
                 }
             }
         }
-        if (projectiles!=null){
+        if (projectiles != null) {
             for (Projectile projectile : projectiles) {
 
                 ((Bullet) projectile).hide();
             }
         }
     }
+
     private void showGameOver() {
 
         if (gameOver == null) {
@@ -282,21 +295,22 @@ public class Game {
     }
 
 
-    private void moveEnemies() {
+    private void checkPowerUps() {
 
-        Enemy enemy;
+        PowerUp powerUp;
         double collisionRadius;
 
-        for (int i = 0; i < enemies.size(); i++) {
+        for (int i = 0; i < powerUps.size(); i++) {
 
-            enemy = enemies.get(i);
-            enemy.move(player.getPosition());
-            collisionRadius = player.getCollisionRadius() + enemy.getCollisionRadius();
+            powerUp = powerUps.get(i);
+            collisionRadius = player.getCollisionRadius() + powerUp.getCollisionRadius();
 
 
-            if (Collider.checkCollision(player.getPosition(), enemy.getPosition(), collisionRadius)) {
+            if (Collider.checkCollision(player.getPosition(), powerUp.getPosition(), collisionRadius)) {
 
-                player.getHit(enemy.getDamage());
+                player.catchPowerup(powerUp.getType());
+                powerUp.setCaught();
+                powerUps.remove(i);
             }
 
         }
@@ -346,5 +360,6 @@ public class Game {
 
         return result;
     }
+
 
 }

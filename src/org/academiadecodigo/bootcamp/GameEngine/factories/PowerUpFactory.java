@@ -4,11 +4,18 @@ import org.academiadecodigo.bootcamp.GameEngine.Game;
 import org.academiadecodigo.bootcamp.PowerUp.*;
 import org.academiadecodigo.bootcamp.enums.PowerUpType;
 
+import java.util.LinkedList;
+
+import static org.academiadecodigo.bootcamp.enums.PowerUpType.HEALTH;
+
 /**
  * Created by codecadet on 10/06/2018.
  */
 public class PowerUpFactory {
-    public static PowerUp getNewPowerUp(PowerUpType powerUpType, double[] startingPosition) {
+
+    private static LinkedList<PowerUp> powerUps;
+
+    public static void getNewPowerUp(PowerUpType powerUpType, double[] startingPosition) {
 
         PowerUp powerUp;
 
@@ -28,7 +35,7 @@ public class PowerUpFactory {
             default:
                 powerUp = null;
         }
-        return powerUp;
+        powerUps.add( powerUp);
     }
 
     public static double[] spawnPowerUpRandom() {
@@ -39,5 +46,15 @@ public class PowerUpFactory {
         spawnPos[0] = (int) (Math.random() * screen[0]);
         spawnPos[1] = (int) (Math.random() * screen[1]);
         return spawnPos;
+    }
+    public static void getNewPowerUp(double[] startingPosition) {
+
+        PowerUpType type = PowerUpType.values()[(int)(Math.random()*PowerUpType.values().length)];
+
+         getNewPowerUp(type,startingPosition);
+    }
+
+    public static void setList(LinkedList powerUps){
+        this.powerUps=powerUps;
     }
 }

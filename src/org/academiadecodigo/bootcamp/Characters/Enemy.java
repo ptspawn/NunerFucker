@@ -94,7 +94,8 @@ public class Enemy extends Character {
             }
 
             enemy.rotate(getRotationFromVector(currentDirection, enemy, Math.PI / 2));
-            enemy.translate(currentDirection[0] * super.getSpeed(), currentDirection[1] * super.getSpeed());
+            enemy.translate(currentDirection[0] * super.getSpeed()/Game.BULLETTIME,
+                    currentDirection[1] * super.getSpeed()/Game.BULLETTIME);
 
             updatePosition();
         }

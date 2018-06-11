@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.Projectiles;
 
+import org.academiadecodigo.bootcamp.GameEngine.Game;
 import org.academiadecodigo.bootcamp.Interfaces.Collidable;
 import org.academiadecodigo.bootcamp.enums.ProjectileType;
 import org.academiadecodigo.bootcamp.Interfaces.Drawable;
@@ -46,7 +47,7 @@ public class Bullet extends Projectile implements Drawable, Movable, Collidable 
             return true;
         }
 
-        bullet.translate(orientation[0] * super.getSpeed(), orientation[1] * super.getSpeed());
+        bullet.translate(orientation[0] * super.getSpeed()/ Game.BULLETTIME, orientation[1] * super.getSpeed()/Game.BULLETTIME);
         updatePosition();
         return false;
     }

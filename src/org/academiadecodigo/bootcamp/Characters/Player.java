@@ -5,10 +5,7 @@ import org.academiadecodigo.bootcamp.GameEngine.Game;
 import org.academiadecodigo.bootcamp.Interfaces.*;
 import org.academiadecodigo.bootcamp.Projectiles.Projectile;
 import org.academiadecodigo.bootcamp.GameEngine.factories.ProjectileFactory;
-import org.academiadecodigo.bootcamp.enums.CharactersType;
-import org.academiadecodigo.bootcamp.enums.PlayerVoiceType;
-import org.academiadecodigo.bootcamp.enums.ProjectileType;
-import org.academiadecodigo.bootcamp.enums.SoundType;
+import org.academiadecodigo.bootcamp.enums.*;
 import org.academiadecodigo.notsosimplegraphics.pictures.Picture;
 
 
@@ -29,8 +26,10 @@ public class Player extends Character {
 
     private double[] position;
 
+    private int fireRateMod=1;
+
     public Player(String name, double xPos, double yPos) {
-        super(CharactersType.PLAYER.getHealth(), CharactersType.PLAYER.getSpeed(),CharactersType.PLAYER);
+        super(CharactersType.PLAYER.getHealth(), CharactersType.PLAYER.getSpeed(), CharactersType.PLAYER);
         this.name = name;
 
         position = new double[2];
@@ -66,7 +65,7 @@ public class Player extends Character {
     }
 
     public Projectile shoot(double[] whereTo) {
-        if (shotRateCounter++ == ProjectileType.BULLET.getFireRate()) {
+        if (shotRateCounter++ >= ProjectileType.BULLET.getFireRate()/fireRateMod) {
 
             shotRateCounter = 0;
             SoundType.GUN.playSound();
@@ -112,11 +111,25 @@ public class Player extends Character {
 
         if (checkBounds(vector)) {
 
-            avatar.translate(getSpeed() * vector[0], getSpeed() * vector[1]);
+            avatar.translate(getSpeed() * vector[0]/(Game.BULLETTIME*0.8), getSpeed() * vector[1]/(Game.BULLETTIME*0.8));
         }
         updatePosition();
     }
 
+    public void catchPowerup(PowerUpType powerUp) {
+
+        switch(powerUp){
+            case GUN:
+                fireRateMod=2;
+            case TIME:
+                Game.BULLETTIME=2;
+            case WEED:
+
+            case HEALTH:
+                super.addLife(powerUp.getValue());
+        }
+
+    }
 
     public void updatePosition() {
         position[0] = avatar.getWidth() / 2 + avatar.getX();
@@ -146,7 +159,7 @@ public class Player extends Character {
 
     @Override
     public void getHit(int dmg) {
-        if (dmg!=0 && !isDead()) {
+        if (dmg != 0 && !isDead()) {
             PlayerVoiceType.values()[(int) (Math.random() * 3) + 4].playSound();
             super.getHit(dmg);
         }
