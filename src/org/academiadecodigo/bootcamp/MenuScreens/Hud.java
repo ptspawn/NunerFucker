@@ -86,13 +86,13 @@ public class Hud {
         powerUp.draw();
         powerUp.fill();
         heart.draw();
-        cannabis.draw();
+        //cannabis.draw();
         textScore.draw();
     }
 
     public void hideHud() {
         currentlife.delete();
-        cannabis.delete();
+        //cannabis.delete();
         heart.delete();
         powerUp.delete();
         //life.delete();

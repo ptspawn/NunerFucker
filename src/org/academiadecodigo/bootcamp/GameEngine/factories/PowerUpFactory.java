@@ -48,7 +48,7 @@ public class PowerUpFactory {
 
     public static PowerUp getNewPowerUp(double[] startingPosition) {
 
-        PowerUpType type = PowerUpType.values()[(int) (Math.random() * PowerUpType.values().length)];
+        PowerUpType type = PowerUpType.values()[(int) (Math.random() * PowerUpType.values().length-1)];
 
         return getNewPowerUp(type, startingPosition);
     }
