@@ -3,18 +3,18 @@ package org.academiadecodigo.bootcamp.enums;
 import org.academiadecodigo.bootcamp.Sound.Sound;
 
 public enum SoundType {
-    BACKGROUND(new Sound("Resources/Sounds/background.wav")),
-    BACKGROUND2(new Sound("Resources/Sounds/background2.wav")),
-    BACKGROUND3(new Sound("Resources/Sounds/background3.wav")),
-    BACKGROUND4(new Sound("Resources/Sounds/background4.wav")),
-    BOSS(new Sound("Resources/Sounds/boss.wav")),
-    GAMEOVER(new Sound("Resources/Sounds/gameOver.wav")),
-    MENU(new Sound("Resources/Sounds/menu.wav")),
-    ROCKET(new Sound("Resources/Sounds/rocket.wav")),
-    GUN(new Sound("Resources/Sounds/bullets/skorpion.wav")),
-    PUNCH(new Sound("Resources/Sounds/punch.wav")),
-    ELEVATOR(new Sound("Resources/Sounds/ElevatorMusic.wav")),
-    BULLETTIME(new Sound("Resources/Sounds/bullets/BulletTIme.wav"));
+    BACKGROUND(new Sound("resources/Sounds/background.wav")),
+    BACKGROUND2(new Sound("resources/Sounds/background2.wav")),
+    BACKGROUND3(new Sound("resources/Sounds/background3.wav")),
+    BACKGROUND4(new Sound("resources/Sounds/background4.wav")),
+    BOSS(new Sound("resources/Sounds/boss.wav")),
+    GAMEOVER(new Sound("resources/Sounds/gameOver.wav")),
+    MENU(new Sound("resources/Sounds/menu.wav")),
+    ROCKET(new Sound("resources/Sounds/rocket.wav")),
+    GUN(new Sound("resources/Sounds/bullets/skorpion.wav")),
+    PUNCH(new Sound("resources/Sounds/punch.wav")),
+    ELEVATOR(new Sound("resources/Sounds/ElevatorMusic.wav")),
+    BULLETTIME(new Sound("resources/Sounds/bullets/BulletTIme.wav"));
 
     private final Sound sound;
 

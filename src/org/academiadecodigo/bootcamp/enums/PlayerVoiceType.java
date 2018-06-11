@@ -7,19 +7,19 @@ import org.academiadecodigo.bootcamp.Sound.Sound;
  */
 public enum PlayerVoiceType {
 
-    AAAAHHH(new Sound("Resources/Sounds/voice/aaaahhh.wav")),
-    KILL(new Sound("Resources/Sounds/voice/kill.wav")),
-    MUCHBETTER(new Sound("Resources/Sounds/voice/muchbetter.wav")),
-    DAMN(new Sound("Resources/Sounds/voice/damn.wav")),
-    AHFUCKERS(new Sound("Resources/Sounds/voice/ahfuckers.wav")),
-    BASTARDS(new Sound("Resources/Sounds/voice/bastards.wav")),
-    AHCURTO2(new Sound("Resources/Sounds/voice/ahcurto.wav")),
-    BIRTHCONTROL(new Sound("Resources/Sounds/voice/birthcontrol.wav")),
-    EATSHIT(new Sound("Resources/Sounds/voice/eatshit.wav")),
-    LIKETHERESR(new Sound("Resources/Sounds/voice/liketheresr.wav")),
-    MEDIEVAL(new Sound("Resources/Sounds/voice/medieval.wav")),
-    UGLY(new Sound("Resources/Sounds/voice/ugly.wav")),
-    YIPPIE(new Sound("Resources/Sounds/voice/yippie.wav"));
+    AAAAHHH(new Sound("resources/Sounds/voice/aaaahhh.wav")),
+    KILL(new Sound("resources/Sounds/voice/kill.wav")),
+    MUCHBETTER(new Sound("resources/Sounds/voice/muchbetter.wav")),
+    DAMN(new Sound("resources/Sounds/voice/damn.wav")),
+    AHFUCKERS(new Sound("resources/Sounds/voice/ahfuckers.wav")),
+    BASTARDS(new Sound("resources/Sounds/voice/bastards.wav")),
+    AHCURTO2(new Sound("resources/Sounds/voice/ahcurto.wav")),
+    BIRTHCONTROL(new Sound("resources/Sounds/voice/birthcontrol.wav")),
+    EATSHIT(new Sound("resources/Sounds/voice/eatshit.wav")),
+    LIKETHERESR(new Sound("resources/Sounds/voice/liketheresr.wav")),
+    MEDIEVAL(new Sound("resources/Sounds/voice/medieval.wav")),
+    UGLY(new Sound("resources/Sounds/voice/ugly.wav")),
+    YIPPIE(new Sound("resources/Sounds/voice/yippie.wav"));
 
 
     private final Sound voice;
