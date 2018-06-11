@@ -313,6 +313,10 @@ public class Game {
 
     private void cleanScreen() {
 
+        if (player!=null && !player.isDead()){
+            player.delete();
+        }
+
         if (enemies != null) {
             for (Enemy enemy : enemies) {
                 if (!enemy.isDead()) {

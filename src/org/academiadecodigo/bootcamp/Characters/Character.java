@@ -60,7 +60,7 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
             voiceOver = true;
         }
 
-        if (Math.random()*10<=1){
+        if (Math.random()*10<=2){
             drop=true;
         }
 

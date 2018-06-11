@@ -15,8 +15,8 @@ public class WaveManager {
     private long waveStart;
     private long elapsedTime;
     private LinkedList<Enemy> npcList;
-    private final int MAX_PER_WAVE = 20;
-    private final int ENEMIES_BEFORE_NEXT = 5;
+    private final int MAX_PER_WAVE = 40;
+    private final int ENEMIES_BEFORE_NEXT = 10;
     private int waveCount;
     private int liveEnemies;
     private Player player;

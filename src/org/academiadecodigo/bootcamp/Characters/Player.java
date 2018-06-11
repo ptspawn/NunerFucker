@@ -62,18 +62,18 @@ public class Player extends Character {
 
     }
 
-    public boolean tookDamage(){
+    public boolean tookDamage() {
         return tookDamage;
     }
 
     public Projectile shoot(double[] whereTo) {
-        if (shotRateCounter++ >= ProjectileType.BULLET.getFireRate()/Game.FIRE_RATE_MODIFIER) {
+        if (shotRateCounter++ >= ProjectileType.BULLET.getFireRate() / Game.FIRE_RATE_MODIFIER) {
 
             shotRateCounter = 0;
 
-            if (Game.BULLETTIME==1) {
+            if (Game.BULLETTIME == 1) {
                 SoundType.GUN.playSound();
-            }else{
+            } else {
                 SoundType.BULLETTIME.playSound();
             }
             return ProjectileFactory.shoot(ProjectileType.BULLET, position, getVector(position, whereTo));
@@ -84,6 +84,9 @@ public class Player extends Character {
 
     }
 
+    public void delete() {
+        avatar.delete();
+    }
 
     @Override
     public boolean move() {
@@ -97,7 +100,7 @@ public class Player extends Character {
             return;
         }
 
-        tookDamage=false;
+        tookDamage = false;
 
         avatar.rotate(getRotationFromMousePos(orientation, avatar, Math.PI / 2));
 
@@ -120,20 +123,20 @@ public class Player extends Character {
 
         if (checkBounds(vector)) {
 
-            avatar.translate(getSpeed() * vector[0]/(Game.BULLETTIME*0.8), getSpeed() * vector[1]/(Game.BULLETTIME*0.8));
+            avatar.translate(getSpeed() * vector[0] / (Game.BULLETTIME * 0.8), getSpeed() * vector[1] / (Game.BULLETTIME * 0.8));
         }
         updatePosition();
     }
 
     public void catchPowerup(PowerUpType powerUp) {
-        System.out.println("Caught "+ powerUp.getValue());
-        switch(powerUp){
+        System.out.println("Caught " + powerUp.getValue());
+        switch (powerUp) {
             case GUN:
                 PlayerVoiceType.KILL.playSound();
-                Game.FIRE_RATE_MODIFIER=2;
+                Game.FIRE_RATE_MODIFIER = 2;
                 break;
             case TIME:
-                Game.BULLETTIME=2;
+                Game.BULLETTIME = 2;
                 break;
             case WEED:
                 break;
@@ -175,7 +178,7 @@ public class Player extends Character {
     public void getHit(int dmg) {
         if (dmg != 0 && !isDead()) {
             PlayerVoiceType.values()[(int) (Math.random() * 3) + 4].playSound();
-            tookDamage=true;
+            tookDamage = true;
             super.getHit(dmg);
         }
     }

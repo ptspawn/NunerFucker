@@ -5,11 +5,11 @@ package org.academiadecodigo.bootcamp.enums;
  */
 public enum LevelsType {
 
-    VIRGIN(0, 0, 0, 0, 0, 0, 1),
-    EXPERIENT(40, 30, 15, 15, 40, 25, 1),
-    USED(50, 20, 20, 20, 20, 20, 1),
-    XXX(60, 25, 25, 25, 25, 25, 1),
-    SLUT(80, 30, 30, 30, 30, 30, 1);
+    VIRGIN(35, 24, 30, 12, 20, 25, 1),
+    EXPERIENT(40, 30, 15, 40, 40, 25, 1),
+    USED(50, 55, 44, 50, 40, 50, 3),
+    SLUT(60, 65, 90, 40, 25, 100, 3),
+    XXX(80, 90, 110, 80, 200, 110, 10);
 
 
     private int enemyQty;
