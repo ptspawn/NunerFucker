@@ -32,7 +32,7 @@ public class Player extends Character {
 
         position = new double[2];
 
-        avatar = new Picture(xPos, yPos, "avatar/nun_char.png");
+        avatar = new Picture(xPos, yPos, "resources/avatar/nun_with_gun.png");
 
         super.setAvatar(avatar);
 
