@@ -35,6 +35,7 @@ public class CharacterFactory {
         double random;
         double[] spawnPos = new double[2];
         double[] screen = Game.SCREENDIMENTIONS;
+        int paddingSpawn = 250;
 
         side = (int) (Math.random() * 4);
         random = Math.random();
@@ -42,16 +43,16 @@ public class CharacterFactory {
 
         switch (side) {
             case 0: //xPOS = 0
-                spawnPos = new double[]{-220, random * screen[1]};
+                spawnPos = new double[]{-paddingSpawn, random * screen[1]};
                 break;
             case 1: //xPOS = maxWidth
-                spawnPos = new double[]{screen[0] + 220, random * screen[1]};
+                spawnPos = new double[]{screen[0] + paddingSpawn, random * screen[1]};
                 break;
             case 2:
-                spawnPos = new double[]{random * screen[0], -220};
+                spawnPos = new double[]{random * screen[0], -paddingSpawn};
                 break;
             case 3:
-                spawnPos = new double[]{random * screen[0], screen[1] + 220};
+                spawnPos = new double[]{random * screen[0], screen[1] + paddingSpawn};
                 break;
 
         }
