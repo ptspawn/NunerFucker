@@ -97,7 +97,6 @@ public class Hud {
         //powerUp.delete();
         //life.delete();
         textScore.delete();
-        textScore.draw();
     }
 
 }
