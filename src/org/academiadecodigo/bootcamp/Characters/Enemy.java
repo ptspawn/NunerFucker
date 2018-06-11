@@ -81,14 +81,11 @@ public class Enemy extends Character {
 
         if (!super.isDead()) {
 
-
-
             if (directionCounter++==type.getDirectionRate()){
                 directionCounter=0;
 
                 vector=getVector(getPosition(),vector);
 
-                //vector = normalizedVector(vector);
                 currentDirection=getDeviatedNormalizedVector(vector,type);
 
             }

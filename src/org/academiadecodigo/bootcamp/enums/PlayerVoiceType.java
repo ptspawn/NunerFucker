@@ -11,15 +11,15 @@ public enum PlayerVoiceType {
     KILL(new Sound("Resources/Sounds/voice/kill.wav")),
     MUCHBETTER(new Sound("Resources/Sounds/voice/muchbetter.wav")),
     DAMN(new Sound("Resources/Sounds/voice/damn.wav")),
+    AHFUCKERS(new Sound("Resources/Sounds/voice/ahfuckers.wav")),
+    BASTARDS(new Sound("Resources/Sounds/voice/bastards.wav")),
+    AHCURTO2(new Sound("Resources/Sounds/voice/ahcurto.wav")),
     BIRTHCONTROL(new Sound("Resources/Sounds/voice/birthcontrol.wav")),
     EATSHIT(new Sound("Resources/Sounds/voice/eatshit.wav")),
     LIKETHERESR(new Sound("Resources/Sounds/voice/liketheresr.wav")),
     MEDIEVAL(new Sound("Resources/Sounds/voice/medieval.wav")),
     UGLY(new Sound("Resources/Sounds/voice/ugly.wav")),
-    YIPPIE(new Sound("Resources/Sounds/voice/yippie.wav")),
-    AHCURTO2(new Sound("Resources/Sounds/voice/ahcurto.wav")),
-    AHFUCKERS(new Sound("Resources/Sounds/voice/ahfuckers.wav")),
-    BASTARDS(new Sound("Resources/Sounds/voice/bastards.wav"));
+    YIPPIE(new Sound("Resources/Sounds/voice/yippie.wav"));
 
 
     private final Sound voice;

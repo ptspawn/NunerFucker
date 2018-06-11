@@ -46,13 +46,9 @@ public class Hud {
 
     public void setLife(int life) {
 
-        //this.life.setDimentions( (life / 1000 )* lifeMax, 25);
         if (life > 0) {
 
             currentlife.setText("" + life);
-            System.out.println(life);
-            System.out.println("teoric width" + life / 100 * lifeMax);
-           // System.out.println("width" + this.life.getWidth());
         } else {
             currentlife.setText("FUCKED!");
         }

@@ -52,8 +52,6 @@ public class WaveManager {
 
                 if (Collider.checkCollision(player.getPosition(), enemy.getPosition(), collisionRadius)) {
 
-
-
                     player.getHit(enemy.getDamage());
                 }
 

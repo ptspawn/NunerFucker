@@ -13,9 +13,7 @@ import static org.academiadecodigo.bootcamp.enums.PowerUpType.HEALTH;
  */
 public class PowerUpFactory {
 
-    private static LinkedList<PowerUp> powerUps;
-
-    public static void getNewPowerUp(PowerUpType powerUpType, double[] startingPosition) {
+    public static PowerUp getNewPowerUp(PowerUpType powerUpType, double[] startingPosition) {
 
         PowerUp powerUp;
 
@@ -35,7 +33,7 @@ public class PowerUpFactory {
             default:
                 powerUp = null;
         }
-        powerUps.add( powerUp);
+        return powerUp;
     }
 
     public static double[] spawnPowerUpRandom() {
@@ -47,14 +45,12 @@ public class PowerUpFactory {
         spawnPos[1] = (int) (Math.random() * screen[1]);
         return spawnPos;
     }
-    public static void getNewPowerUp(double[] startingPosition) {
 
-        PowerUpType type = PowerUpType.values()[(int)(Math.random()*PowerUpType.values().length)];
+    public static PowerUp getNewPowerUp(double[] startingPosition) {
 
-         getNewPowerUp(type,startingPosition);
+        PowerUpType type = PowerUpType.values()[(int) (Math.random() * PowerUpType.values().length)];
+
+        return getNewPowerUp(type, startingPosition);
     }
 
-    public static void setList(LinkedList powerUps){
-        //this.powerUps=powerUps;
-    }
 }

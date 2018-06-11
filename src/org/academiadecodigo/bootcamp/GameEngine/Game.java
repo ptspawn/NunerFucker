@@ -30,11 +30,12 @@ public class Game {
     private Field field;
     private LinkedList<Enemy> enemies;
     private LinkedList<Projectile> projectiles;
-    private LinkedList<PowerUp> powerUps;
+    public static LinkedList<PowerUp> powerUps;
     private Player player;
     public static double[] SCREENDIMENTIONS;
     public static int SCORE;
     public static int BULLETTIME;
+    public static int FIRE_RATE_MODIFIER;
 
 
     private boolean[] playerDirections;
@@ -106,6 +107,7 @@ public class Game {
         SCORE = 0;
 
         BULLETTIME=1;
+        FIRE_RATE_MODIFIER=1;
 
         cycleCount = 0;
 
@@ -116,8 +118,6 @@ public class Game {
         projectiles = new LinkedList<>();
 
         powerUps = new LinkedList<>();
-
-        PowerUpFactory.setList(powerUps);
 
         Projectile currentShot = null;
 
@@ -250,6 +250,12 @@ public class Game {
                 ((Bullet) projectile).hide();
             }
         }
+
+        if (powerUps!=null){
+            for (PowerUp powerUp:powerUps){
+                powerUp.setCaught();
+            }
+        }
     }
 
     private void showGameOver() {
@@ -305,7 +311,7 @@ public class Game {
             powerUp = powerUps.get(i);
             collisionRadius = player.getCollisionRadius() + powerUp.getCollisionRadius();
 
-
+            System.out.println("checking powerup " + i + " for collisions");
             if (Collider.checkCollision(player.getPosition(), powerUp.getPosition(), collisionRadius)) {
 
                 player.catchPowerup(powerUp.getType());

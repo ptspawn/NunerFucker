@@ -4,7 +4,7 @@ package org.academiadecodigo.bootcamp.enums;
  * Created by codecadet on 02/06/2018.
  */
 public enum ProjectileType {
-    BULLET(25, 20,20);
+    BULLET(100, 20,20);
 
     private int damage;
     private int speed;

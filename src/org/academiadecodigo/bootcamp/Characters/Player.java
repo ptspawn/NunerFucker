@@ -26,8 +26,6 @@ public class Player extends Character {
 
     private double[] position;
 
-    private int fireRateMod=1;
-
     public Player(String name, double xPos, double yPos) {
         super(CharactersType.PLAYER.getHealth(), CharactersType.PLAYER.getSpeed(), CharactersType.PLAYER);
         this.name = name;
@@ -65,7 +63,7 @@ public class Player extends Character {
     }
 
     public Projectile shoot(double[] whereTo) {
-        if (shotRateCounter++ >= ProjectileType.BULLET.getFireRate()/fireRateMod) {
+        if (shotRateCounter++ >= ProjectileType.BULLET.getFireRate()/Game.FIRE_RATE_MODIFIER) {
 
             shotRateCounter = 0;
             SoundType.GUN.playSound();
@@ -117,16 +115,21 @@ public class Player extends Character {
     }
 
     public void catchPowerup(PowerUpType powerUp) {
-
+        System.out.println("Caught "+ powerUp.getValue());
         switch(powerUp){
             case GUN:
-                fireRateMod=2;
+                PlayerVoiceType.KILL.playSound();
+                Game.FIRE_RATE_MODIFIER=2;
+                break;
             case TIME:
                 Game.BULLETTIME=2;
+                break;
             case WEED:
-
+                break;
             case HEALTH:
+                PlayerVoiceType.MUCHBETTER.playSound();
                 super.addLife(powerUp.getValue());
+                break;
         }
 
     }

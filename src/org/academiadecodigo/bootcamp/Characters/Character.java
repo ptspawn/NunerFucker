@@ -77,7 +77,8 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
                 path = BloodType.values()[BloodType.values().length - 1].getPath();
                 Game.SCORE += type.getHealth();
                 if (drop) {
-                    PowerUpFactory.getNewPowerUp(getPosition());
+                    Game.powerUps.add(PowerUpFactory.getNewPowerUp(getPosition()));
+                    System.out.println("powerups count" + Game.powerUps.size());
                 }
                 break;
 
@@ -88,7 +89,8 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
                 path = BloodType.values()[(int) (Math.random() * (BloodType.values().length - 1))].getPath();
                 Game.SCORE += type.getHealth();
                 if (drop) {
-                    PowerUpFactory.getNewPowerUp(getPosition());
+                    Game.powerUps.add(PowerUpFactory.getNewPowerUp(getPosition()));
+                    System.out.println("powerups count" + Game.powerUps.size());
                 }
                 break;
         }
