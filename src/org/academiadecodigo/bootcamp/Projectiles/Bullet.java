@@ -56,6 +56,10 @@ public class Bullet extends Projectile implements Drawable, Movable, Collidable 
 
     }
 
+    public void hide(){
+        bullet.delete();
+    }
+
     @Override
     public void move(boolean[] directions, double[] orientation) {
 

@@ -42,7 +42,10 @@ public class Hud {
 
     public void setLife(int life) {
 
-        this.life.setDimentions(life / 100 * lifeMax, 25);
+        this.life.setDimentions( (life / 1000 )* lifeMax, 25);
+        System.out.println(life);
+        System.out.println("teoric width" + life / 1000 * lifeMax);
+        System.out.println("width" + this.life.getWidth());
 
     }
 
@@ -66,12 +69,9 @@ public class Hud {
     }
 
     // SCORE
-    public int getScore() {
-        return score;
-    }
 
     public void incrementScore(int score) {
-        this.score += score;
+        textScore.setText("BLOOD SPILT - " + score);
     }
 
     public void showHud() {

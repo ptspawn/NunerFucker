@@ -17,7 +17,7 @@ public enum PlayerVoiceType {
     MEDIEVAL(new Sound("Resources/Sounds/voice/medieval.wav")),
     UGLY(new Sound("Resources/Sounds/voice/ugly.wav")),
     YIPPIE(new Sound("Resources/Sounds/voice/yippie.wav")),
-    AHCURTO2(new Sound("Resources/Sounds/voice/ahcurto2.wav")),
+    AHCURTO2(new Sound("Resources/Sounds/voice/ahcurto.wav")),
     AHFUCKERS(new Sound("Resources/Sounds/voice/ahfuckers.wav")),
     BASTARDS(new Sound("Resources/Sounds/voice/bastards.wav"));
 
@@ -29,55 +29,70 @@ public enum PlayerVoiceType {
     }
 
     public void playSound() {
+        System.out.println("sound");
         switch (this) {
             case AAAAHHH:
+                System.out.println("0");
                 voice.stop();
                 voice.play();
                 break;
             case KILL:
+                System.out.println("1");
                 voice.stop();
                 voice.play();
                 break;
             case MUCHBETTER:
+                System.out.println("2");
                 voice.stop();
                 voice.play();
                 break;
             case DAMN:
                 voice.stop();
+                System.out.println("3");
                 voice.play();
                 break;
             case AHCURTO2:
+                System.out.println("4");
                 voice.stop();
                 voice.play();
                 break;
             case AHFUCKERS:
+                System.out.println("5");
+                voice.stop();
                 voice.play();
                 break;
             case BASTARDS:
+                System.out.println("6");
                 voice.stop();
                 voice.play();
                 break;
             case BIRTHCONTROL:
+                System.out.println("7");
                 voice.stop();
                 voice.play();
                 break;
             case EATSHIT:
+                System.out.println("8");
                 voice.stop();
                 voice.play();
                 break;
             case LIKETHERESR:
+                System.out.println("9");
                 voice.stop();
                 voice.play();
                 break;
             case MEDIEVAL:
+                System.out.println("10");
                 voice.stop();
                 voice.play();
                 break;
             case UGLY:
+                System.out.println("11");
                 voice.stop();
                 voice.play();
                 break;
             case YIPPIE:
+                System.out.println("12");
                 voice.stop();
                 voice.play();
                 break;

@@ -146,7 +146,9 @@ public class Player extends Character {
 
     @Override
     public void getHit(int dmg) {
-        PlayerVoiceType.values()[(int)(Math.random()*3)+4].playSound();
-        super.getHit(dmg);
+        if (dmg!=0 && !isDead()) {
+            PlayerVoiceType.values()[(int) (Math.random() * 3) + 4].playSound();
+            super.getHit(dmg);
+        }
     }
 }
