@@ -26,25 +26,25 @@ public class MainMenu implements Menuable {
     public MainMenu() {
         double[] screenDimentions = Game.SCREENDIMENTIONS;
 
-        menuBackGround = new Picture(0, 0, "Bgs/SplashScreen2_1920.jpg");
+        menuBackGround = new Picture(0, 0, "resources/Bgs/SplashScreen2_1920.jpg");
 
         menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
 
-        startButton = new Picture(1100, 410, "Bgs/video-play.png");
+        startButton = new Picture(1100, 410, "resources/Bgs/video-play.png");
 
-        startPopUp = new Picture(1100, 410, "Bgs/2c_go.png");
+        startPopUp = new Picture(1100, 410, "resources/Bgs/2c_go.png");
 
-        informationButton = new Picture(1805, 850, "Bgs/question.png");
+        informationButton = new Picture(1805, 850, "resources/Bgs/question.png");
 
-        quitButton = new Picture(1805, 20, "Bgs/Door-Closed.png");
+        quitButton = new Picture(1805, 20, "resources/Bgs/Door-Closed.png");
 
-        title = new Picture(800, 190, "Bgs/NUNS.png");
+        title = new Picture(800, 190, "resources/Bgs/NUNS.png");
 
-        title2 = new Picture(1280, 210, "Bgs/ng.png");
+        title2 = new Picture(1280, 210, "resources/Bgs/ng.png");
 
-        instrutionPanel = new Picture(1000, 35, "Bgs/instructions.png");
+        instrutionPanel = new Picture(1000, 35, "resources/Bgs/instructions.png");
 
-        youSuck = new Picture(1808, 20, "Bgs/middlefinger.png");
+        youSuck = new Picture(1808, 20, "resources/Bgs/middlefinger.png");
 
     }
 

@@ -3,44 +3,56 @@ package org.academiadecodigo.bootcamp.Sound;
 
 import java.applet.AudioClip;
 import java.io.*;
+import java.net.URL;
+
 import sun.audio.*;
+
+import javax.sound.sampled.*;
 
 public class Sound implements AudioClip {
 
-    private String filePath;
-    private AudioData audioData;
-    private AudioDataStream audioStream;
-    private ContinuousAudioDataStream continuousAudioDataStream;
+
+    Clip clip;
 
     public Sound(String filePath){
-        try{
-            FileInputStream fis = new FileInputStream(filePath);
-            AudioStream audioStream = new AudioStream(fis);
-            audioData = audioStream.getData();
-            this.audioStream = null;
-            continuousAudioDataStream = null;
-        } catch (IOException e){
-            System.out.println(e.getMessage());
+
+
+        URL soundURL = Sound.class.getResource("/" + filePath);
+        AudioInputStream inputStream;
+
+        try {
+            if (soundURL == null) {
+                File file = new File(filePath);
+                soundURL = file.toURI().toURL();
+            }
+
+            inputStream = AudioSystem.getAudioInputStream(soundURL);
+
+            clip = AudioSystem.getClip();
+            clip.open(inputStream);
+
+            
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public void play() {
-        audioStream = new AudioDataStream(audioData);
-        AudioPlayer.player.start(audioStream);
+       clip.start();
     }
 
     @Override
     public void loop() {
-        continuousAudioDataStream = new ContinuousAudioDataStream(audioData);
-        AudioPlayer.player.start(continuousAudioDataStream);
+       clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
     @Override
     public void stop() {
-        if (audioStream != null)
-            AudioPlayer.player.stop(audioStream);
-        if (continuousAudioDataStream != null)
-            AudioPlayer.player.stop(continuousAudioDataStream);
+       clip.stop();
     }
 }

@@ -42,9 +42,9 @@ public class Pause {
 
         for (int i = 0; i < 4; i++) {
 
-            blackNun[i] = new Picture(100, 100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
-            purpleNun[i] = new Picture(-100, -100, "avatar/Sprites/blackNun" + (i + 1) + ".png");
-            System.out.println("Instantiated pictures " + i);
+            blackNun[i] = new Picture(100, 100, "resources/avatar/Sprites/blackNun" + (i + 1) + ".png");
+            purpleNun[i] = new Picture(-100, -100, "resources/avatar/Sprites/blackNun" + (i + 1) + ".png");
+           // System.out.println("Instantiated pictures " + i);
 
         }
 

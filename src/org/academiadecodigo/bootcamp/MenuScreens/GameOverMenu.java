@@ -32,20 +32,20 @@ public class GameOverMenu implements Menuable {
 
         System.out.println(SCREENDIMENTIONS[0] + " " + SCREENDIMENTIONS[1]);
 
-        background = new Picture(20, -2, "Bgs/bg_gameover.png");
+        background = new Picture(20, -2, "resources/Bgs/bg_gameover.png");
 
         background.scaleToFit(SCREENDIMENTIONS[0], SCREENDIMENTIONS[1]);
 
-        highScoreBoard = new Picture(5, -20, "Bgs/gameover.png");
+        highScoreBoard = new Picture(5, -20, "resources/Bgs/gameover.png");
 
 
-        startButton = new Picture(1808, 150, "Bgs/go2_small.png");
+        startButton = new Picture(1808, 150, "resources/Bgs/go2_small.png");
 
-        quitButton = new Picture(1805, 20, "Bgs/Door-Closed.png");
+        quitButton = new Picture(1805, 20, "resources/Bgs/Door-Closed.png");
 
-        youSuck = new Picture(1808, 20, "Bgs/middlefinger.png");
+        youSuck = new Picture(1808, 20, "resources/Bgs/middlefinger.png");
 
-        startPopUp = new Picture(1808, 150, "Bgs/go_small.png");
+        startPopUp = new Picture(1808, 150, "resources/Bgs/go_small.png");
 
         highScores = new Text[5];
 

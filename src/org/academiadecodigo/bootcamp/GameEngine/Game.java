@@ -132,7 +132,7 @@ public class Game {
 
         if (field == null) {
 
-            field = new Field("bg.jpg");
+            field = new Field("resources/Bgs/bg_fullhd.jpg");
             field.draw();
 
         } else {
@@ -160,7 +160,7 @@ public class Game {
 
 
         if (redFlash == null) {
-            redFlash = new Picture(0, 0, "Bgs/red.png");
+            redFlash = new Picture(0, 0, "resources/Bgs/red.png");
             redFlash.scaleToFit(SCREENDIMENTIONS[0], SCREENDIMENTIONS[1]);
 
         }
