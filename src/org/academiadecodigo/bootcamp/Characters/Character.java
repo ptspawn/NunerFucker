@@ -67,7 +67,7 @@ public abstract class Character implements Movable, Shootable, Drawable, Collida
         switch (type) {
             case PLAYER:
                 PlayerVoiceType.DAMN.playSound();
-                path = "avatar/nun_dead_blood.png";
+                path = "resources/avatar/nun_dead_blood.png";
                 break;
 
             case ZOMBIEBOSS:
