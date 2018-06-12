@@ -5,8 +5,6 @@ import java.applet.AudioClip;
 import java.io.*;
 import java.net.URL;
 
-import sun.audio.*;
-
 import javax.sound.sampled.*;
 
 public class Sound implements AudioClip {

@@ -1,13 +1,14 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
 import java.io.*;
+import java.net.URL;
 import java.util.Arrays;
 
 /**
  * Created by codecadet on 09/06/2018.
  */
 public class FileManagement {
-    public static final String PATH_FILE = "Resources/HighScore/highscores.nun";
+    public static final String PATH_FILE = "resources/HighScore/highscores.nun";
     private String[] highScores = new String[5];
     private String[] newHighScore = new String[highScores.length + 1];
 
@@ -16,8 +17,17 @@ public class FileManagement {
     }
 
     private void readScores() {
+
+        URL highScoresURL = FileManagement.class.getResource("/" + PATH_FILE);
+
         try {
-            BufferedReader bRead = new BufferedReader(new FileReader(PATH_FILE));
+            if (highScoresURL == null) {
+                File file = new File(PATH_FILE);
+                highScoresURL = file.toURI().toURL();
+            }
+
+
+            BufferedReader bRead = new BufferedReader(new InputStreamReader(highScoresURL.openStream()));
             String line = bRead.readLine();
             int count = 0;
 
