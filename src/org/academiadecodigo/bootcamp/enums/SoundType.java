@@ -49,7 +49,9 @@ public enum SoundType {
                 sound.play();
                 break;
             case GUN:
+
                 sound.play();
+                System.out.println("playing gun");
                 break;
             case PUNCH:
                 sound.play();
@@ -59,6 +61,7 @@ public enum SoundType {
                 break;
             case BULLETTIME:
                 sound.play();
+                System.out.println("playeing buttlettime");
                 break;
 
         }

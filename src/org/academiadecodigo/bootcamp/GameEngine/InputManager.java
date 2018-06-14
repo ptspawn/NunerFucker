@@ -125,6 +125,8 @@ public class InputManager implements KeyboardHandler,MouseHandler {
 
         mouse.addEventListener(MouseEventType.MOUSE_RELEASED);
 
+        mouse.addEventListener(MouseEventType.MOUSE_DRAGGED);
+
     }
 
     public void keyPressed(KeyboardEvent e){
@@ -220,7 +222,9 @@ public class InputManager implements KeyboardHandler,MouseHandler {
     }
 
     @Override
-    public void mouseDragged(MouseEvent mouseEvent) {
-
+    public void mouseDragged(MouseEvent e) {
+        mousePos[0]=e.getX();
+        mousePos[1]=e.getY();
+        //System.out.println(e.getX() + " " + e.getY());
     }
 }

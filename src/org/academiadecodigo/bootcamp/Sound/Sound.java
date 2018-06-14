@@ -12,7 +12,7 @@ public class Sound implements AudioClip {
 
     Clip clip;
 
-    public Sound(String filePath){
+    public Sound(String filePath) {
 
 
         URL soundURL = Sound.class.getResource("/" + filePath);
@@ -29,7 +29,7 @@ public class Sound implements AudioClip {
             clip = AudioSystem.getClip();
             clip.open(inputStream);
 
-            
+
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -41,16 +41,19 @@ public class Sound implements AudioClip {
 
     @Override
     public void play() {
-       clip.start();
+        clip.stop();
+        clip.flush();
+        clip.setFramePosition(0);
+        clip.start();
     }
 
     @Override
     public void loop() {
-       clip.loop(Clip.LOOP_CONTINUOUSLY);
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
     @Override
     public void stop() {
-       clip.stop();
+        clip.stop();
     }
 }
