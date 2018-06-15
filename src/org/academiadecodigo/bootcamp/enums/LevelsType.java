@@ -5,11 +5,20 @@ package org.academiadecodigo.bootcamp.enums;
  */
 public enum LevelsType {
 
-    VIRGIN(35, 24, 30, 12, 20, 25, 1),
-    EXPERIENT(40, 30, 15, 40, 40, 25, 1),
-    USED(50, 55, 44, 50, 40, 50, 3),
-    SLUT(60, 65, 90, 40, 25, 100, 3),
-    XXX(80, 90, 110, 80, 200, 110, 10);
+    VIRGIN(new int[][]{{500, 15, 10, 0, 0, 0, 0}, {500, 10, 10, 15, 0, 0, 0, 0},
+            {1000, 0, 20, 15, 20, 0, 0, 0}, {1500, 0, 0, 0, 30, 25, 10, 0}, {0, 0, 0, 0, 20, 20, 35, 1}}),
+
+    EXPERIENT(new int[][]{{500, 15, 10, 0, 0, 0, 0}, {500, 10, 10, 15, 0, 0, 0, 0},
+            {1000, 0, 20, 15, 20, 0, 0, 0}, {1500, 0, 0, 0, 30, 40, 25, 1}, {0, 0, 0, 10, 35, 30, 50, 2}}),
+
+    USED(new int[][]{{500, 15, 10, 0, 0, 0, 0}, {500, 10, 10, 15, 0, 0, 0, 0},
+            {1000, 0, 20, 15, 20, 0, 0, 0}, {1500, 0, 0, 0, 30, 25, 10, 0}, {0, 0, 0, 0, 20, 20, 35, 1}}),
+
+    SLUT(new int[][]{{500, 15, 10, 0, 0, 0, 0}, {500, 10, 10, 15, 0, 0, 0, 0},
+            {1000, 0, 20, 15, 20, 0, 0, 0}, {1500, 0, 0, 0, 30, 25, 10, 0}, {0, 0, 0, 0, 20, 20, 35, 1}}),
+
+    XXX(new int[][]{{500, 15, 10, 0, 0, 0, 0}, {500, 10, 10, 15, 0, 0, 0, 0},
+            {1000, 0, 20, 15, 20, 0, 0, 0}, {1500, 0, 0, 0, 30, 25, 10, 0}, {0, 0, 0, 0, 20, 20, 35, 1}});
 
 
     private int enemyQty;
@@ -20,6 +29,18 @@ public enum LevelsType {
     private int zombieQty;
     private int zombieBossQty;
 
+    private int enemyQuant;
+
+    LevelsType(int[][] levelDefs) {
+
+        this.enemyQty = enemyQty;
+        this.bugsQty = bugsQty;
+        this.spiderQty = spiderQty;
+        this.humanQty = humanQty;
+        this.spaceshipQty = spaceshipQty;
+        this.zombieQty = zombieQty;
+        this.zombieBossQty = zombieBossQty;
+    }
 
     public int[] getEnemyQuantity() {
 
@@ -66,16 +87,6 @@ public enum LevelsType {
     }
 
     // Constructor
-    LevelsType(int enemyQty, int bugsQty, int spiderQty, int humanQty, int spaceshipQty, int zombieQty, int zombieBossQty) {
-
-        this.enemyQty = enemyQty;
-        this.bugsQty = bugsQty;
-        this.spiderQty = spiderQty;
-        this.humanQty = humanQty;
-        this.spaceshipQty = spaceshipQty;
-        this.zombieQty = zombieQty;
-        this.zombieBossQty = zombieBossQty;
-    }
 
 }
 
