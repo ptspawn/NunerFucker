@@ -147,7 +147,7 @@ public class Game {
         player = new Player("Sardinha", field.getWidth() / 2, field.getHeight() / 2);
         //}
 
-        WaveManager waveManager = new WaveManager(level, enemies, player);
+        WaveManager waveManager = new WaveManager(level, enemies, player,cycleCount);
 
         if (hud == null) {
             hud = new Hud();
@@ -228,7 +228,7 @@ public class Game {
 
             player.move(playerDirections, input.getMousePos());
 
-            liveEnemies = waveManager.moveEnemies();
+            liveEnemies = waveManager.moveEnemies(cycleCount);
 
             checkPowerUps();
 

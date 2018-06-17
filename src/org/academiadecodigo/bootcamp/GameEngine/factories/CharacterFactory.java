@@ -16,14 +16,28 @@ public class CharacterFactory {
 
     public static void enemySpawnByLevel(LevelsType level, LinkedList<Enemy> enemies) {
 
+        int[][] currentWave;
 
-        for (int i = 0; i < level.getEnemyQuantity().length; i++) {
+        for (int z = 0; z < level.getWaveCount(); z++) {
 
-            for (int j = 0; j < level.getEnemyQuantity()[i]; j++) {
-                enemies.add((Enemy)getNewCharacter(CharactersType.values()[i + 1], spawnEnemyPos()));
+            currentWave=level.getWave(z);
+
+            for (int i = 1; i < currentWave.length; i++) {
+
+                for (int e = 0; e < currentWave[i][1]; e++) {
+
+                    int currentEnemy=currentWave[i][0];
+
+                    enemies.add((Enemy)getNewCharacter(CharactersType.values()[currentEnemy], spawnEnemyPos()));
+
+                    //System.out.println("Wave " + z + " - Enemy type " + currentEnemy + " spawned" );
+                }
+
             }
 
         }
+
+
 
 
 

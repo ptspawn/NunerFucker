@@ -13,32 +13,30 @@ public class WaveManager {
 
     private LevelsType currentLevel;
     private long waveStart;
-    private long elapsedTime;
+    private int referenceCycle;
     private LinkedList<Enemy> npcList;
-    private final int MAX_PER_WAVE = 40;
-    private final int ENEMIES_BEFORE_NEXT = 10;
+    private final int ENEMIES_BEFORE_NEXT = 5;
     private int waveCount;
     private int liveEnemies;
     private Player player;
 
 
-    public WaveManager(LevelsType level, LinkedList<Enemy> list, Player player) {
+    public WaveManager(LevelsType level, LinkedList<Enemy> list, Player player, int currentCyle) {
 
         currentLevel = level;
-        waveStart = System.nanoTime();
         npcList = list;
         waveCount = 0;
         this.player = player;
     }
 
-    public int moveEnemies() {
+    public int moveEnemies(int cycleCount) {
 
         Enemy enemy;
         liveEnemies = 0;
 
         double collisionRadius;
 
-        for (int i = 0; i < Math.min((MAX_PER_WAVE * (1 + waveCount)), npcList.size()); i++) {
+        for (int i = 0; i < currentLevel.getEnemyCountbyWave(waveCount); i++) {
 
             enemy = npcList.get(i);
 
@@ -66,7 +64,7 @@ public class WaveManager {
             waveCount++;
             //System.out.println(" now entering " + waveCount);
         }
-        System.out.println(liveEnemies);
+        //System.out.println(liveEnemies);
         return liveEnemies;
     }
 
