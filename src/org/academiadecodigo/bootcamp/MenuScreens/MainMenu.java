@@ -30,9 +30,11 @@ public class MainMenu implements Menuable {
 
         menuBackGround.scaleToFit(screenDimentions[0], screenDimentions[1]);
 
-        startButton = new Picture(1100, 410, "resources/Bgs/video-play.png");
+        startButton = new Picture(0.57*screenDimentions[0], 0.37*screenDimentions[1], "resources/Bgs/video-play.png");
+        //startButton.grow(1920/screenDimentions[0]*startButton.getWidth(),
+               // 1100/screenDimentions[1]*startButton.getHeight());
 
-        startPopUp = new Picture(1100, 410, "resources/Bgs/2c_go.png");
+        startPopUp = new Picture(0.57*screenDimentions[0], 0.37*screenDimentions[1], "resources/Bgs/2c_go.png");
 
         informationButton = new Picture(1805, 850, "resources/Bgs/question.png");
 
