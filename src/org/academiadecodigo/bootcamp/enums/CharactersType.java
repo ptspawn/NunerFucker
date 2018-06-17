@@ -12,7 +12,7 @@ public enum CharactersType {
     HUMAN(80, 5, 20, 30, 20, 30, "resources/Characters/Enemies/human.png"),
     SPACESHIP(100, 9, 10, 10, 30, 6, "resources/Characters/Enemies/spaceship.png"),
     ZOMBIE(110, 5, 40, 55, 10, 100, "resources/Characters/Enemies/whiteEnemy.png"),
-    ZOMBIEBOSS(350, 3, 50, 10, 20, 10, "resources/Characters/Enemies/whiteBoss.png");
+    ZOMBIEBOSS(2000, 3, 50, 10, 20, 10, "resources/Characters/Enemies/whiteBoss.png");
 
 
     private int health;

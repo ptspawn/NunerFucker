@@ -264,7 +264,7 @@ public class Game {
                 System.out.println("deu merda");
             } finally {
 
-                if (++currentLevel<LevelsType.values().length) {
+                if (++currentLevel<=LevelsType.values().length) {
                     start(LevelsType.values()[currentLevel]);
                 } else {
                     System.out.println("You beat the game!");
