@@ -235,6 +235,7 @@ public class Game {
             manageEffects();
 
             hud.setLife(player.getHealth());
+
             hud.incrementScore(SCORE);
 
             Canvas.getInstance().repaint();

@@ -57,7 +57,7 @@ public class WaveManager {
 
         }
 
-        if (liveEnemies <= ENEMIES_BEFORE_NEXT) {
+        if (liveEnemies <= ENEMIES_BEFORE_NEXT || cycleCount>currentLevel.getCycleLimitByWave(waveCount)) {
 
             //System.out.println("Live enemies:" + liveEnemies);
 
